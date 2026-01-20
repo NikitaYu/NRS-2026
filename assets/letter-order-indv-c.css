@@ -1,0 +1,329 @@
+.loic-page-order-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.loic-collection-selector-wrapper {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.loic-selector-main-title {
+  font-family: 'Abel', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  color: #0063d9;
+  text-transform: uppercase;
+}
+
+.loic-selector-divider {
+  height: 2px;
+  width: 100%;
+  background-color: #ddd;
+  border: none;
+  margin: 15px 0;
+  display: block !important;
+}
+
+.loic-collection-selector-grid {
+  display: flex;
+  gap: 10px;
+}
+
+.loic-collection-selector-item {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  border-radius: 6px;
+  background: #fafafa;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.loic-collection-selector-item:hover {
+  background-color: #e6f3ff;
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.loic-collection-selector-item div {
+  font-family: 'Abel', sans-serif;
+  color: #0063d9;
+  font-weight: bold;
+}
+
+.loic-collection-selector-item.active {
+  border: 4px solid #0063d9;
+  background: #e6f3ff;
+  padding: 7px 13px;
+}
+
+.loic-collection-selector-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 8px;
+}
+
+#tab-specs h3 {
+  font-size: 24px !important;
+  color: #0063d9;
+  margin-bottom: 8px;
+}
+
+#tab-specs h4 {
+  font-size: 22px !important;
+  color: #0063d9;
+  margin-bottom: 8px;
+}
+
+#tab-specs a {
+  font-size: 20px;
+}
+
+.loic-collection-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.loic-collection-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-family: 'Abel', sans-serif;
+  color: #0063d9;
+}
+
+.loic-grid-12 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.loic-col-6 {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .loic-grid-12 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.loic-description-column {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.loic-letters-form {
+  font-family: Arial, sans-serif;
+}
+
+.loic-form-main-title {
+  color: #269769;
+  font-size: 31px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.loic-step {
+  margin-bottom: 30px;
+}
+
+.loic-step__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.loic-step__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background-color: #0063d9;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.loic-step__label {
+  font-family: 'Abel', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #0063d9;
+}
+
+.loic-step__form-input select {
+  width: 100%;
+  max-width: 350px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.loic-letters {
+  margin-top: 20px;
+}
+
+.loic-letter-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.loic-letter {
+  text-align: center;
+  padding: 5px;
+  border-radius: 4px;
+  background: #dbebfb;
+}
+
+.loic-letter__sku {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #174278;
+}
+
+.loic-letter label {
+  display: block;
+  font-size: 12px;
+  color: #174278;
+}
+
+.loic-small-letter {
+  font-size: 10px !important;
+}
+
+.loic-letter input {
+  width: 26px;
+  padding: 3px;
+  text-align: center;
+  border: 1px solid #b8cfe7;
+  border-radius: 4px;
+  font-size: 12px;
+  background: #fff;
+  color: #000;
+}
+
+.loic-price-and-button-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.loic-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin: 0 20px 0 0;
+}
+
+.loic-add,
+.loic-sold_out {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.loic-add {
+  background: #0063d9;
+  color: #fff;
+}
+
+.loic-add:hover {
+  background: #0056b3;
+}
+
+.loic-sold_out {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.loic-tabs-container {
+  margin-top: 20px;
+}
+
+.loic-tabs-nav {
+  display: flex;
+  border-bottom: 1px solid #0063d9;
+  flex-wrap: wrap;
+}
+
+.loic-tab-link {
+  padding: 10px 15px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-right: 1px solid #fff;
+  border-bottom: 0;
+  margin-bottom: -1px;
+  background: #0063d9;
+  color: #fff;
+  font-weight: bold;
+}
+
+.loic-tab-link:last-of-type {
+  border-right: none;
+}
+
+.loic-tab-link.active {
+  background: #fff;
+  color: #0063d9;
+  border-color: #0063d9;
+  border-bottom: 1px solid #fff;
+}
+
+.loic-tab-content {
+  padding: 15px;
+  border: 1px solid #0063d9;
+  border-top: 0;
+}
+
+.loic-tab-pane {
+  display: none;
+}
+
+.loic-tab-pane.active {
+  display: block;
+}
+
+.loic-desc-price-highlight {
+  font-weight: bold;
+  font-size: 24px !important;
+  color: #0063d9;
+}
+
+.loic-desc-price-list {
+  font-weight: bold;
+  font-family: 'Abel', sans-serif;
+}
+
+.loic-desc-styled-link {
+  display: inline-block;
+  background: #b0eaff;
+  padding: 5px 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000 !important;
+  margin-top: 10px;
+  border-radius: 4px;
+}

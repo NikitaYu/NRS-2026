@@ -1,0 +1,113 @@
+{% comment %}
+  Letter Order - Sets Only
+  Dedicated section for letter sets only.
+  Mimics master logic exactly.
+{% endcomment %}
+
+{%- comment %} Inventory handles (with suffix) for data loading {% endcomment -%}
+{% assign set_inventory_handles = "flexible-bold-block-letters-set,flexible-narrow-condensed-letters-set,gemini-pronto-adm-standard-letters-set,gemini-pronto-modern-letters-set,gemini-pronto-condensed-letters-set,gemini-pronto-ad-halftone-letters-set" | split: "," %}
+
+{%- comment %} Parent handles (no suffix) for selector display {% endcomment -%}
+{% assign all_parent_handles = "flexible-bold-block-letters,flexible-narrow-condensed-letters,gemini-pronto-adm-standard-letters,gemini-pronto-modern-letters,gemini-pronto-condensed-letters,gemini-pronto-ad-halftone-letters" | split: "," %}
+
+{%- comment %} Load shared CSS {% endcomment -%}
+<link rel="stylesheet" href="{{ 'letter-master-order.css' | asset_url }}">
+
+<div class="page-order-page-master single-mode">
+
+  {%- comment %} Top-level tabs - kept for JS compatibility but hidden {% endcomment -%}
+  <div class="tabs-nav-form-master top-level-tabs">
+    <div class="tab-link-master" data-tab-name="indv">INDIVIDUAL LETTERS</div>
+    <div class="tab-link-master active" data-tab-name="set">LETTER SETS</div>
+  </div>
+
+  {%- comment %} Global JS data {% endcomment -%}
+  <script>var masterCollectionsData = {};</script>
+
+  {%- for handle in set_inventory_handles -%}
+    {%- assign source_collection = collections[handle] -%}
+    {%- if source_collection == blank %}{% continue %}{% endif -%}
+
+    <script>
+      (function() {
+        var data = {
+          title: {{ source_collection.title | json }},
+          image: {{ source_collection.image | image_url: width: 800 | json }},
+          description: {{ source_collection.description | strip_html | json }},
+          full_description: {{ source_collection.description | json }},
+          main_description: {{ source_collection.description | split: '<div id="content-details">' | first | default: "" | json }},
+          details: {{ source_collection.description | split: '<div id="content-details">' | last | split: '<div id="content-specs">' | first | json }},
+          specs: {{ source_collection.description | split: '<div id="content-specs">' | last | json }},
+          has_details: {% if source_collection.description contains '<div id="content-details">' %}true{% else %}false{% endif %},
+          has_specs: {% if source_collection.description contains '<div id="content-specs">' %}true{% else %}false{% endif %},
+          height_obj: {},
+          color_set_obj: {},
+          _dataReady: false
+        };
+
+        window.masterCollectionsData[{{ handle | json }}] = data;
+
+        {%- for product in source_collection.products -%}
+          {%- for variant in product.variants -%}
+            (function() {
+              var height = {{ variant.option1 | json }} || "";
+              var setType = {{ variant.option2 | json }} || "";
+              var color = {{ variant.option3 | json }} || "";
+              var height_color = height + "||" + color;
+
+              if (setType && setType !== "") {
+                if (!data.height_obj[height]) data.height_obj[height] = [];
+                if (data.height_obj[height].indexOf(color) === -1) data.height_obj[height].push(color);
+
+                if (!data.color_set_obj[height_color]) data.color_set_obj[height_color] = [];
+                data.color_set_obj[height_color].push({
+                  title: setType,
+                  id: {{ variant.id }},
+                  price: ({{ variant.price }} / 100),
+                  available: {{ variant.available | json }}
+                });
+              }
+            })();
+          {%- endfor -%}
+        {%- endfor -%}
+
+        data._dataReady = true;
+      })();
+    </script>
+  {%- endfor -%}
+
+  <div id="tab-content-set" class="tab-content-master active">
+    <div class="master-tab-inner-content">
+      {%- render 'letter-collection-selector', current_tab: 'set', all_parent_handles: all_parent_handles -%}
+
+      <div class="grid-12-master">
+        {%- render 'letter-form-set', collection_handle: '', order_type: 'set' -%}
+        {%- render 'letter-description', collection_handle: '', order_type: 'set' -%}
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-content-indv" class="tab-content-master"></div>
+
+</div>
+
+<script src="{{ 'letter-master-order.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Letter Order - Sets",
+  "tag": "section",
+  "class": "section-letter-order-sets",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Dedicated section for ordering letter sets."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Letter Order - Sets Only"
+    }
+  ]
+}
+{% endschema %}

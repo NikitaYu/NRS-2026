@@ -1,0 +1,183 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "footer_01_77tfyp": {
+      "type": "footer-01",
+      "blocks": {
+        "text_dA6pCP": {
+          "type": "text",
+          "settings": {
+            "custom_width": "40",
+            "heading": "NATIONAL READERBOARD SUPPLY",
+            "logo_margin_bottom": 28,
+            "subtext": "",
+            "address_icon": "point_icon",
+            "show_address_icon": false,
+            "address_text": "<p>PO Box 430<br/>Poncha Springs,<br/>Colorado 81242</p>",
+            "phone_icon": "message_icon",
+            "show_phone_icon": false,
+            "phone_text": "<p></p><p></p><p>Phone: <a href=\"tel:8002436676\" target=\"_blank\" title=\"tel:8002436676\">800.243.6676</a></p>",
+            "email_icon": "envelope_icon",
+            "show_email_icon": false,
+            "email_text": "<p><a href=\"mailto:sales@nationalreaderboard.com\" target=\"_blank\" title=\"mailto:sales@nationalreaderboard.com\"><span style=\"text-decoration:underline\">sales@nationalreaderboard.com</span></a></p>",
+            "icon_size": 16,
+            "icon_color": "",
+            "content_spacing": 4,
+            "enable_custom_position_icon": false,
+            "show_social": true,
+            "social_heading": "",
+            "enable_bg_social": false,
+            "social_margin_top": 50,
+            "social_icon_width": 14,
+            "social_icon_padding": 10,
+            "social_icon_border_width": 1,
+            "social_icon_margin_right": 15,
+            "social_color": "#232323",
+            "social_border_color": "rgba(0,0,0,0)",
+            "social_background_color": "#ffffff",
+            "social_background_color_gradient": "",
+            "social_color_hover": "#00acd7",
+            "social_border_color_hover": "#ffffff",
+            "social_background_color_hover": "#ffffff",
+            "social_background_color_gradient_hover": "",
+            "social_box_hover_color": "#ffffff",
+            "mg_bottom": 19
+          }
+        },
+        "link_list_QMhTDb": {
+          "type": "link_list",
+          "settings": {
+            "custom_width": "20",
+            "heading": "",
+            "menu": "letters-panels",
+            "mg_bottom": 30
+          }
+        },
+        "link_list_jH4HGh": {
+          "type": "link_list",
+          "settings": {
+            "custom_width": "20",
+            "heading": "",
+            "menu": "accessories",
+            "mg_bottom": 30
+          }
+        },
+        "link_list_RbbxC6": {
+          "type": "link_list",
+          "settings": {
+            "custom_width": "20",
+            "heading": "",
+            "menu": "bottom-generic",
+            "mg_bottom": 30
+          }
+        },
+        "footer_bottom_xJFC49": {
+          "type": "footer_bottom",
+          "settings": {
+            "pdtop_footer_bottom": 15,
+            "pdbottom_footer_bottom": 15,
+            "border_top": true,
+            "footer_bottom_color": "#50afe4",
+            "border_top_color": "#0a549c",
+            "footer_bottom_bg": "#1b1b1b",
+            "footer_bottom_bg_gradient": "",
+            "show_copyright": true,
+            "show_shop_name": false,
+            "enable_layout_grid": true,
+            "text_fontsize": 14,
+            "copyright_content": "<p>© 2026 National Readerboard Supply. All Rights Reserved. Site by <a href=\"https://www.regencyinteractive.com/\" target=\"_blank\">Regency</a></p>",
+            "copyright_content_color": "",
+            "shop_name": "",
+            "show_payment": true,
+            "payment_margin_top": 0,
+            "payment_type": "custom",
+            "show_payment_visa": true,
+            "show_payment_master": true,
+            "show_payment_maestro": false,
+            "show_payment_american_express": true,
+            "show_payment_apple_pay": false,
+            "show_payment_bitcoin": false,
+            "show_payment_dankort": false,
+            "show_payment_diners_club": false,
+            "show_payment_discover": true,
+            "show_payment_paypal": true,
+            "show_payment_dogecoin": false,
+            "show_payment_dwolla": false,
+            "show_payment_forbrugsforeningen": false,
+            "show_payment_jcb": false,
+            "show_payment_litecoin": false,
+            "show_payment_afterpay": false,
+            "show_payment_google_pay": false,
+            "show_payment_ideal": false,
+            "show_payment_klarna": false,
+            "show_payment_klarna-pay-later": false,
+            "show_payment_shopify_pay": true,
+            "show_payment_sofort": false
+          }
+        }
+      },
+      "block_order": [
+        "text_dA6pCP",
+        "link_list_QMhTDb",
+        "link_list_jH4HGh",
+        "link_list_RbbxC6",
+        "footer_bottom_xJFC49"
+      ],
+      "custom_css": [
+        ".address-wrapper,.phone-wrapper {font-size: smaller; font-weight: 100; letter-spacing: 0.7px;}",
+        "a {}",
+        ".copyright__content {letter-spacing: 2px; font-weight: 100;}"
+      ],
+      "settings": {
+        "container": "1570",
+        "padding_full_width": 20,
+        "type_footer_heading": "font_2",
+        "type_footer_heading_font_size": 16,
+        "type_footer_heading_line_height": 60,
+        "type_footer_heading_font_weight": "600",
+        "type_footer_heading_text_transform": "uppercase",
+        "type_footer_heading_margin_bottom": 12,
+        "type_footer_heading_letter_spacing": ".09em",
+        "type_footer_link": "font_2",
+        "type_footer_link_font_size": 13,
+        "type_footer_link_font_weight": "400",
+        "type_footer_link_text_transform": "capitalize",
+        "type_footer_link_line_height": 28,
+        "type_footer_link_letter_spacing": ".05em",
+        "enable_border_footer_top": true,
+        "border_footer_top_color": "#282828",
+        "pdtop_footer_top": 50,
+        "pdbottom_footer_top": 50,
+        "footer_top_bg": "#232323",
+        "footer_top_bg_gradient": "linear-gradient(9deg, rgba(42, 60, 152, 1) 2%, rgba(13, 13, 13, 1) 61%)",
+        "show_footer_top_bg_img": false,
+        "footer_top_bg_img": "shopify://shop_images/marquee_graphics_checkers_loaded_fries.png",
+        "footer_top_bg_position_x": "center",
+        "footer_top_bg_position_y": "center",
+        "footer_top_bg_repeat": "no-repeat",
+        "footer_top_bg_attachment": "fixed",
+        "footer_top_bg_size": "cover",
+        "footer_top_text_align": "left",
+        "footer_top_title_color": "#ffffff",
+        "footer_top_color_link": "#e7e7e7",
+        "footer_top_color_link_hover": "#ffffff",
+        "show_border_item": false,
+        "space_border_item": 15,
+        "footer_border_item": "#808080"
+      }
+    }
+  },
+  "order": [
+    "footer_01_77tfyp"
+  ]
+}
