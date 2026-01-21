@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     if section.blocks.size > 0 and section.settings.show_megamenu
         assign megamenu = section.blocks | where: "type", "megamenu"
     endif
@@ -183,7 +183,7 @@
                                                                                     loading="lazy"
                                                                                     alt="{{ banner_1.alt | default: shop.name | escape }}">
                                                                                 {%- else -%}
-                                                                                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                                                                 {%- endif -%}
                                                                             </a>
                                                                             {%- if banner_title_1 != blank or banner_text_1 != blank -%}
@@ -211,7 +211,7 @@
                                                                                     loading="lazy"
                                                                                     alt="{{ banner_2.alt | default: shop.name | escape }}">
                                                                                 {%- else -%}
-                                                                                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                                                                 {%- endif -%}
                                                                             </a>
                                                                             {%- if banner_title_2 != blank or banner_text_2 != blank -%}
@@ -239,7 +239,7 @@
                                                                                     loading="lazy"
                                                                                     alt="{{ banner_3.alt | default: shop.name | escape }}">
                                                                                 {%- else -%}
-                                                                                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                                                                 {%- endif -%}
                                                                             </a>
                                                                             {%- if banner_title_3 != blank or banner_text_3 != blank -%}
@@ -267,7 +267,7 @@
                                                                                     loading="lazy"
                                                                                     alt="{{ banner_4.alt | default: shop.name | escape }}">
                                                                                 {%- else -%}
-                                                                                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                                                                 {%- endif -%}
                                                                             </a>
                                                                             {%- if banner_title_4 != blank or banner_text_4 != blank -%}

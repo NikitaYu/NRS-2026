@@ -1,4 +1,4 @@
-{%- unless settings.show_quick_view -%}
+﻿{%- unless settings.show_quick_view -%}
 	{%- unless request.page_type == 'product' -%}
 		<link rel="stylesheet" href="{{ 'component-product.css' | asset_url }}" media="print" onload="this.media='all'">
 	{%- endunless -%}

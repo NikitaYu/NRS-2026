@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-ask-an-expert.css' | asset_url }}" media="print" onload="this.media='all'">
+﻿<link rel="stylesheet" href="{{ 'component-ask-an-expert.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-ask-an-expert.css' | asset_url | stylesheet_tag }}</noscript>
 
 {%- if settings.ask_an_expert_show == 'all_page' -%}
@@ -27,7 +27,7 @@
 				<img srcset="{{ image | img_url: 'master' }}" src="{{ image | img_url: 'master' }}" loading="lazy"  alt="{{ image.alt | default: shop.name | escape }}">
 			{%- else -%}
 				<div class="placeholder" style="--wid-a: 100px;--height_placeholder: 100px;">
-					{{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+					<img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
 				</div>
 			{%- endif -%}
 		</button>

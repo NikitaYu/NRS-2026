@@ -1,4 +1,4 @@
-{% comment %}Content Slider X: Responsive slider with image, video, mixed content slides, theme editor fixes, and conflict prevention{% endcomment %}
+﻿{% comment %}Content Slider X: Responsive slider with image, video, mixed content slides, theme editor fixes, and conflict prevention{% endcomment %}
 
 {%- liquid
   assign section_height_desktop = section.settings.section_height_desktop | default: 600
@@ -152,7 +152,7 @@
                           width="1920" height="{{ 1920 | divided_by: block.settings.image.aspect_ratio | round }}">
                       {%- endif -%}
                     {%- else -%}
-                      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-image' }}
+                      <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                     {%- endif -%}
                     {%- if block.settings.link != blank -%}</a>{%- endif -%}
                   </div>
@@ -165,7 +165,7 @@
                           alt="{{ block.settings.cover_image.alt | escape }}" loading="lazy"
                           width="1920" height="{{ 1920 | divided_by: block.settings.cover_image.aspect_ratio | round }}">
                       {%- else -%}
-                        {{ 'collection-1' | placeholder_svg_tag: 'video-placeholder' }}
+                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                       {%- endif -%}
                     </div>
                     <button class="video-play-button" type="button" aria-label="Play video" data-video-trigger>
@@ -200,7 +200,7 @@
                           <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy">
                         {%- endif -%}
                       {%- else -%}
-                        {{ 'product-1' | placeholder_svg_tag: 'mixed-content-placeholder' }}
+                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                       {%- endif -%}
                     </div>
                     <div class="mixed-content-text">

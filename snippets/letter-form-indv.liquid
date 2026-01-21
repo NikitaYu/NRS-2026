@@ -1,4 +1,4 @@
-{% comment %} Reusable snippet for individual letter order form {% endcomment %}
+﻿{% comment %} Reusable snippet for individual letter order form {% endcomment %}
 {%- liquid
   assign collection_handle = collection_handle | default: ''
   assign order_type = order_type | default: 'indv'
@@ -56,7 +56,7 @@
       </div>
     </div>
     <p>First choose a color above to see which characters are available.<br>Then below each letter, enter the quantity you would like to order.</p>
-    <p style="color:#f00;">NOTE: the letters I and O and the numbers ‘1’ and zero are visually identical in the ADM Standard and Modern letter styles</p>
+    <p style="color:#f00;">NOTE: the letters I and O and the numbers вЂ1вЂ™ and zero are visually identical in the ADM Standard and Modern letter styles</p>
     
     {%- comment %} Letter Grid {% endcomment -%}
     <div class="letters">
@@ -82,7 +82,7 @@
       </div>
       
       <div class="letter-row">
-        <div class="letter"><div class="letter__sku">¢</div><label for="letter-cent-sign">¢</label><input type="text" name="letter-cent-sign" value="" class="letter-input"></div>
+        <div class="letter"><div class="letter__sku">Вў</div><label for="letter-cent-sign">Вў</label><input type="text" name="letter-cent-sign" value="" class="letter-input"></div>
         <div class="letter"><div class="letter__sku">$</div><label for="letter-dollar-sign">$</label><input type="text" name="letter-dollar-sign" value="" class="letter-input"></div>
         <div class="letter"><div class="letter__sku">.</div><label for="letter-period">.</label><input type="text" name="letter-period" value="" class="letter-input"></div>
         <div class="letter"><div class="letter__sku">&</div><label for="letter-ampersand">&</label><input type="text" name="letter-ampersand" value="" class="letter-input"></div>
@@ -101,10 +101,10 @@
         <div class="letter"><div class="letter__sku">(</div><label for="letter-left-parenthesis">(</label><input type="text" name="letter-left-parenthesis" value="" class="letter-input"></div>
         <div class="letter"><div class="letter__sku">)</div><label for="letter-right-parenthesis">)</label><input type="text" name="letter-right-parenthesis" value="" class="letter-input"></div>
         <div class="letter"><div class="letter__sku">*</div><label for="letter-asterisk">*</label><input type="text" name="letter-asterisk" value="" class="letter-input"></div>
-        <div class="letter"><div class="letter__sku">¼</div><label for="letter-one-quarter">¼</label><input type="text" name="letter-one-quarter" value="" class="letter-input"></div>
-        <div class="letter"><div class="letter__sku">⅓</div><label for="letter-one-third">⅓</label><input type="text" name="letter-one-third" value="" class="letter-input"></div>
-        <div class="letter"><div class="letter__sku">½</div><label for="letter-one-half">½</label><input type="text" name="letter-one-half" value="" class="letter-input"></div>
-        <div class="letter"><div class="letter__sku">¾</div><label for="letter-three-quarters">¾</label><input type="text" name="letter-three-quarters" value="" class="letter-input"></div>
+        <div class="letter"><div class="letter__sku">Вј</div><label for="letter-one-quarter">Вј</label><input type="text" name="letter-one-quarter" value="" class="letter-input"></div>
+        <div class="letter"><div class="letter__sku">в…“</div><label for="letter-one-third">в…“</label><input type="text" name="letter-one-third" value="" class="letter-input"></div>
+        <div class="letter"><div class="letter__sku">ВЅ</div><label for="letter-one-half">ВЅ</label><input type="text" name="letter-one-half" value="" class="letter-input"></div>
+        <div class="letter"><div class="letter__sku">Вѕ</div><label for="letter-three-quarters">Вѕ</label><input type="text" name="letter-three-quarters" value="" class="letter-input"></div>
         <div class="letter"><div class="letter__sku">9/10</div><label for="letter-nine-tenths" class="small-letter">9/10</label><input type="text" name="letter-nine-tenths" value="" class="letter-input"></div>
         <div class="letter"><div class="letter__sku">@</div><label for="letter-at-symbol">@</label><input type="text" name="letter-at-symbol" value="" class="letter-input"></div>
         <div class="letter"><div class="letter__sku">STAR</div><label for="letter-star" class="small-letter">STAR</label><input type="text" name="letter-star" value="" class="letter-input"></div>

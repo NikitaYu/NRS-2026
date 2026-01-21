@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     assign image = article.image
     assign id = article.id
     assign link = article.url
@@ -55,7 +55,7 @@
         <div class="blog-image img-box">
             <a {% if link == blank %}role="link" aria-disabled="true"{% else %}href="{{ link }}"{% endif %} class="image">
                 <div class="placeholder" style="--height_placeholder: 100%;">
-                    {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                 </div>
             </a>
         </div>

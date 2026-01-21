@@ -1,4 +1,4 @@
-{%- if section.blocks.size > 0 -%}
+﻿{%- if section.blocks.size > 0 -%}
 <link rel="stylesheet" href="{{ 'component-custom-image-banner-2-block.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-custom-image-banner-2-block.css' | asset_url | stylesheet_tag }}</noscript>
 
@@ -40,7 +40,7 @@
                             {%- else -%}
                                 <a {% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} class="image-zoom">
                                     <div class="placeholder" style="--height_placeholder: 570px;">
-                                        {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                     </div>
                                 </a>
                             {%- endif -%}
@@ -58,7 +58,7 @@
                             {%- else -%}
                                 <a {% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} class="image-zoom">
                                     <div class="placeholder" style="--height_placeholder: 450px;">
-                                        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                     </div>
                                 </a>
                             {%- endif -%}

@@ -1,4 +1,4 @@
-{{ 'component-image-comparison.css' | asset_url | stylesheet_tag }}
+﻿{{ 'component-image-comparison.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
     assign mg_top_desktop = section.settings.mg_top_desktop | append: 'px'
@@ -226,7 +226,7 @@
                         </div>
                     {% else %}
                         <div class="adaptive_height placeholder compare-image" style="--height_placeholder: 750px;" data-image-overlay>
-                            {{ 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                         </div>
                     {% endif %}
                     {% if show_image_mobile %}
@@ -236,7 +236,7 @@
                         </div>
                     {% elsif image_2 == blank %}
                         <div class="adaptive_height placeholder compare-image mobile" style="--height_placeholder: 750px;" data-image-overlay>
-                            {{ 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                         </div>
                     {% endif %}
                     <div class="image-comparison-slider" data-image-slider>
@@ -255,7 +255,7 @@
                         </div>
                     {% else %}
                         <div class="adaptive_height compare-image-overlay placeholder compare-image" style="--height_placeholder: 750px;">
-                            {{ 'product-apparel-1' | placeholder_svg_tag: ' placeholder-svg' }}
+                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                         </div>
                     {% endif %}
                     {% if show_image_mobile %}
@@ -265,7 +265,7 @@
                         </div>
                     {% elsif image_1 == blank %}
                         <div class="adaptive_height compare-image-overlay placeholder compare-image mobile" style="--height_placeholder: 750px;">
-                            {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                         </div>
                     {% endif %}
                 </div>

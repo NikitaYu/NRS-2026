@@ -1,4 +1,4 @@
-{%- if section.blocks.size > 0 -%}
+﻿{%- if section.blocks.size > 0 -%}
     {%-liquid
         assign autoplay = section.settings.autoplay
         assign autoplaySpeed = section.settings.slideshow_speed
@@ -133,7 +133,7 @@
                                     </div>
                                 {%- else -%}
                                     <div class="placeholder{% if block.settings.image_slide_mb != blank %} slide-pc{% endif %}" style="--height_placeholder:{% if section.settings.enable_banner %} 510px{% else %} clamp(570px, calc(720 / 1920 * 100vw), 720px){% endif %};">
-                                        {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                     </div>
                                 {%- endif -%}
 
@@ -502,7 +502,7 @@
                                     {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
                                     {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
                                     <div class="placeholder" style="--height_placeholder: 250px;">
-                                        {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                     </div>
                                 </a>
                             {%- endif -%}
@@ -2824,3 +2824,4 @@
         }]
     }
 {% endschema %}
+

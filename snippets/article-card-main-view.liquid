@@ -1,4 +1,4 @@
-{%- comment -%}
+﻿{%- comment -%}
   Format date Publish Blog
   {{- article.published_at | date: "%a, %b %d, %y" -}}
 {%- endcomment -%}
@@ -19,7 +19,7 @@
     {%- else -%}
         <a href="{{article.url}}" class="image-zoom">
             <div class="placeholder" style="--height_placeholder: 370px;">
-                {{ 'blog-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
             </div>
         </a>
     {%- endif -%}

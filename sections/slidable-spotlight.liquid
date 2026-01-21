@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-slidable-spotlight.css' | asset_url }}" media="print" onload="this.media='all'">
+﻿<link rel="stylesheet" href="{{ 'component-slidable-spotlight.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-slidable-spotlight.css' | asset_url | stylesheet_tag }}</noscript>
 {%- liquid
     assign section_bg_color = section.settings.section_bg_color
@@ -60,7 +60,7 @@
                                 {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
                                 {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
                                 <div class="placeholder" style="--height_placeholder: 230px;">
-                                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                 </div>
                             </div>
                         {%- endif -%}
@@ -546,3 +546,4 @@
     ]
   }
 {% endschema %}
+

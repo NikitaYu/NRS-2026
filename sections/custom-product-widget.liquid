@@ -1,4 +1,4 @@
-{{ 'component-custom-product-widget.css' | asset_url | stylesheet_tag }}
+﻿{{ 'component-custom-product-widget.css' | asset_url | stylesheet_tag }}
 {{ 'video-section.css' | asset_url | stylesheet_tag }}
 {%- liquid
     assign section_title = section.settings.section_title
@@ -157,7 +157,7 @@
                                         </div>
                                     {%- else -%}
                                         <div class="placeholder" style="--height_placeholder: 100%;">
-                                            {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                         </div>
                                     {%- endif -%}
                                     {% unless autoVideo %}

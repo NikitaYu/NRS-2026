@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-faqs.css' | asset_url }}" media="print" onload="this.media='all'">
+﻿<link rel="stylesheet" href="{{ 'component-faqs.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-faqs.css' | asset_url | stylesheet_tag }}</noscript>
 
 {%- if section.blocks.size > 0 -%}
@@ -339,7 +339,7 @@
 				            {%- else -%}
 				                <a class="image"{% if button_link_block_bottom == blank %} role="link" aria-disabled="true"{% else %} href="{{ button_link_block_bottom }}"{% endif %}>
 									<div class="placeholder" style="--height_placeholder: clamp(300px, calc(640 / 1920 * 100vw), 640px);">
-										{{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+										<img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
 									</div>
 				                </a>
 				            {%- endif -%}

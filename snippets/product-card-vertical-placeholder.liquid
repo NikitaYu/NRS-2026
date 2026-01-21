@@ -1,4 +1,4 @@
-{%- assign featured_media_aspect_ratio = product_card_product.featured_media.aspect_ratio -%}
+﻿{%- assign featured_media_aspect_ratio = product_card_product.featured_media.aspect_ratio -%}
 <div class="card-vertical__image">
     <a class="card-media" href="{{ product_card_product.url }}"{% if product_card_product.featured_media %} style="padding-bottom: {{ 1 | divided_by: featured_media_aspect_ratio | times: 100 }}%;"{% endif %}>
     {%- if product_card_product.featured_media -%}
@@ -7,7 +7,7 @@
     {%- else -%}
         {%- capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture -%}
         {%- assign placeholder_image = 'product-apparel-' | append: current -%}
-        {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
     {%- endif -%}
     </a>
 </div>

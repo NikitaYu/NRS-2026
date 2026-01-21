@@ -1,4 +1,4 @@
-{% comment %}
+﻿{% comment %}
     Renders a product card placeholder
     Usage:
     {% render 'product-card-placeholder' %}
@@ -8,8 +8,7 @@
         <div class="card-product card--text-only card--soft">
             <div class="card-product__wrapper">
                 <div class="card-media card-media--square">
-                    {%- assign placeholder_image = 'product-apparel-' | append: index -%}
-                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                 </div>
             </div>
             {% if card-mega-menu %}</div>{% endif %}

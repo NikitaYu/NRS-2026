@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     assign colors_bg = section.settings.colors_bg
     assign colors_bg_gradient = section.settings.colors_bg_gradient
     assign padding_top = section.settings.mg_top_desktop | append: 'px'
@@ -212,7 +212,7 @@
                                                         <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ section.settings.img_banner1 | img_url: 'master' }}" src="{{ section.settings.img_banner1 | img_url: 'master' }}" alt="{{ section.settings.img_banner1.alt | default: shop.name | escape }}" loading="lazy" width="{{section.settings.img_banner1.width}}" height="{{height}}">
                                                     {%- else -%}
                                                         <div class="placeholder" style="--height_placeholder: clamp(270px, calc(560 / 1920 * 100vw), 560px);">
-                                                            {{ 'blog-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                                         </div>
                                                     {%- endif -%}
                                                     </a>
@@ -228,7 +228,7 @@
                                                         <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ section.settings.img_banner2 | img_url: 'master' }}" src="{{ section.settings.img_banner2 | img_url: 'master' }}" alt="{{ section.settings.img_banner2.alt | default: shop.name | escape }}" loading="lazy" width="{{section.settings.img_banner2.width}}" height="{{height}}">
                                                     {%- else -%}
                                                         <div class="placeholder" style="--height_placeholder: clamp(270px, calc(560 / 1920 * 100vw), 560px);">
-                                                            {{ 'blog-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                                         </div>
                                                     {%- endif -%}
                                                     </a>
@@ -244,7 +244,7 @@
                                                         <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ section.settings.img_banner3 | img_url: 'master' }}" src="{{ section.settings.img_banner3 | img_url: 'master' }}" alt="{{ section.settings.img_banner3.alt | default: shop.name | escape }}" loading="lazy" width="{{section.settings.img_banner3.width}}" height="{{height}}">
                                                     {%- else -%}
                                                         <div class="placeholder" style="--height_placeholder: clamp(270px, calc(560 / 1920 * 100vw), 560px);">
-                                                            {{ 'blog-apparel-3' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                                         </div>
                                                     {%- endif -%}
                                                     </a>

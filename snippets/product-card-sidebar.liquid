@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     assign product_swatch_option = settings.swatch | downcase
     assign isColor = false
     assign variant_img = ''
@@ -33,9 +33,7 @@
                     {%- endif -%}
                     <img srcset="{{ image | img_url: '95x' }}" src="{{ image | img_url: '95x' }}" sizes="95px" alt="{{ image.alt | escape }}" loading="lazy" class="motion-reduce">
                 {%- else -%}
-                    {%- capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture -%}
-                    {%- assign placeholder_image = 'product-apparel-' | append: current -%}
-                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                 {%- endif -%}
             </a>
         </div>

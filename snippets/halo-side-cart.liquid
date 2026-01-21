@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     assign product = all_products[settings.cart_product_gift]
     assign product_downcase = product | downcase
     assign id = product.selected_or_first_available_variant.id | minus: 0
@@ -463,3 +463,4 @@
         </div>
     </div>
 {% endunless%}
+

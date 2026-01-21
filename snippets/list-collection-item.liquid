@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     assign layout = settings.list_collections_layout
 -%}
 
@@ -33,7 +33,7 @@
         {%- else -%}
             <a class="image" {% if link == blank %}role="link" aria-disabled="true"{% else %}href="{{ link }}"{% endif %}>
               {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
-              {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+              <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
             </a>
         {%- endif -%}
         {% if layout == 'collections_01_grid' or layout == 'collections_4' %}

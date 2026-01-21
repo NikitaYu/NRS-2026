@@ -1,4 +1,4 @@
-{% comment %}
+﻿{% comment %}
   NRS Top Nav - Composite Layout System (Production)
   - Features: Flex-Grid Hybrid, Sibling Blocks.
   - Updates: Split Padding Controls (Vert/Horiz), Sharp Corners on Nav.
@@ -178,7 +178,7 @@
         <li class="nrs-nav-item" tabindex="0" {% if config_block %}{{ config_block.shopify_attributes }}{% endif %}>
           <a href="{{ link.url }}" class="nrs-nav-link">
             {{ link.title }}
-            {% if config_block %}<span class="nrs-arrow">▼</span>{% endif %}
+            {% if config_block %}<span class="nrs-arrow">в–ј</span>{% endif %}
           </a>
 
           {%- if config_block -%}
@@ -342,7 +342,7 @@
   "blocks": [
     {
       "type": "mega_menu_config",
-      "name": "⚙️ Menu Config",
+      "name": "вљ™пёЏ Menu Config",
       "settings": [
         { "type": "checkbox", "id": "enable_menu", "label": "Enable Mega Menu", "default": true },
         { "type": "text", "id": "trigger_id", "label": "Menu Link Name", "default": "Shop" },
@@ -388,7 +388,7 @@
     },
     {
       "type": "mega_menu_card",
-      "name": "🖼️ Card",
+      "name": "рџ–јпёЏ Card",
       "settings": [
         { "type": "text", "id": "trigger_id", "label": "Attach to Menu", "default": "Shop" },
         { "type": "image_picker", "id": "image", "label": "Image" },
@@ -408,7 +408,7 @@
     },
     {
       "type": "mega_menu_banner_vert",
-      "name": "▮ Vertical Banner",
+      "name": "в–® Vertical Banner",
       "settings": [
         { "type": "text", "id": "trigger_id", "label": "Attach to Menu", "default": "Shop" },
         { "type": "select", "id": "position", "label": "Position", "options": [{"value":"left","label":"Left Side"},{"value":"right","label":"Right Side"}], "default": "left" },
@@ -458,7 +458,7 @@
     },
     {
       "type": "mega_menu_banner_horiz",
-      "name": "▬ Horizontal Banner",
+      "name": "в–¬ Horizontal Banner",
       "settings": [
         { "type": "text", "id": "trigger_id", "label": "Attach to Menu", "default": "Shop" },
         { "type": "select", "id": "position", "label": "Position", "options": [{"value":"top","label":"Top"},{"value":"bottom","label":"Bottom"}], "default": "bottom" },

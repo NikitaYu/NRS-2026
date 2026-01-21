@@ -1,4 +1,4 @@
-{%- assign on_sale = false -%}
+﻿{%- assign on_sale = false -%}
 {%- if product.variants[0].compare_at_price > product.variants[0].price -%}
   {%- assign on_sale = true -%}
 {%- endif -%}
@@ -121,3 +121,4 @@
     </div>
     {% endfor %}
 </div>
+

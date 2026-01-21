@@ -1,4 +1,4 @@
-{% if section.blocks.size > 0 %}
+﻿{% if section.blocks.size > 0 %}
 {%- assign swipe = section.settings.featured_collection_block_swipe_on_mobile -%}
 <link rel="stylesheet" href="{{ 'component-featured-collection.css' | asset_url }}" media="all" onload="this.media='all'">
 <noscript>{{ 'component-featured-collection.css' | asset_url | stylesheet_tag }}</noscript>
@@ -49,7 +49,7 @@
                                         {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
                                         {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
                                         <div class="placeholder" style="--height_placeholder: {% if block.settings.enable_absolute %}200px{% else %}440px{% endif %};">
-                                            {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                         </div>
                                     </a>
                                 {% endif %}
@@ -676,3 +676,4 @@
     }
 }
 {% endschema %}
+

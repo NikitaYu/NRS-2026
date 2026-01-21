@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     assign container = section.settings.container
     assign limit = section.settings.product_block_limit
     assign layout = section.settings.product_block_layout
@@ -390,9 +390,9 @@
                                             <div class="placeholder" style="--height_placeholder: 530px;">
                                                 {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
                                                 {%- if placeholder_slide == 1 -%}
-                                                    {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                                 {%- else -%}
-                                                    {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                                 {%- endif -%}
                                             </div>
                                         {%- endif -%}

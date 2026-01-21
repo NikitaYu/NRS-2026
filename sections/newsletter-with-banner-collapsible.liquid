@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-newsletter-banner-collapsible-section.css' | asset_url }}" media="print" onload="this.media='all'">
+﻿<link rel="stylesheet" href="{{ 'component-newsletter-banner-collapsible-section.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-faqs.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-newsletter-banner-collapsible-section.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-faqs.css' | asset_url | stylesheet_tag }}</noscript>
@@ -185,7 +185,7 @@
                   {%- else -%}
                     <a class="image"{% if banner_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ banner_link }}"{% endif %}>
                         <div class="placeholder" style="--height_placeholder: clamp(350px, calc(690 /1920 * 100vw), 690px);">
-                          {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                          <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                         </div>
                     </a>
                   {%- endif -%}
@@ -768,3 +768,4 @@
   }
 }
 {% endschema %}
+

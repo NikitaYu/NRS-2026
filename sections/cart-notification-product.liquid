@@ -1,4 +1,4 @@
-{%- if cart != empty -%}
+﻿{%- if cart != empty -%}
   {%- for item in cart.items -%}
     <div id="cart-notification-product-{{ item.id }}">
       {% if item.image %}
@@ -25,3 +25,4 @@
     </div>
   {%- endfor -%}
 {%- endif -%}
+

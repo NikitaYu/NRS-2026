@@ -1,4 +1,4 @@
-{% comment %}
+﻿{% comment %}
   Renders a collection card
 
   Accepts:
@@ -27,7 +27,7 @@
       {%- endif -%}
       {%- if card_collection == blank -%}
         <div class="card__media">
-          {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+          <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
         </div>
         <div class="card__content">
           <div class="card__information text-{{collection_align}}">

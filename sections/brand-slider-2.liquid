@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     assign color_title = section.settings.color_title
     assign fontsize_title = section.settings.fontsize_title
     assign fontsize_title_mb = section.settings.fontsize_title_mb
@@ -200,7 +200,7 @@
                                     {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
                                     {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
                                     <div class="placeholder" style="--height_placeholder: 200px;">
-                                        {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                     </div>
                                 </p>
                             {%- endif -%}
@@ -651,7 +651,7 @@
                     "type": "image",
                     "settings": {
                         "image": "shopify:\/\/shop_images\/brand-logo-1-31.png",
-                        "description": "“At ELLA, we are committed to providing high-quality wigs that cater to a diverse array of needs and preferences. a trusted partner and a go-to source for anyone in search of the perfect wig.",
+                        "description": "вЂњAt ELLA, we are committed to providing high-quality wigs that cater to a diverse array of needs and preferences. a trusted partner and a go-to source for anyone in search of the perfect wig.",
                         "fontsize_des_block": 40,
                         "fontsize_des_block_mb": 26,
                         "des_line_height": 1.6,
@@ -662,7 +662,7 @@
                     "type": "image",
                     "settings": {
                         "image": "shopify:\/\/shop_images\/brand-logo-1-31.png",
-                        "description": "“At ELLA, we are committed to providing high-quality wigs that cater to a diverse array of needs and preferences. a trusted partner and a go-to source for anyone in search of the perfect wig.",
+                        "description": "вЂњAt ELLA, we are committed to providing high-quality wigs that cater to a diverse array of needs and preferences. a trusted partner and a go-to source for anyone in search of the perfect wig.",
                         "fontsize_des_block": 40,
                         "fontsize_des_block_mb": 26,
                         "des_line_height": 1.6,
@@ -673,7 +673,7 @@
                     "type": "image",
                     "settings": {
                         "image": "shopify:\/\/shop_images\/brand-logo-1-31.png",
-                        "description": "“At ELLA, we are committed to providing high-quality wigs that cater to a diverse array of needs and preferences. a trusted partner and a go-to source for anyone in search of the perfect wig.",
+                        "description": "вЂњAt ELLA, we are committed to providing high-quality wigs that cater to a diverse array of needs and preferences. a trusted partner and a go-to source for anyone in search of the perfect wig.",
                         "fontsize_des_block": 40,
                         "fontsize_des_block_mb": 26,
                         "des_line_height": 1.6,
@@ -684,7 +684,7 @@
                     "type": "image",
                     "settings": {
                         "image": "shopify:\/\/shop_images\/brand-logo-1-31.png",
-                        "description": "“At ELLA, we are committed to providing high-quality wigs that cater to a diverse array of needs and preferences. a trusted partner and a go-to source for anyone in search of the perfect wig.",
+                        "description": "вЂњAt ELLA, we are committed to providing high-quality wigs that cater to a diverse array of needs and preferences. a trusted partner and a go-to source for anyone in search of the perfect wig.",
                         "fontsize_des_block": 40,
                         "fontsize_des_block_mb": 26,
                         "des_line_height": 1.6,
@@ -696,3 +696,4 @@
     ]
 }
 {% endschema %}
+

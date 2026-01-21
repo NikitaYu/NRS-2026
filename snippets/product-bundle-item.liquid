@@ -1,4 +1,4 @@
-<div class="bundle-product-item style-{{ product_style }}{% if first %} bundle-product-itemFirst{% endif %}{% if product.available %} isChecked{% endif %}" data-bundle-product-item-id="{{ product.id }}">
+﻿<div class="bundle-product-item style-{{ product_style }}{% if first %} bundle-product-itemFirst{% endif %}{% if product.available %} isChecked{% endif %}" data-bundle-product-item-id="{{ product.id }}">
     <div class="bundlePdItem-container">
         <script>
             window.productVariants = window.productVariants || {};
@@ -74,7 +74,7 @@
                 {%- else -%}
                     {%- capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture -%}
                     {%- assign placeholder_image = 'product-apparel-' | append: current -%}
-                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                 {%- endif -%}
             </a>
             {%- if product_style == '1' -%}

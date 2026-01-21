@@ -1,4 +1,4 @@
-{%- if settings.show_someone_purchase -%}
+﻿{%- if settings.show_someone_purchase -%}
     <link rel="stylesheet" href="{{ 'component-someone-purchase.css' | asset_url }}" media="print" onload="this.media='all'">
     <noscript>{{ 'component-someone-purchase.css' | asset_url | stylesheet_tag }}</noscript>
     {%- assign time = time | default: settings.someone_purchase_time | times: 1000 -%}

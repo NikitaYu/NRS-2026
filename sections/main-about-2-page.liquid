@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-about.css' | asset_url }}" media="print" onload="this.media='all'">
+﻿<link rel="stylesheet" href="{{ 'component-about.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-about.css' | asset_url | stylesheet_tag }}</noscript>
 
 {%- liquid
@@ -94,7 +94,7 @@
                                                 {%- endif -%}
                                             {%- else -%}
                                                 <div class="image placeholder">
-                                                    {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                                 </div>
                                             {%- endif -%}
                                         </div>
@@ -121,7 +121,7 @@
                                                 {%- endif -%}
                                             {%- else -%}
                                                 <div class="image placeholder">
-                                                    {{ 'collection-apparel-3' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                                 </div>
                                             {%- endif -%}
                                         </div>
@@ -146,7 +146,7 @@
                                                 {%- endif -%}
                                             {%- else -%}
                                                 <div class="image placeholder">
-                                                    {{ 'collection-apparel-4' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                                                 </div>
                                             {%- endif -%}
                                         </div>

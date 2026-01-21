@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-auth.css' | asset_url }}" media="print" onload="this.media='all'">
+﻿<link rel="stylesheet" href="{{ 'component-auth.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-auth.css' | asset_url | stylesheet_tag }}</noscript>
 
 <customer-auth class="halo-sidebar halo-sidebar-right halo-auth-sidebar" data-auth-sidebar id="halo-auth-sidebar">
@@ -17,7 +17,7 @@
         {%- else -%}
             <form accept-charset="UTF-8" action="{{ routes.account_login_url }}" method="post" class="auth-form auth-form-2">
                 <input name="form_type" type="hidden" value="customer_login" />
-                <input name="utf8" type="hidden" value="✓" />
+                <input name="utf8" type="hidden" value="вњ“" />
                 <div class="form-field">
                     <label class="form-label" for="customer_email">{{ 'customer.login_page.email' | t }} <em>*</em></label>
                     <input id="customer_email" class="form-input form-input-placeholder text-left" type="email" value="" name="customer[email]" required placeholder="{{ 'customer.login_page.email' | t }}">

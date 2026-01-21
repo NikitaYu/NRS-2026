@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
   assign og_title = page_title | default: shop.name
   assign og_url = canonical_url | default: shop.url
   assign og_type = 'website'
@@ -39,3 +39,4 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ og_title | escape }}">
 <meta name="twitter:description" content="{{ og_description | escape }}">
+

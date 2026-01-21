@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-press-banner.css' | asset_url }}" media="print" onload="this.media='all'">
+﻿<link rel="stylesheet" href="{{ 'component-press-banner.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-press-banner.css' | asset_url | stylesheet_tag }}</noscript>
 
 {%- liquid
@@ -74,7 +74,7 @@
                             </a>
                         {%- else -%}
                             <div class="placeholder" style="--height_placeholder: 375px;">
-                                {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
                             </div>
                         {%- endif -%}
                     </div>

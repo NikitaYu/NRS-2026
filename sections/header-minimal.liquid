@@ -1,4 +1,4 @@
-{{ 'component-header-minimal.css' | asset_url | stylesheet_tag }}
+﻿{{ 'component-header-minimal.css' | asset_url | stylesheet_tag }}
 <header class="header header-minimal" style="--spacing-l-r: {{ section.settings.padding_full_width }}px; --bg-color: {% if section.settings.header_bg_gradient != blank %}{{ section.settings.header_bg_gradient }}{% else %}{{ section.settings.header_bg }}{% endif %}; --p-top: {{ section.settings.padding_top }}px; --p-bottom: {{ section.settings.padding_bottom }}px">
     <div class="container container-{{ section.settings.container }}">
         <div class="header-minimal__content header-minimal__content-size--{{ section.blocks.size }}">
