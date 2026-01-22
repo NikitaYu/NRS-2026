@@ -26,7 +26,7 @@
           "type": "description",
           "disabled": true,
           "settings": {
-            "show_collection_description": true,
+            "show_collection_description": false,
             "show_read_more_read_less": false,
             "collection_description_position": "relative",
             "collection_description_align_tb": "center",
@@ -35,11 +35,11 @@
             "collection_description_color": "#232323",
             "collection_description_bg": "#ffffff",
             "collection_description_bg_gradient": "",
-            "show_sub_collection": true,
-            "sub_collection_layout": "slider",
-            "maxheight_sub_collection": 90,
+            "show_sub_collection": false,
+            "sub_collection_layout": "grid",
+            "maxheight_sub_collection": 220,
             "sub_collection_description_position": "relative",
-            "sub_collection_type": "all",
+            "sub_collection_type": "some",
             "colors_bg": "#fafafa",
             "colors_bg_gradient": "",
             "all_sub_collection_padding_top": 10,
@@ -49,7 +49,7 @@
             "fontsize_sub_collection": 16,
             "fontweight_sub_collection": "600",
             "sub_collection_text_transform": "uppercase",
-            "show_sub_collection_image": true,
+            "show_sub_collection_image": false,
             "sub_collection_padding_top": 10,
             "sub_collection_padding_bottom": 10,
             "sub_collection_grid_gap": 15,
@@ -69,11 +69,12 @@
         "image_8NGiYw",
         "description_RfnMFV"
       ],
+      "disabled": true,
       "settings": {
         "container": "1170",
         "padding_full_width": 60,
-        "layout": "3",
-        "show_breadcrumb": true,
+        "layout": "2",
+        "show_breadcrumb": false,
         "breadcrumb_alignment": "left",
         "breadcrumb_color": "#999999",
         "breadcrumb_bg": "rgba(0,0,0,0)",
@@ -82,7 +83,7 @@
         "breadcrumb_bg_mb": "#f6f6f6",
         "breadcrumb_gradient_mb": "",
         "show_page_title": true,
-        "page_title_alignment": "center",
+        "page_title_alignment": "left",
         "mg_top_desktop": 40,
         "mg_top_tablet": 30,
         "mg_top_mobile": 20,
@@ -106,7 +107,7 @@
           "type": "text",
           "settings": {
             "heading": "",
-            "text": "<p>We Guarantee we'll beat ANY competitor's price by 10% on Sign Letters and Accessories!</p>"
+            "text": "<p style=\"font-size:smaller; line-height:1.1; text-align:center;\">We Guarantee we'll beat ANY competitor's price by 10% on Sign Letters and Accessories!</p>"
           }
         },
         "8472dad8-3289-4746-8b7f-e6ebe3175dd5": {
@@ -115,17 +116,17 @@
             "show_image": false,
             "link": "",
             "show_title": true,
-            "page_title_alignment": "center",
-            "page_title_text_transform": "none",
+            "page_title_alignment": "left",
+            "page_title_text_transform": "capitalize",
             "fontsize_title": 50,
             "margin_top_title": 0,
-            "title_color": "#232323",
+            "title_color": "#1c82cd",
             "show_collection_description": true,
-            "desc_alignment": "center",
-            "desc_pos": "top",
-            "fontsize_des": 25,
-            "margin_top_des": 12,
-            "margin_bottom": 25,
+            "desc_alignment": "left",
+            "desc_pos": "bottom",
+            "fontsize_des": 22,
+            "margin_top_des": 100,
+            "margin_bottom": 100,
             "des_color": "#3c3c3c"
           }
         },
@@ -156,12 +157,73 @@
             "product_block_arrows": true
           }
         },
+        "lookbook_bTTjcg": {
+          "type": "lookbook",
+          "disabled": true,
+          "settings": {
+            "show_image": false,
+            "link": "",
+            "show_title": false,
+            "page_title_alignment": "center",
+            "page_title_text_transform": "none",
+            "fontsize_title": 50,
+            "margin_top_title": 0,
+            "title_color": "#232323",
+            "show_collection_description": true,
+            "desc_alignment": "center",
+            "desc_pos": "bottom",
+            "fontsize_des": 25,
+            "margin_top_des": 12,
+            "margin_bottom": 25,
+            "des_color": "#3c3c3c"
+          }
+        },
         "80b0a11c-fb01-4b89-8a29-1dbb2a1db16a": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "heading": "",
             "type": "1_level",
-            "link_list": ""
+            "link_list": "nrs-sidebar-1"
+          }
+        },
+        "category_m8mcNg": {
+          "type": "category",
+          "disabled": true,
+          "settings": {
+            "heading": "",
+            "type": "1_level",
+            "link_list": "nrs-sidebar-1"
+          }
+        },
+        "image_39yMqR": {
+          "type": "image",
+          "settings": {
+            "heading": "",
+            "image": "shopify://shop_images/free-shipping.png",
+            "link": ""
+          }
+        },
+        "text_RdxVkz": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "text": "<p style=\"font-size:smaller; line-height:1.1; text-align:center;\">Within the contiguous U.S. – orders outside the continental U.S. do not receive free shipping.</p>"
+          }
+        },
+        "image_UFnw3A": {
+          "type": "image",
+          "settings": {
+            "heading": "",
+            "image": "shopify://shop_images/same_day_shipping_2_6d0e751f-65a2-4b53-b004-7e71a06a4536.png",
+            "link": ""
+          }
+        },
+        "text_h84HRR": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "text": "<div style=\"font-size:smaller; line-height:1.1; text-align:center;\">\n<h3 style=\"color:red\">Returns of Giant Number Panels, Giant Price Points and Custom Word Panels:</h3>\nThese products are custom and made to order therefore are nonreturnable and nonrefundable. <br><b style=\"color: red !important;\">If you order it, you own it.</b>\n</div>"
           }
         }
       },
@@ -172,21 +234,31 @@
         "ce351101-2c54-4627-b740-b2c592067b4a",
         "6684d566-6940-4457-9cf9-f1a8a6e80573",
         "3978fd59-b580-49e1-9893-38d762f48f10",
-        "80b0a11c-fb01-4b89-8a29-1dbb2a1db16a"
+        "lookbook_bTTjcg",
+        "80b0a11c-fb01-4b89-8a29-1dbb2a1db16a",
+        "category_m8mcNg",
+        "image_39yMqR",
+        "text_RdxVkz",
+        "image_UFnw3A",
+        "text_h84HRR"
+      ],
+      "custom_css": [
+        ".page-sidebar + .page-content {width: calc(100% - 310px);}",
+        "@media (min-width: 1025px) {.page-sidebar .halo-sidebar-wrapper {padding-top: 10px; padding-left: 15px; border: 1px solid; padding-right: 15px; width: 280px; }}"
       ],
       "settings": {
-        "container": "container",
-        "padding_full_width": 65,
+        "container": "1170",
+        "padding_full_width": 100,
         "colors_bg": "rgba(0,0,0,0)",
         "colors_bg_gradient": "",
         "sidebar_collapse": "none",
         "enable_sticky": false,
-        "sidebar_layout": "layout_1",
+        "sidebar_layout": "layout_2",
         "sidebar_collapse_default": "expand",
         "sidebar_type": "vertical",
         "sidebar_position": "right",
         "sidebar_heading_font": "font_2",
-        "sidebar_heading_font_size": 20,
+        "sidebar_heading_font_size": 18,
         "sidebar_heading_font_weight": "700",
         "sidebar_heading_text_transform": "uppercase",
         "show_filter": false,
@@ -203,8 +275,8 @@
         "show_item_per_page": false,
         "show_view_as": false,
         "products_per_page": "20",
-        "layout": "4",
-        "show_infinite_scrolling": "pagination",
+        "layout": "3",
+        "show_infinite_scrolling": "infinite",
         "show_banner": false,
         "show_banner_1": false,
         "banner_position_1": "4",
@@ -215,14 +287,14 @@
         "show_banner_3": false,
         "banner_position_3": "12",
         "link_banner_3": "",
-        "product_space_between_vert_desk": 42,
+        "product_space_between_vert_desk": 60,
         "product_space_between_vert_mb": 16,
         "product_space_between_horiz_desk": 60,
         "product_space_between_horiz_mb": 30,
         "mg_top_desktop": 80,
         "mg_top_tablet": 50,
         "mg_top_mobile": 35,
-        "mg_bottom_desktop": 60,
+        "mg_bottom_desktop": 100,
         "mg_bottom_tablet": 40,
         "mg_bottom_mobile": 30
       }
