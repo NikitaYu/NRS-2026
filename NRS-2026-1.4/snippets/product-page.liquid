@@ -520,6 +520,9 @@
                                     data-counter-mobi="{{ main_image_counter_mobile }}"
                                     data-media-count="{{ product.media.size }}"
                                 >
+                                    {%- if product.media.size == 0 -%}
+                                        {% render 'get-placeholder' %}
+                                    {%- endif -%}
                                     {%- for media in product.media -%}
                                         {%- case media.media_type -%}
                                             {%- when 'image' -%}

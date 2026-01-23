@@ -9033,5 +9033,23 @@
         "default": "#fff"
       }
     ]
+  },
+  {
+    "name": "Global Placeholder",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Custom Placeholder"
+      },
+      {
+        "type": "paragraph",
+        "content": "Upload a custom image to replace the default gray SVG placeholders across the site."
+      },
+      {
+        "type": "image_picker",
+        "id": "placeholder_image",
+        "label": "Default Placeholder Image"
+      }
+    ]
   }
 ]

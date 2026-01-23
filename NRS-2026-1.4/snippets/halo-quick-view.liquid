@@ -128,6 +128,9 @@
                         %}
                     {%- endif -%}
                     <div class="productView-nav" data-image-gallery-main data-arrows-desk="false">
+                        {%- if product.media.size == 0 -%}
+                            {% render 'get-placeholder' %}
+                        {%- endif -%}
                         {%- for media in product.media -%}
                             {%- case media.media_type -%}
                                 {%- when 'image' -%}

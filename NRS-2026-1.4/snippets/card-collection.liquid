@@ -27,7 +27,7 @@
       {%- endif -%}
       {%- if card_collection == blank -%}
         <div class="card__media">
-          {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+          {% render 'get-placeholder', svg_name: 'collection-1' %}
         </div>
         <div class="card__content">
           <div class="card__information text-{{collection_align}}">
