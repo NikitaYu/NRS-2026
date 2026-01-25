@@ -60,7 +60,7 @@
                                 {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
                                 {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
                                 <div class="placeholder" style="--height_placeholder: 230px;">
-                                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                                    {% render 'get-placeholder', svg_name: placeholder_image, class: 'placeholder-svg' %}
                                 </div>
                             </div>
                         {%- endif -%}

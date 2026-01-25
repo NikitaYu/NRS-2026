@@ -33,7 +33,7 @@
         {%- else -%}
             <a class="image" {% if link == blank %}role="link" aria-disabled="true"{% else %}href="{{ link }}"{% endif %}>
               {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
-              {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+              {% render 'get-placeholder', svg_name: placeholder_image, class: 'placeholder-svg' %}
             </a>
         {%- endif -%}
         {% if layout == 'collections_01_grid' or layout == 'collections_4' %}

@@ -651,7 +651,7 @@
                         >
                       {%- endif -%}
                     {%- else -%}
-                      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-image' }}
+                      {% render 'get-placeholder', svg_name: 'lifestyle-1', class: 'placeholder-image' %}
                     {%- endif -%}
 
                     {%- if block.settings.link != blank -%}</a>{%- endif -%}
@@ -673,7 +673,7 @@
                           height="{{ 1920 | divided_by: block.settings.cover_image.aspect_ratio | round }}"
                         >
                       {%- else -%}
-                        {{ 'collection-1' | placeholder_svg_tag: 'video-placeholder' }}
+                        {% render 'get-placeholder', svg_name: 'collection-1', class: 'video-placeholder' %}
                       {%- endif -%}
                     </div>
 
@@ -733,7 +733,7 @@
                           >
                         {%- endif -%}
                       {%- else -%}
-                        {{ 'product-1' | placeholder_svg_tag: 'mixed-content-placeholder' }}
+                        {% render 'get-placeholder', svg_name: 'product-1', class: 'mixed-content-placeholder' %}
                       {%- endif -%}
                     </div>
 

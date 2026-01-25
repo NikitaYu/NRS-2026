@@ -3,7 +3,7 @@
         <div class="card-product card--text-only card--soft">
             <div class="card-media card-media--square">
                 {%- assign placeholder_image = 'product-apparel-' | append: index -%}
-                {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                {% render 'get-placeholder', svg_name: placeholder_image, class: 'placeholder-svg' %}
             </div>
         </div>
         <div class="card-information">

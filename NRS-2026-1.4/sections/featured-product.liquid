@@ -253,7 +253,7 @@
                                 {%- if section.settings.featured_product == blank -%}
                                     <div class="productView-nav">
                                         <div class="productView-image product-media-container">
-                                            {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                            <!-- T-shirt placeholder removed — blank space per preference -->
                                         </div>
                                     </div>
                                 {%- endif -%}
@@ -519,7 +519,7 @@
                                                 <div class="productView-thumbnail productView-thumbnail-placeholder{% if show_variant_image_group %} filter-{{ media.alt | handle }}{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
                                                     {%- for i in (1..5) -%}
                                                         <div class="productView-thumbnail-link-placeholder" data-image="{{ media | img_url: 'large' }}">
-                                                            {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                            <!-- T-shirt placeholder removed — blank space per preference -->
                                                         </div>
                                                     {%- endfor -%}
                                                 </div>

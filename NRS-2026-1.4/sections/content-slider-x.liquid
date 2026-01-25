@@ -152,7 +152,7 @@
                           width="1920" height="{{ 1920 | divided_by: block.settings.image.aspect_ratio | round }}">
                       {%- endif -%}
                     {%- else -%}
-                      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-image' }}
+                      {% render 'get-placeholder', svg_name: 'lifestyle-1', class: 'placeholder-image' %}
                     {%- endif -%}
                     {%- if block.settings.link != blank -%}</a>{%- endif -%}
                   </div>
@@ -165,7 +165,7 @@
                           alt="{{ block.settings.cover_image.alt | escape }}" loading="lazy"
                           width="1920" height="{{ 1920 | divided_by: block.settings.cover_image.aspect_ratio | round }}">
                       {%- else -%}
-                        {{ 'collection-1' | placeholder_svg_tag: 'video-placeholder' }}
+                        {% render 'get-placeholder', svg_name: 'collection-1', class: 'video-placeholder' %}
                       {%- endif -%}
                     </div>
                     <button class="video-play-button" type="button" aria-label="Play video" data-video-trigger>
@@ -200,7 +200,7 @@
                           <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy">
                         {%- endif -%}
                       {%- else -%}
-                        {{ 'product-1' | placeholder_svg_tag: 'mixed-content-placeholder' }}
+                        {% render 'get-placeholder', svg_name: 'product-1', class: 'mixed-content-placeholder' %}
                       {%- endif -%}
                     </div>
                     <div class="mixed-content-text">

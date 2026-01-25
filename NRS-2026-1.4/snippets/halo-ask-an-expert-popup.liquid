@@ -27,7 +27,7 @@
 				<img srcset="{{ image | img_url: 'master' }}" src="{{ image | img_url: 'master' }}" loading="lazy"  alt="{{ image.alt | default: shop.name | escape }}">
 			{%- else -%}
 				<div class="placeholder" style="--wid-a: 100px;--height_placeholder: 100px;">
-					{{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+					<!-- T-shirt placeholder removed — blank space per preference -->
 				</div>
 			{%- endif -%}
 		</button>

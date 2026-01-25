@@ -390,9 +390,9 @@
                                             <div class="placeholder" style="--height_placeholder: 530px;">
                                                 {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
                                                 {%- if placeholder_slide == 1 -%}
-                                                    {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                    {% render 'get-placeholder', svg_name: 'hero-apparel-2', class: 'placeholder-svg' %}
                                                 {%- else -%}
-                                                    {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                    {% render 'get-placeholder', svg_name: 'hero-apparel-1', class: 'placeholder-svg' %}
                                                 {%- endif -%}
                                             </div>
                                         {%- endif -%}

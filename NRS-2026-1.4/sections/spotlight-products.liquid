@@ -165,7 +165,7 @@
                             {%- else -%}
                                 <div class="product">
                                     {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
-                                    {% render 'product-card-placeholder', index: current %}
+                                    <!-- T-shirt placeholder removed — blank space per preference -->
                                 </div>
                             {%- endif -%}
                         {%- endfor -%}
@@ -209,7 +209,7 @@
                             {% endif %}
                         {%- else -%}
                             <div class="placeholder" style="--height_placeholder: 1088px;">
-                                {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                <!-- T-shirt placeholder removed — blank space per preference -->
                             </div>
                         {%- endif -%}
                     </div>
