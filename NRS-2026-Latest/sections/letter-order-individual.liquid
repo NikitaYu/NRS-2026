@@ -71,7 +71,7 @@
 
   <div id="tab-content-indv" class="tab-content-master active">
     <div class="master-tab-inner-content">
-      {%- render 'letter-collection-selector', current_tab: 'indv', all_parent_handles: all_parent_handles -%}
+      {%- render 'letter-collection-selector', current_tab: 'indv', all_parent_handles: all_parent_handles, master_mode: false -%}
 
       <div class="grid-12-master">
         {%- render 'letter-form-indv', collection_handle: '', order_type: 'indv' -%}

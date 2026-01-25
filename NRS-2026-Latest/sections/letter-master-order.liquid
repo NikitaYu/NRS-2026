@@ -176,7 +176,7 @@
   <div id="tab-content-indv" class="tab-content-master active">
     <div class="master-tab-inner-content">
       {%- comment %} Include collection selector for indv {% endcomment -%}
-      {%- render 'letter-collection-selector', current_tab: 'indv', all_parent_handles: all_parent_handles -%}
+      {%- render 'letter-collection-selector', current_tab: 'indv', all_parent_handles: all_parent_handles, master_mode: true -%}
 
       {%- comment %} Main layout grid {% endcomment -%}
       <div class="grid-12-master">

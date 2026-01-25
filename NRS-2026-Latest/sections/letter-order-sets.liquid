@@ -78,7 +78,7 @@
 
   <div id="tab-content-set" class="tab-content-master active">
     <div class="master-tab-inner-content">
-      {%- render 'letter-collection-selector', current_tab: 'set', all_parent_handles: all_parent_handles -%}
+      {%- render 'letter-collection-selector', current_tab: 'set', all_parent_handles: all_parent_handles, master_mode: false -%}
 
       <div class="grid-12-master">
         {%- render 'letter-form-set', collection_handle: '', order_type: 'set' -%}

@@ -2,6 +2,7 @@
 {%- liquid
   assign parent_handles = all_parent_handles
   assign current_tab = current_tab | default: 'indv'
+  assign master_mode = master_mode | default: false
   assign inventory_suffix = ''
   if current_tab == 'set'
     assign inventory_suffix = '-set'
@@ -37,8 +38,8 @@
       {%- endif -%}
     {%- endfor -%}
 
-    {%- comment %} GMN-AG: 5th Box Shortcut to Sets {% endcomment -%}
-    {%- if current_tab == 'indv' -%}
+    {%- comment %} GMN-AG: 5th Box Shortcut to Sets (Master View Only) {% endcomment -%}
+    {%- if current_tab == 'indv' and master_mode -%}
       <div class="collection-selector-item-master" 
            style="cursor: pointer;" 
            onclick="document.querySelector('.tab-link-master[data-tab-name=\'set\']').click();">
