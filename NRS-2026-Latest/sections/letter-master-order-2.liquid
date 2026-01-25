@@ -1,0 +1,332 @@
+{% comment %} 
+  Letter Master Order 2.0 (Final Robust Version)
+  - Modes: Full, Individual Only, Sets Only
+  - Optimization: Conditionally renders DOM elements for performance
+  - Fix: Uses robust polling to force correct state in 'Set Only' mode without modifying external assets
+{% endcomment %}
+
+{%- comment %} 1. CONFIGURATION & MODE LOGIC {% endcomment -%}
+{%- assign mode = section.settings.display_mode | default: 'full' -%}
+{%- assign unique_id = 'section-' | append: section.id -%}
+
+{%- comment %} Define Base Collections {% endcomment -%}
+{% assign indv_collection_handles = "gemini-pronto-adm-standard-letters-indv,gemini-pronto-modern-letters-indv,gemini-pronto-condensed-letters-indv,gemini-pronto-ad-halftone-letters-indv" | split: "," %}
+{% assign set_collection_handles = "flexible-bold-block-letters-set,flexible-narrow-condensed-letters-set,gemini-pronto-adm-standard-letters-set,gemini-pronto-modern-letters-set,gemini-pronto-condensed-letters-set,gemini-pronto-ad-halftone-letters-set" | split: "," %}
+{% assign all_parent_handles = "gemini-pronto-adm-standard-letters,gemini-pronto-modern-letters,gemini-pronto-condensed-letters,gemini-pronto-ad-halftone-letters,flexible-bold-block-letters,flexible-narrow-condensed-letters" | split: "," %}
+
+{%- comment %} 
+  2. DATA OPTIMIZATION 
+  Filter handles to prevent processing unused data.
+{% endcomment -%}
+{%- if mode == 'indv_only' -%}
+  {%- assign master_collection_handles = indv_collection_handles -%}
+{%- elsif mode == 'set_only' -%}
+  {%- assign master_collection_handles = set_collection_handles -%}
+{%- else -%}
+  {%- assign master_collection_handles = indv_collection_handles | concat: set_collection_handles -%}
+{%- endif -%}
+
+{%- comment %} Load shared CSS {% endcomment -%}
+<link rel="stylesheet" href="{{ 'letter-master-order.css' | asset_url }}">
+
+{%- comment %} CSS Variables for Background Images {% endcomment -%}
+{%- liquid
+  assign bg_image_1_url = 'master-hero-bg1.png' | file_url
+  assign bg_image_2_url = 'master-hero-bg2-2.png' | file_url
+-%}
+
+<style>
+  :root {
+    --hero-bg-image-1: url('{{ bg_image_1_url }}');
+    --hero-bg-image-2: url('{{ bg_image_2_url }}');
+  }
+
+  /* === MODE SPECIFIC STYLES === */
+  /* Hide Top Tabs in Single Modes */
+  .section-mode-indv_only .top-level-tabs,
+  .section-mode-set_only .top-level-tabs {
+    display: none !important;
+  }
+</style>
+
+<div class="page-order-page-master section-mode-{{ mode }}" id="{{ unique_id }}">
+
+  {%- comment %} 
+    3. TOP LEVEL TABS 
+    Rendered but hidden in single modes. 
+    Crucial: These must exist so the JS can be "clicked" programmatically.
+  {% endcomment -%}
+  <div class="tabs-nav-form-master top-level-tabs">
+    <div class="master-hero-text-container">
+      <h1 class="master-hero-line-1">Marquee Sign Letters</h1>
+      <p class="master-hero-line-2">No Minimum Order | Same Day Shipping | Best Price Guaranteed</p>
+      <p class="master-hero-line-4">Available in Full Sets or Individuals Letters</p>
+    </div>
+
+    <div class="top-level-tabs-wrapper">
+      <div class="tab-link-master active" data-tab-name="indv">
+        <img src="{{ 'abc_123.png' | file_url }}" alt="Individual Letters Icon" class="tab-icon-master" width="150" height="150">
+        <span class="click-here-prompt">CLICK HERE FOR</span>
+        <span class="tab-title-main">INDIVIDUAL LETTERS</span>
+      </div>
+
+      <div class="tab-link-master" data-tab-name="set">
+         <img src="{{ 'set1-tmb.png' | file_url }}" alt="Letter Sets Icon" class="tab-icon-master" width="150" height="150">
+        <span class="click-here-prompt">CLICK HERE FOR</span>
+         <span class="tab-title-main">LETTER SETS</span>
+      </div>
+    </div>
+  </div>
+
+  {%- comment %} Global JS data structure {% endcomment -%}
+  <script>
+    if (typeof masterCollectionsData === 'undefined') {
+      var masterCollectionsData = {};
+    }
+  </script>
+
+  {%- comment %} 4. DATA GENERATION LOOP (Filtered) {% endcomment -%}
+  {%- for handle in master_collection_handles -%}
+    {%- assign source_collection = collections[handle] -%}
+    {%- if source_collection == blank %}{% continue %}{% endif -%}
+
+    {%- assign parent_handle = handle | remove: "-indv" | remove: "-set" -%}
+    {%- assign parent_collection = collections[parent_handle] -%}
+    {%- assign desc_source = source_collection.description -%}
+    {%- assign main_desc = desc_source | split: '<div id="content-details">' | first | split: '<div id="content-specs">' | first | default: '' -%}
+    {%- assign full_desc_for_js = desc_source -%}
+    {%- assign image_src = '' -%}
+    {%- if parent_collection != blank and parent_collection.image -%}
+      {%- assign image_src = parent_collection.image.src | image_url: width: 600, height: 600 -%}
+    {%- elsif source_collection.image -%}
+      {%- assign image_src = source_collection.image.src | image_url: width: 600, height: 600 -%}
+    {%- endif -%}
+    {%- assign display_title = parent_collection.title | default: source_collection.title -%}
+
+    {%- assign products_available = false -%}
+    {%- assign first_product = source_collection.products.first -%}
+    {%- if first_product != blank -%}
+      {%- assign first_variant = first_product.variants.first -%}
+      {%- if first_variant != blank and first_variant.available -%}
+        {%- assign products_available = true -%}
+      {%- endif -%}
+    {%- endif -%}
+
+    <script>
+      masterCollectionsData[{{ handle | json }}] = {
+        handle: {{ handle | json }},
+        parent_handle: {{ parent_handle | json }},
+        title: {{ display_title | json }},
+        image: {{ image_src | json }},
+        main_description: {{ main_desc | json }},
+        full_description: {{ full_desc_for_js | json }},
+        products_available: {{ products_available | json }},
+        height_obj: {},
+        variant_obj: {},
+        price_obj: {},
+        height_color_obj: {},
+        color_set_obj: {},
+        // GMN-AG Update: New Maps for Set Logic
+        height_set_obj: {},
+        set_color_obj: {}
+      };
+    </script>
+
+    {%- paginate source_collection.products by 200 -%}
+      {%- for product_item in source_collection.products -%}
+        {%- assign product_variants = product_item.variants -%}
+        {%- if handle contains "-indv" -%}
+          {%- assign letter_name = product_item.title | split: " - " | last -%}
+          {%- assign letter_clean = letter_name | handleize -%}
+          {%- assign letter_str = "letter-" | append: letter_clean -%}
+        {%- endif -%}
+
+        <script>
+          (function(){
+            var variants_obj = {{ product_variants | json }};
+            var data = masterCollectionsData[{{ handle | json }}];
+            if(!data) return; 
+            var isIndv = {{ handle | json }}.includes("-indv");
+
+            for (var k in variants_obj) {
+              if (!variants_obj.hasOwnProperty(k)) continue;
+              var variant = variants_obj[k];
+              var height = variant.option1 || "";
+              if (isIndv) {
+                var color = variant.option2 || "";
+                var letterStr = {{ letter_str | json }};
+                var height_color = height + "||" + color;
+                if (!data.height_obj[height]) { data.height_obj[height] = []; }
+                if (data.height_obj[height].indexOf(color) === -1) { data.height_obj[height].push(color); }
+                if (!data.height_color_obj[height_color]) { data.height_color_obj[height_color] = []; }
+                if (data.height_color_obj[height_color].indexOf(letterStr) === -1) { data.height_color_obj[height_color].push(letterStr); }
+                var full_key = height_color + "||" + letterStr;
+                data.variant_obj[full_key] = variant.id;
+                data.price_obj[full_key] = (variant.price / 100);
+              } else {
+                // --- SET LOGIC (UPDATED: FILTER UNAVAILABLE) ---
+                // Only process if the variant is actually available
+                if (variant.available) {
+                  var setType = variant.option2 || "";
+                  var color = variant.option3 || "";
+                  
+                  // 1. Populate Height (Existing)
+                  if (!data.height_obj[height]) { data.height_obj[height] = []; }
+                  
+                  // 2. Populate Height -> Set Types (New Flow)
+                  if (!data.height_set_obj[height]) { data.height_set_obj[height] = []; }
+                  if (data.height_set_obj[height].indexOf(setType) === -1) { 
+                    data.height_set_obj[height].push(setType); 
+                  }
+
+                  // 3. Populate Height + Set -> Colors (New Flow - Final Step)
+                  var height_set_key = height + "||" + setType;
+                  if (!data.set_color_obj[height_set_key]) { data.set_color_obj[height_set_key] = []; }
+                  
+                  data.set_color_obj[height_set_key].push({
+                    color: color,
+                    id: variant.id,
+                    price: (variant.price / 100),
+                    available: variant.available
+                  });
+                }
+              }
+            }
+          })();
+        </script>
+      {%- endfor -%}
+    {%- endpaginate -%}
+  {%- endfor -%}
+
+  {%- comment %} 
+     5. CONDITIONAL DOM RENDERING
+  {% endcomment -%}
+
+  {%- comment %} --- INDIVIDUAL TAB --- {% endcomment -%}
+  {%- if mode == 'full' or mode == 'indv_only' -%}
+  <div id="tab-content-indv" class="tab-content-master {% if mode == 'indv_only' or mode == 'full' %}active{% endif %}">
+    <div class="master-tab-inner-content">
+      {%- render 'letter-collection-selector', current_tab: 'indv', all_parent_handles: all_parent_handles -%}
+      <div class="grid-12-master">
+        {%- render 'letter-form-indv', collection_handle: '', order_type: 'indv' -%}
+        {%- render 'letter-description', collection_handle: '', order_type: 'indv' -%}
+      </div>
+    </div>
+  </div>
+  {%- endif -%}
+
+  {%- comment %} --- SET TAB --- {% endcomment -%}
+  {%- if mode == 'full' or mode == 'set_only' -%}
+  <div id="tab-content-set" class="tab-content-master {% if mode == 'set_only' %}active{% endif %}">
+    <div class="master-tab-inner-content">
+      {%- render 'letter-collection-selector', current_tab: 'set', all_parent_handles: all_parent_handles -%}
+      <div class="grid-12-master">
+        {%- render 'letter-form-set', collection_handle: '', order_type: 'set' -%}
+        {%- render 'letter-description', collection_handle: '', order_type: 'set' -%}
+      </div>
+    </div>
+  </div>
+  {%- endif -%}
+
+  {%- comment %} 
+    6. INITIALIZATION SCRIPT FOR SETS (OPTION B - ROBUST POLL)
+  {% endcomment -%}
+  {%- if mode == 'set_only' -%}
+  <script>
+    (function() {
+      var containerId = '{{ unique_id }}';
+      var container = document.getElementById(containerId);
+      
+      // 1. Force Active Classes Immediately (Visual) to prevent flash
+      if (container) {
+        var indvLink = container.querySelector('.tab-link-master[data-tab-name="indv"]');
+        var setLink = container.querySelector('.tab-link-master[data-tab-name="set"]');
+        if (indvLink) indvLink.classList.remove('active');
+        if (setLink) setLink.classList.add('active');
+
+        var indvContent = container.querySelector('#tab-content-indv');
+        var setContent = container.querySelector('#tab-content-set');
+        if (indvContent) indvContent.classList.remove('active');
+        if (setContent) setContent.classList.add('active');
+      }
+
+      // 2. Robust Polling
+      // We must wait for jQuery AND the external script to bind events.
+      var attempts = 0;
+      var maxAttempts = 20; // Try for ~4 seconds max
+      var setPoll = setInterval(function(){
+        attempts++;
+        if (window.jQuery && container) {
+          
+          var $setTab = window.jQuery(container).find('.tab-link-master[data-tab-name="set"]');
+          var $setGrid = window.jQuery(container).find('.collection-selector-grid-set');
+          var $firstSetItem = $setGrid.find('.collection-selector-item-master').first();
+          
+          // Conditions: Items exist and click handlers are likely bound (jQuery exists)
+          if ($setTab.length && $firstSetItem.length) {
+            
+            // A. Trigger Click on Tab to update internal JS state to 'set'
+            $setTab.trigger('click');
+            
+            // B. Trigger Click on First Item to populate description
+            $firstSetItem.trigger('click');
+            
+            // C. Verification: Did the description update?
+            var $descCol = window.jQuery(container).find('.description-column-set');
+            // If text contains more than the default placeholder, success
+            if ($descCol.length && !$descCol.text().includes("Select a letter style")) {
+              console.log("Set Only Mode: Initialization Successful");
+              clearInterval(setPoll);
+              return;
+            }
+          }
+        }
+        
+        if (attempts >= maxAttempts) {
+          console.warn("Set Only Mode: Initialization Timed Out");
+          clearInterval(setPoll);
+        }
+      }, 200); // Check every 200ms
+
+    })();
+  </script>
+  {%- endif -%}
+
+</div>
+
+{%- comment %} Phase 1.3: Load external JavaScript {% endcomment -%}
+<script src="{{ 'letter-master-order.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Letter Master Order 2.0",
+  "settings": [
+    {
+      "type": "radio",
+      "id": "display_mode",
+      "label": "Section Mode",
+      "options": [
+        {
+          "value": "full",
+          "label": "Full Master View (with tabs)"
+        },
+        {
+          "value": "indv_only",
+          "label": "Individual Letters Only"
+        },
+        {
+          "value": "set_only",
+          "label": "Letter Sets Only"
+        }
+      ],
+      "default": "full",
+      "info": "Controls which order forms and collections are visible."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Letter Master Order 2.0"
+    }
+  ]
+}
+{% endschema %}
