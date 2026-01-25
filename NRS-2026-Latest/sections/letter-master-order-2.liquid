@@ -206,7 +206,8 @@
   {%- if mode == 'full' or mode == 'indv_only' -%}
   <div id="tab-content-indv" class="tab-content-master {% if mode == 'indv_only' or mode == 'full' %}active{% endif %}">
     <div class="master-tab-inner-content">
-      {%- render 'letter-collection-selector', current_tab: 'indv', all_parent_handles: all_parent_handles, master_mode: {% if mode == 'full' %}true{% else %}false{% endif %} -%}
+      {%- if mode == 'full' -%}{%- assign is_master_mode = true -%}{%- else -%}{%- assign is_master_mode = false -%}{%- endif -%}
+      {%- render 'letter-collection-selector', current_tab: 'indv', all_parent_handles: all_parent_handles, master_mode: is_master_mode -%}
       <div class="grid-12-master">
         {%- render 'letter-form-indv', collection_handle: '', order_type: 'indv' -%}
         {%- render 'letter-description', collection_handle: '', order_type: 'indv' -%}
