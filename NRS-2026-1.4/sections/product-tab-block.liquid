@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     assign container = section.settings.container
     assign limit = section.settings.product_block_limit
     assign layout = section.settings.product_block_layout
@@ -390,9 +390,15 @@
                                             <div class="placeholder" style="--height_placeholder: 530px;">
                                                 {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
                                                 {%- if placeholder_slide == 1 -%}
+<<<<<<< HEAD:NRS-2026-1.4/sections/product-tab-block.liquid
                                                     {% render 'get-placeholder', svg_name: 'hero-apparel-2', class: 'placeholder-svg' %}
                                                 {%- else -%}
                                                     {% render 'get-placeholder', svg_name: 'hero-apparel-1', class: 'placeholder-svg' %}
+=======
+                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+                                                {%- else -%}
+                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/product-tab-block.liquid
                                                 {%- endif -%}
                                             </div>
                                         {%- endif -%}

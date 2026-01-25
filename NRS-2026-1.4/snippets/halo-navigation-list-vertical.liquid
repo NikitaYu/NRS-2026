@@ -1,4 +1,4 @@
-<ul class="{{ listClass }}" role="list">
+﻿<ul class="{{ listClass }}" role="list">
     {%- for link in block.settings.vertical_menu.links -%}
         {%- liquid
             assign sale_item_lv1 = block.settings.sale_item_1 | split: "," | strip | downcase | handle

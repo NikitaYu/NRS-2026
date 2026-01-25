@@ -1,4 +1,4 @@
-{{ 'component-special-banner.css' | asset_url | stylesheet_tag }}
+﻿{{ 'component-special-banner.css' | asset_url | stylesheet_tag }}
 <div class="special-banner{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" style="--p-top: {{ section.settings.padding_top }}px; --p-bottom: {{ section.settings.padding_bottom }}px">
     <div class="container-{{ section.settings.container }}">
         <div class="special-banner__wrapper">
@@ -31,7 +31,11 @@
                                             {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
                                         {%- else -%}
                                             <div class="placeholder" style="--height_placeholder: clamp(550px, calc(1070 /1920 * 100vw), 1070px);">
+<<<<<<< HEAD:NRS-2026-1.4/sections/special-banner.liquid
                                                 <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/special-banner.liquid
                                             </div>
                                         {%- endif -%}
                                         {%- if rotating_text != blank -%}
@@ -75,7 +79,11 @@
                                         {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
                                     {%- else -%}
                                         <div class="placeholder" style="--height_placeholder: clamp(550px, calc(1070 /1920 * 100vw), 1070px);">
+<<<<<<< HEAD:NRS-2026-1.4/sections/special-banner.liquid
                                             <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/special-banner.liquid
                                         </div>
                                     {%- endif -%}
                                     {%- if heading != blank or desc != blank or btn_txt != blank -%}
@@ -124,7 +132,11 @@
                                         {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
                                     {%- else -%}
                                         <div class="placeholder" style="--height_placeholder: 450px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/special-banner.liquid
                                             <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/special-banner.liquid
                                         </div>
                                     {%- endif -%}
                                     {%- if block.settings.heading_1 != blank -%}
@@ -161,7 +173,11 @@
                                         {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
                                     {%- else -%}
                                         <div class="placeholder" style="--height_placeholder: 450px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/special-banner.liquid
                                             <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/special-banner.liquid
                                         </div>
                                     {%- endif -%}
                                     {%- if block.settings.heading_2 != blank -%}
@@ -259,7 +275,11 @@
                                 {% endif %}
                                 {%- else -%}
                                     <div class="placeholder" style="--height_placeholder: 770px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/special-banner.liquid
                                         <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/special-banner.liquid
                                     </div>
                                 {%- endif -%}
 
@@ -300,7 +320,11 @@
                                     </div>
                                 {%- else -%}
                                     <div class="placeholder" style="--height_placeholder: 770px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/special-banner.liquid
                                         <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/special-banner.liquid
                                     </div>
                                 {%- endif -%}
                                 {%- if block.settings.heading_2 != blank -%}
@@ -337,7 +361,11 @@
                                     </div>
                                 {%- else -%}
                                     <div class="placeholder" style="--height_placeholder: 770px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/special-banner.liquid
                                         <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/special-banner.liquid
                                     </div>
                                 {%- endif -%}
                                 {%- if block.settings.heading_3 != blank -%}

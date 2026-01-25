@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-counter-positions-image-banner.css' | asset_url }}" media="print" onload="this.media='all'">
+﻿<link rel="stylesheet" href="{{ 'component-counter-positions-image-banner.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-counter-positions-image-banner.css' | asset_url | stylesheet_tag }}</noscript>
 {%- liquid 
     assign mg_top_desktop = section.settings.mg_top_desktop | append: 'px' 
@@ -109,7 +109,11 @@
                         {%- else -%}
                             <a {% if button_1_link != blank %}href="{{ button_1_link }}"{% else %}role="link" aria-disabled="true"{% endif %} class="image-zoom">
                                 <div class="placeholder" style="--height_placeholder: 1070px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/counter-positions-image-banner.liquid
                                     <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/counter-positions-image-banner.liquid
                                 </div>
                             </a>
                         {%- endif -%}
@@ -155,7 +159,11 @@
                         {%- else -%}
                             <a {% if button_2_link != blank %}href="{{ button_2_link }}"{% else %}role="link" aria-disabled="true"{% endif %} class="image-zoom">
                                 <div class="placeholder" style="--height_placeholder: 1070px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/counter-positions-image-banner.liquid
                                     <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/counter-positions-image-banner.liquid
                                 </div>
                             </a>
                         {%- endif -%}

@@ -1,4 +1,4 @@
-{%- comment -%}
+﻿{%- comment -%}
     Format date Publish Blog
     {{- article.published_at | date: "%a, %b %d, %y" -}}
 {%- endcomment -%}
@@ -31,21 +31,33 @@
                 {%- else -%}
                     <a href="{{article.url}}" class="image-zoom">
                         <div class="placeholder" style="--height_placeholder: 370px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/article-card-featured.liquid
                             <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/article-card-featured.liquid
                         </div>
                     </a>
                 {%- endif -%}
             {%- else -%}
                 <a href="{{article.url}}" class="image-zoom">
                     <div class="placeholder" style="--height_placeholder: 370px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/article-card-featured.liquid
                         <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/article-card-featured.liquid
                     </div>
                 </a>
             {%- endif -%}
         {%- else -%}
             <a href="{{article.url}}" class="image-zoom">
                 <div class="placeholder" style="--height_placeholder: 370px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/article-card-featured.liquid
                     <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/article-card-featured.liquid
                 </div>
             </a>
         {%- endif -%}

@@ -1,4 +1,4 @@
-{{ 'component-custom-product-widget.css' | asset_url | stylesheet_tag }}
+﻿{{ 'component-custom-product-widget.css' | asset_url | stylesheet_tag }}
 {{ 'video-section.css' | asset_url | stylesheet_tag }}
 {%- liquid
     assign section_title = section.settings.section_title
@@ -157,7 +157,11 @@
                                         </div>
                                     {%- else -%}
                                         <div class="placeholder" style="--height_placeholder: 100%;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/custom-product-widget.liquid
                                             <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/custom-product-widget.liquid
                                         </div>
                                     {%- endif -%}
                                     {% unless autoVideo %}

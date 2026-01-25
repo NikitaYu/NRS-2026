@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-blog-post.css' | asset_url }}" media="print" onload="this.media='all'">
+﻿<link rel="stylesheet" href="{{ 'component-blog-post.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-blog-post.css' | asset_url | stylesheet_tag }}</noscript>
 {%- liquid
     assign blog_show_author = section.settings.blog_show_author
@@ -206,7 +206,11 @@
                     <div class="halo-item" id="block-placeholder-{{forloop.index}}" style="--item-distance-style: {{ section.settings.item_distance | append: 'px' }};">
                         <div class="article-card">
                             <div class="article-card__image-wrapper" style="--margin-bottom: {{ margin_bottom_image | append: 'px' }}">
+<<<<<<< HEAD:NRS-2026-1.4/sections/featured-blog.liquid
                                 <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/featured-blog.liquid
                             </div>
                             <div class="article-card__info text-{{ text_align }}">
                                 <h3 class="article-card__title" style="--margin-bottom: {{ margin_bottom_title | append: 'px' }}">{{ 'sections.featured_blog.onboarding_title' | t }}</h3>

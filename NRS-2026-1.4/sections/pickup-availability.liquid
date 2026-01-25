@@ -1,4 +1,4 @@
-{%- assign pick_up_availabilities = product_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+﻿{%- assign pick_up_availabilities = product_variant.store_availabilities | where: 'pick_up_enabled', true -%}
 
 {%- if pick_up_availabilities.size > 0 -%}
     <pickup-availability-preview class="pickup-availability-preview">
@@ -86,3 +86,4 @@
         </div>
     </pickup-availability-drawer>
 {%- endif -%}
+

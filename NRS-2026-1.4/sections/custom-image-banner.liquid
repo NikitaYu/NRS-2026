@@ -1,4 +1,4 @@
-{%- if section.blocks.size > 0 -%}
+﻿{%- if section.blocks.size > 0 -%}
 {%- assign swipe = section.settings.custom_image_banner_block_swipe_on_mobile -%}
 <link rel="stylesheet" href="{{ 'component-custom-image-banner-block.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-custom-image-banner-block.css' | asset_url | stylesheet_tag }}</noscript>
@@ -34,7 +34,11 @@
                                         {%- else -%}
                                             <a {% if block.settings.link_1 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link_1 }}"{% endif %} class="image-zoom" style="--item-border-radirus-style: {{ block.settings.item_border_radius | append: 'px' }}">
                                                 <div class="placeholder" style="--height_placeholder: 260px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/custom-image-banner.liquid
                                                     <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/custom-image-banner.liquid
                                                 </div>
                                             </a>
                                         {%- endif -%}
@@ -76,7 +80,11 @@
                                         {%- else -%}
                                             <a {% if block.settings.link_2 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link_2 }}"{% endif %} class="image-zoom" style="--item-border-radirus-style: {{ block.settings.item_border_radius | append: 'px' }}">
                                                 <div class="placeholder" style="--height_placeholder: 260px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/custom-image-banner.liquid
                                                     <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/custom-image-banner.liquid
                                                 </div>
                                             </a>
                                         {%- endif -%}
@@ -120,7 +128,11 @@
                                         {%- else -%}
                                             <a {% if block.settings.link_3 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link_3 }}"{% endif %} class="image-zoom" style="--item-border-radirus-style: {{ block.settings.item_border_radius | append: 'px' }}">
                                                 <div class="placeholder" style="--height_placeholder: 260px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/custom-image-banner.liquid
                                                     <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/custom-image-banner.liquid
                                                 </div>
                                             </a>
                                         {%- endif -%}
@@ -164,7 +176,11 @@
                                         {%- else -%}
                                             <a {% if block.settings.link_4 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link_4 }}"{% endif %} class="image-zoom" style="--item-border-radirus-style: {{ block.settings.item_border_radius | append: 'px' }}">
                                                 <div class="placeholder" style="--height_placeholder: 260px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/custom-image-banner.liquid
                                                     <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/custom-image-banner.liquid
                                                 </div>
                                             </a>
                                         {%- endif -%}
@@ -211,7 +227,11 @@
                             {%- else -%}
                                 <a {% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} class="image-zoom" style="--item-border-radirus-style: {{ block.settings.item_border_radius | append: 'px' }}">
                                     <div class="placeholder" style="--height_placeholder: 570px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/custom-image-banner.liquid
                                         <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/custom-image-banner.liquid
                                     </div>
                                 </a>
                             {%- endif -%}

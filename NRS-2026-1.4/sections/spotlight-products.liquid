@@ -1,4 +1,4 @@
-{{ 'component-spotlight-products.css' | asset_url | stylesheet_tag }}
+﻿{{ 'component-spotlight-products.css' | asset_url | stylesheet_tag }}
 <style>
     {%- liquid
         assign product_bg = section.settings.product_bg
@@ -209,7 +209,11 @@
                             {% endif %}
                         {%- else -%}
                             <div class="placeholder" style="--height_placeholder: 1088px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/spotlight-products.liquid
                                 <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/spotlight-products.liquid
                             </div>
                         {%- endif -%}
                     </div>

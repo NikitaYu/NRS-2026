@@ -1,4 +1,4 @@
-{%- if section.settings.show_product_bundle -%}
+﻿{%- if section.settings.show_product_bundle -%}
     {% if product.metafields.c_f.grouped_sub_product %}
         {%- assign handle_metafields =  product.metafields.c_f.grouped_sub_product | split: ',' -%}
         {%- assign handle_size =  handle_metafields | size -%}

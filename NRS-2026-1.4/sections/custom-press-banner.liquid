@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-press-banner.css' | asset_url }}" media="print" onload="this.media='all'">
+﻿<link rel="stylesheet" href="{{ 'component-press-banner.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-press-banner.css' | asset_url | stylesheet_tag }}</noscript>
 
 {%- liquid
@@ -74,7 +74,11 @@
                             </a>
                         {%- else -%}
                             <div class="placeholder" style="--height_placeholder: 375px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/custom-press-banner.liquid
                                 <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/custom-press-banner.liquid
                             </div>
                         {%- endif -%}
                     </div>

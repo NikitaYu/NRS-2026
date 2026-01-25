@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-large-lookbook-banner.css' | asset_url }}" media="print" onload="this.media='all'">
+﻿<link rel="stylesheet" href="{{ 'component-large-lookbook-banner.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-large-lookbook-banner.css' | asset_url | stylesheet_tag }}</noscript>
 {{ 'lookbook-script.js' | asset_url | script_tag }}
 
@@ -163,9 +163,15 @@
                                                 <div class="placeholder image" style="--height_placeholder: clamp(400px, calc(770 / 1920 * 100vw), 770px);">
                                                     {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
                                                     {%- if placeholder_slide == 1 -%}
+<<<<<<< HEAD:NRS-2026-1.4/sections/large-lookbook-banners.liquid
                                                         <!-- T-shirt placeholder removed — blank space per preference -->
                                                     {%- else -%}
                                                         <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+                                                    {%- else -%}
+                                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/large-lookbook-banners.liquid
                                                     {%- endif -%}
                                                 </div>
                                             {%- endif -%}
@@ -254,7 +260,11 @@
                 <div class="halo-block-content lookbook__right{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                     <div class="lookbooks">
                         <div class="placeholder" style="--height_placeholder: clamp(400px, calc(770 / 1920 * 100vw), 770px);">
+<<<<<<< HEAD:NRS-2026-1.4/sections/large-lookbook-banners.liquid
                             <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/large-lookbook-banners.liquid
                         </div>
                     </div>
                 </div>

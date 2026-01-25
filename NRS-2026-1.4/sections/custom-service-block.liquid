@@ -1,4 +1,4 @@
-{%- if section.blocks.size > 0 -%}
+﻿{%- if section.blocks.size > 0 -%}
     {%- liquid
         assign swipe = section.settings.service_block_swipe_on_mobile
         assign grid_gap = section.settings.grid_gap | times: 0.5 | append: 'px'
@@ -344,7 +344,11 @@
                     {%- else -%}
                         <a class="image"{% if button_link_block_bottom == blank %} role="link" aria-disabled="true"{% else %} href="{{ button_link_block_bottom }}"{% endif %}>
                             <div class="placeholder" style="--height_placeholder: 640px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/custom-service-block.liquid
                                 <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/custom-service-block.liquid
                             </div>
                         </a>
                     {%- endif -%}
@@ -498,7 +502,7 @@
         "type": "text",
         "id": "service_block_title",
         "label": "t:sections.image-banner.blocks.image.settings.content.label__1",
-        "default": "Why’s us?"
+        "default": "WhyвЂ™s us?"
     },
     {
         "type": "checkbox",
@@ -1460,3 +1464,4 @@
     }]
 }
 {% endschema %}
+

@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     assign heading = block.settings.heading
     assign image = block.settings.image
     assign link = block.settings.link
@@ -27,7 +27,11 @@
                         {{ image | image_url: width: 375 | image_tag: width: image.width, height: height, sizes: "100vw", widths: '165, 210, 288, 375' }}
                     {%- else -%}
                         <div class="placeholder" style="--height_placeholder: 100%;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-side-image.liquid
                             <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-side-image.liquid
                         </div>
                     {%- endif -%}
                 {%- if link != blank -%}

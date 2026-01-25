@@ -1,4 +1,4 @@
-{% comment %}Content Slider X: Responsive slider with image, video, mixed content slides, theme editor fixes, and conflict prevention{% endcomment %}
+﻿{% comment %}Content Slider X: Responsive slider with image, video, mixed content slides, theme editor fixes, and conflict prevention{% endcomment %}
 
 {%- liquid
   assign section_height_desktop = section.settings.section_height_desktop | default: 600
@@ -152,7 +152,11 @@
                           width="1920" height="{{ 1920 | divided_by: block.settings.image.aspect_ratio | round }}">
                       {%- endif -%}
                     {%- else -%}
+<<<<<<< HEAD:NRS-2026-1.4/sections/content-slider-x.liquid
                       {% render 'get-placeholder', svg_name: 'lifestyle-1', class: 'placeholder-image' %}
+=======
+                      <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/content-slider-x.liquid
                     {%- endif -%}
                     {%- if block.settings.link != blank -%}</a>{%- endif -%}
                   </div>
@@ -165,7 +169,11 @@
                           alt="{{ block.settings.cover_image.alt | escape }}" loading="lazy"
                           width="1920" height="{{ 1920 | divided_by: block.settings.cover_image.aspect_ratio | round }}">
                       {%- else -%}
+<<<<<<< HEAD:NRS-2026-1.4/sections/content-slider-x.liquid
                         {% render 'get-placeholder', svg_name: 'collection-1', class: 'video-placeholder' %}
+=======
+                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/content-slider-x.liquid
                       {%- endif -%}
                     </div>
                     <button class="video-play-button" type="button" aria-label="Play video" data-video-trigger>
@@ -200,7 +208,11 @@
                           <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy">
                         {%- endif -%}
                       {%- else -%}
+<<<<<<< HEAD:NRS-2026-1.4/sections/content-slider-x.liquid
                         {% render 'get-placeholder', svg_name: 'product-1', class: 'mixed-content-placeholder' %}
+=======
+                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/content-slider-x.liquid
                       {%- endif -%}
                     </div>
                     <div class="mixed-content-text">

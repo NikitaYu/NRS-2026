@@ -1,4 +1,4 @@
-<div class="menu-lv__dropdownmenu menu-dropdown">
+﻿<div class="menu-lv__dropdownmenu menu-dropdown">
     <ul class="menu-lv__list list-menu list-unstyled motion-reduce" role="list">
         <li class="menu-lv-item menu-lv-2 nav-title-mobile text-center">
             <span class="icon-dropdown">
@@ -58,7 +58,11 @@
                             {%- else -%}
                                 {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
                                 {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-navigation-mobile-list-2.liquid
                                 {% render 'get-placeholder', svg_name: placeholder_image, class: 'placeholder-svg' %}
+=======
+                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-navigation-mobile-list-2.liquid
                             {%- endif -%}
                         </span>
                     </a>

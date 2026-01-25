@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     assign layout = settings.list_collections_layout
 -%}
 
@@ -33,7 +33,11 @@
         {%- else -%}
             <a class="image" {% if link == blank %}role="link" aria-disabled="true"{% else %}href="{{ link }}"{% endif %}>
               {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+<<<<<<< HEAD:NRS-2026-1.4/snippets/list-collection-item.liquid
               {% render 'get-placeholder', svg_name: placeholder_image, class: 'placeholder-svg' %}
+=======
+              <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/list-collection-item.liquid
             </a>
         {%- endif -%}
         {% if layout == 'collections_01_grid' or layout == 'collections_4' %}

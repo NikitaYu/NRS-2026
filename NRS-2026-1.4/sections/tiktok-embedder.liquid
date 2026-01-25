@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-tiktok-embedder.css' | asset_url }}" media="print" onload="this.media='all'">
+﻿<link rel="stylesheet" href="{{ 'component-tiktok-embedder.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-tiktok-embedder.css' | asset_url | stylesheet_tag }}</noscript>
 {%- liquid
     assign mg_top_desktop = section.settings.mg_top_desktop | append: 'px'
@@ -206,7 +206,11 @@
                                     {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
                                     {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
                                     <div class="placeholder" style="--height_placeholder: 570px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/tiktok-embedder.liquid
                                         <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/tiktok-embedder.liquid
                                     </div>
                                 {% endif %}
                             </div>

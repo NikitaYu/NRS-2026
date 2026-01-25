@@ -1,4 +1,4 @@
-{{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
+﻿{{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 {{ 'component-grid.css' | asset_url | stylesheet_tag }}
 <link rel="stylesheet" href="{{ 'component-fancybox.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-fancybox.css' | asset_url | stylesheet_tag }}</noscript>
@@ -378,7 +378,11 @@
                                                                 {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
                                                                 {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
                                                                 <div class="placeholder" style="--height_placeholder: 270px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/main-article.liquid
                                                                     <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/main-article.liquid
                                                                 </div>
                                                             </a>
                                                         {% endif %}
@@ -483,7 +487,11 @@
                                         {%- else -%}
                                             <a role="link" aria-disabled="true" class="image">
                                                 <div class="placeholder" style="--height_placeholder: 520px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/main-article.liquid
                                                     <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/main-article.liquid
                                                 </div>
                                             </a>
                                         {%- endif -%}
@@ -3280,4 +3288,5 @@
     ]
 }
 {% endschema %}
+
 

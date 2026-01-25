@@ -1,4 +1,4 @@
-<{% if share_layout != '2' and share_layout != '3' %}div{% else %}share-button{% endif %} class="share-button halo-socialShare productView-share style-{{ share_layout }}">
+﻿<{% if share_layout != '2' and share_layout != '3' %}div{% else %}share-button{% endif %} class="share-button halo-socialShare productView-share style-{{ share_layout }}">
     {%- if share_layout == '2' or share_layout == '3' -%}
         <div class="share-content{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--fade-in{% endif %}">
             <button class="share-button__button button">{% render 'icon-share-2' %} <span>{{ 'general.share.share' | t }}</span></button>

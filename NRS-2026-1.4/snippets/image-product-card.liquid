@@ -1,4 +1,4 @@
-{%- if product_card_product.featured_media -%}
+﻿{%- if product_card_product.featured_media -%}
     {%- if variant_img != blank -%}
         {%- if settings.quick_shop_type == '2' -%}
             {%- assign width = product_card_product.featured_media.width -%}
@@ -25,7 +25,12 @@
     {%- endif -%}
     {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
 {%- else -%}
+<<<<<<< HEAD:NRS-2026-1.4/snippets/image-product-card.liquid
     {%- capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture -%}
     {%- assign placeholder_image = 'product-apparel-' | append: current -%}
     {% render 'get-placeholder', svg_name: placeholder_image, class: 'placeholder-svg' %}
 {%- endif -%}
+=======
+    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+{%- endif -%}
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/image-product-card.liquid

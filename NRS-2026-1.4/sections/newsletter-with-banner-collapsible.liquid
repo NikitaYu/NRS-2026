@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-newsletter-banner-collapsible-section.css' | asset_url }}" media="print" onload="this.media='all'">
+﻿<link rel="stylesheet" href="{{ 'component-newsletter-banner-collapsible-section.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-faqs.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-newsletter-banner-collapsible-section.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-faqs.css' | asset_url | stylesheet_tag }}</noscript>
@@ -185,7 +185,11 @@
                   {%- else -%}
                     <a class="image"{% if banner_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ banner_link }}"{% endif %}>
                         <div class="placeholder" style="--height_placeholder: clamp(350px, calc(690 /1920 * 100vw), 690px);">
+<<<<<<< HEAD:NRS-2026-1.4/sections/newsletter-with-banner-collapsible.liquid
                           <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                          <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/newsletter-with-banner-collapsible.liquid
                         </div>
                     </a>
                   {%- endif -%}
@@ -768,3 +772,4 @@
   }
 }
 {% endschema %}
+

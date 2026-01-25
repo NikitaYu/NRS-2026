@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     assign _permalink_share = product.url |default:article.url |default:page.url
     assign _permalink_share2 = shop.url | append:_permalink_share
     assign perLinkURL = permalink_share |default:_permalink_share2

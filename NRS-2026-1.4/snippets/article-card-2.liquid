@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     assign image = article.image
     assign id = article.id
     assign link = article.url
@@ -36,7 +36,11 @@
         <div class="blog-image img-box">
             <a {% if link == blank %}role="link" aria-disabled="true"{% else %}href="{{ link }}"{% endif %} class="image">
                 <div class="placeholder" style="--height_placeholder: 100%;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/article-card-2.liquid
                     <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/article-card-2.liquid
                 </div>
             </a>
         </div>

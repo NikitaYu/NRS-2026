@@ -1,4 +1,4 @@
-{% comment %}
+﻿{% comment %}
   Snippet for letter ordering form, replicating old functionality from letters-indv-with-disclaimer.liquid.
   Uses include.source_collection if provided (for page template), otherwise falls back to collection.handle -indv (for collection template).
   Assumes -indv collection has products with titles like "Letter - A", "Number - 0", "Symbol - $"
@@ -111,7 +111,7 @@
       </div>
     </div>
     <p>First choose a color above to see which characters are available.<br>Then below each letter, enter the quantity you would like to order.</p>
-    <p style="color:#f00;"> NOTE: the letters I and O and the numbers ‘1’ and zero are visually identical in the ADM Standard and Modern letter styles</p>
+    <p style="color:#f00;"> NOTE: the letters I and O and the numbers вЂ1вЂ™ and zero are visually identical in the ADM Standard and Modern letter styles</p>
 
     <div class="letters">
       {% assign uppercase_letters = 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z' | split: ',' %}
@@ -137,8 +137,8 @@
 
       <div class="letter-row">
         <div class="letter" style="display: none;">
-          <div class="letter-sku">¢</div>
-          <label for="letter-cent-sign">¢</label>
+          <div class="letter-sku">Вў</div>
+          <label for="letter-cent-sign">Вў</label>
           <input type="text" name="letter-cent-sign" value="" id="letter-cent-sign">
         </div>
         <div class="letter" style="display: none;">
@@ -167,8 +167,8 @@
           <input type="text" name="letter-question" value="" id="letter-question">
         </div>
         <div class="letter" style="display: none;">
-          <div class="letter-sku">‘</div>
-          <label for="letter-apostrophe">‘</label>
+          <div class="letter-sku">вЂ</div>
+          <label for="letter-apostrophe">вЂ</label>
           <input type="text" name="letter-apostrophe" value="" id="letter-apostrophe">
         </div>
         <div class="letter" style="display: none;">
@@ -187,13 +187,13 @@
           <input type="text" name="letter-colon" value="" id="letter-colon">
         </div>
         <div class="letter" style="display: none;">
-          <div class="letter-sku">“</div>
-          <label for="letter-left-quotation">“</label>
+          <div class="letter-sku">вЂњ</div>
+          <label for="letter-left-quotation">вЂњ</label>
           <input type="text" name="letter-left-quotation" value="" id="letter-left-quotation">
         </div>
         <div class="letter" style="display: none;">
-          <div class="letter-sku">”</div>
-          <label for="letter-right-quotation">”</label>
+          <div class="letter-sku">вЂќ</div>
+          <label for="letter-right-quotation">вЂќ</label>
           <input type="text" name="letter-right-quotation" value="" id="letter-right-quotation">
         </div>
         <div class="letter" style="display: none;">
@@ -237,23 +237,23 @@
           <input type="text" name="letter-asterisk" value="" id="letter-asterisk">
         </div>
         <div class="letter" style="display: none;">
-          <div class="letter-sku">¼</div>
-          <label for="letter-one-quarter">¼</label>
+          <div class="letter-sku">Вј</div>
+          <label for="letter-one-quarter">Вј</label>
           <input type="text" name="letter-one-quarter" value="" id="letter-one-quarter">
         </div>
         <div class="letter" style="display: none;">
-          <div class="letter-sku">⅓</div>
-          <label for="letter-one-third">⅓</label>
+          <div class="letter-sku">в…“</div>
+          <label for="letter-one-third">в…“</label>
           <input type="text" name="letter-one-third" value="" id="letter-one-third">
         </div>
         <div class="letter" style="display: none;">
-          <div class="letter-sku">½</div>
-          <label for="letter-one-half">½</label>
+          <div class="letter-sku">ВЅ</div>
+          <label for="letter-one-half">ВЅ</label>
           <input type="text" name="letter-one-half" value="" id="letter-one-half">
         </div>
         <div class="letter" style="display: none;">
-          <div class="letter-sku">¾</div>
-          <label for="letter-three-quarters">¾</label>
+          <div class="letter-sku">Вѕ</div>
+          <label for="letter-three-quarters">Вѕ</label>
           <input type="text" name="letter-three-quarters" value="" id="letter-three-quarters">
         </div>
         <div class="letter" style="display: none;">
@@ -293,10 +293,10 @@
 
   <script>
     $(document).ready(function() {
-      // Sort heights numerically by extracting the number before "”
+      // Sort heights numerically by extracting the number before "вЂќ
       var heights = Object.keys(height_obj).sort(function(a, b) {
-        var numA = parseInt(a.replace('”', ''));
-        var numB = parseInt(b.replace('”', ''));
+        var numA = parseInt(a.replace('вЂќ', ''));
+        var numB = parseInt(b.replace('вЂќ', ''));
         return numA - numB;
       });
       var heightSelect = $('#letter-height');

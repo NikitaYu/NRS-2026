@@ -1,4 +1,4 @@
-{{ 'component-image-comparison.css' | asset_url | stylesheet_tag }}
+﻿{{ 'component-image-comparison.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
     assign mg_top_desktop = section.settings.mg_top_desktop | append: 'px'
@@ -226,7 +226,11 @@
                         </div>
                     {% else %}
                         <div class="adaptive_height placeholder compare-image" style="--height_placeholder: 750px;" data-image-overlay>
+<<<<<<< HEAD:NRS-2026-1.4/sections/image-comparison.liquid
                             <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/image-comparison.liquid
                         </div>
                     {% endif %}
                     {% if show_image_mobile %}
@@ -236,7 +240,11 @@
                         </div>
                     {% elsif image_2 == blank %}
                         <div class="adaptive_height placeholder compare-image mobile" style="--height_placeholder: 750px;" data-image-overlay>
+<<<<<<< HEAD:NRS-2026-1.4/sections/image-comparison.liquid
                             <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/image-comparison.liquid
                         </div>
                     {% endif %}
                     <div class="image-comparison-slider" data-image-slider>
@@ -255,7 +263,11 @@
                         </div>
                     {% else %}
                         <div class="adaptive_height compare-image-overlay placeholder compare-image" style="--height_placeholder: 750px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/image-comparison.liquid
                             <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/image-comparison.liquid
                         </div>
                     {% endif %}
                     {% if show_image_mobile %}
@@ -265,7 +277,11 @@
                         </div>
                     {% elsif image_1 == blank %}
                         <div class="adaptive_height compare-image-overlay placeholder compare-image mobile" style="--height_placeholder: 750px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/image-comparison.liquid
                             <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/image-comparison.liquid
                         </div>
                     {% endif %}
                 </div>

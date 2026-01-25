@@ -1,4 +1,4 @@
-<div class="productView-pickUp">
+﻿<div class="productView-pickUp">
     {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
     {%- assign pick_up_availabilities = current_variant.store_availabilities | where: 'pick_up_enabled', true -%}
     <pickup-availability class="product__pickup-availabilities no-js-hidden"

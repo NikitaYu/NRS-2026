@@ -1,4 +1,4 @@
-{%- if settings.show_gdpr_cookie_consent -%}
+﻿{%- if settings.show_gdpr_cookie_consent -%}
 <link rel="stylesheet" href="{{ 'component-cookie.css' | asset_url }}">
 
 <noscript>{{ 'component-cookie.css' | asset_url | stylesheet_tag }}</noscript>
@@ -69,7 +69,7 @@
                         {%- if btn_2_text != blank -%}
 							<button type="button" title="{{ btn_2_text }}" class="link link-underline accept_cookies_link" data-accept-cookie>
                                 <span class="text">{{ btn_2_text }}</span>
-                                <span class="icon">✔</span>
+                                <span class="icon">вњ”</span>
                             </button>
                         {%- endif -%}
                     </div>

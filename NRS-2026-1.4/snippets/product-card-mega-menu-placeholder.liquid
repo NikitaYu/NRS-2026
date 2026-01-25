@@ -1,4 +1,4 @@
-{% comment %}
+﻿{% comment %}
     Renders a product card placeholder
     Usage:
     {% render 'product-card-placeholder' %}
@@ -9,7 +9,11 @@
             <div class="card-product__wrapper">
                 <div class="card-media card-media--square">
                     {%- assign placeholder_image = 'product-apparel-' | append: index -%}
+<<<<<<< HEAD:NRS-2026-1.4/snippets/product-card-mega-menu-placeholder.liquid
                     {% render 'get-placeholder', svg_name: placeholder_image, class: 'placeholder-svg' %}
+=======
+                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/product-card-mega-menu-placeholder.liquid
                 </div>
             </div>
         </div>

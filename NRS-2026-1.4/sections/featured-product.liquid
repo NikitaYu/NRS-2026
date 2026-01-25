@@ -1,4 +1,4 @@
-{{ 'component-product.css' | asset_url | stylesheet_tag }}
+﻿{{ 'component-product.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-badge.css' | asset_url | stylesheet_tag }}
 {{ 'component-rte.css' | asset_url | stylesheet_tag }}
@@ -253,7 +253,11 @@
                                 {%- if section.settings.featured_product == blank -%}
                                     <div class="productView-nav">
                                         <div class="productView-image product-media-container">
+<<<<<<< HEAD:NRS-2026-1.4/sections/featured-product.liquid
                                             <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/featured-product.liquid
                                         </div>
                                     </div>
                                 {%- endif -%}
@@ -519,7 +523,11 @@
                                                 <div class="productView-thumbnail productView-thumbnail-placeholder{% if show_variant_image_group %} filter-{{ media.alt | handle }}{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
                                                     {%- for i in (1..5) -%}
                                                         <div class="productView-thumbnail-link-placeholder" data-image="{{ media | img_url: 'large' }}">
+<<<<<<< HEAD:NRS-2026-1.4/sections/featured-product.liquid
                                                             <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/featured-product.liquid
                                                         </div>
                                                     {%- endfor -%}
                                                 </div>

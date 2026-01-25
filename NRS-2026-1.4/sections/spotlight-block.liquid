@@ -1,4 +1,4 @@
-{%- if section.blocks.size > 0 -%}
+﻿{%- if section.blocks.size > 0 -%}
     {%- assign swipe = section.settings.spotlight_block_swipe_on_mobile -%}
     {%- assign position_horizontal_slick_arrow = section.settings.position_horizontal_slick_arrow -%}
     <link rel="stylesheet" href="{{ 'component-spotlight-block.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -43,16 +43,28 @@
                                                 {% if block.settings.enable_absolute %}
                                                     {% if section.settings.enable_custom_position_title %}
                                                         <div class="placeholder" style="--height_placeholder: clamp(550px, calc(1070 / 1920 * 100vw), 1070px);">
+<<<<<<< HEAD:NRS-2026-1.4/sections/spotlight-block.liquid
                                                                 <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                                            <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/spotlight-block.liquid
                                                         </div>
                                                     {% else %}
                                                         {% if section.settings.padding_full_width == 45 %}
                                                             <div class="placeholder" style="--height_placeholder: clamp(550px, calc(850 / 1920 * 100vw), 850px);">
+<<<<<<< HEAD:NRS-2026-1.4/sections/spotlight-block.liquid
                                                                     <!-- T-shirt placeholder removed — blank space per preference -->
                                                             </div>
                                                         {% else %}
                                                             <div class="placeholder" style="--height_placeholder: 200px;">
                                                                     <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="placeholder" style="--height_placeholder: 200px;">
+                                                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/spotlight-block.liquid
                                                             </div>
                                                         {% endif %}
                                                     {% endif %}
@@ -60,7 +72,11 @@
                                                     {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
                                                     {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
                                                     <div class="placeholder" style="--height_placeholder: 440px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/spotlight-block.liquid
                                                         <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/spotlight-block.liquid
                                                     </div>
                                                 {% endif %}
                                             </a>

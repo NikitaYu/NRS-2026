@@ -1,4 +1,4 @@
-{%- if section.blocks.size > 0 -%}
+﻿{%- if section.blocks.size > 0 -%}
 <link rel="stylesheet" href="{{ 'component-custom-image-banner-2-block.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-custom-image-banner-2-block.css' | asset_url | stylesheet_tag }}</noscript>
 
@@ -40,7 +40,11 @@
                             {%- else -%}
                                 <a {% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} class="image-zoom">
                                     <div class="placeholder" style="--height_placeholder: 570px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/custom-image-banner-2.liquid
                                         <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/custom-image-banner-2.liquid
                                     </div>
                                 </a>
                             {%- endif -%}
@@ -58,7 +62,11 @@
                             {%- else -%}
                                 <a {% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} class="image-zoom">
                                     <div class="placeholder" style="--height_placeholder: 450px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/custom-image-banner-2.liquid
                                         <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/custom-image-banner-2.liquid
                                     </div>
                                 </a>
                             {%- endif -%}

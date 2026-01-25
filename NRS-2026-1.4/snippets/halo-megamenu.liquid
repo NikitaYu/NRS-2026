@@ -1,4 +1,4 @@
-{%- liquid
+﻿{%- liquid
     if menu_text_left != blank
         if block_style == "megamenu_style_5" or block_style == "megamenu_style_4"
             assign site_text_width = 100 | divided_by: column | append: '%'
@@ -107,7 +107,11 @@
                                                     <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_1 | img_url: 'master' }}"{% unless settings.enable_lazyload %} src="{{ banner_1 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_1.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}>{% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                 {%- else -%}
                                                     <div class="placeholder" style="--height_placeholder: 337px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                         {% render 'get-placeholder', svg_name: 'detailed-apparel-1', class: 'placeholder-svg' %}
+=======
+                                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                     </div>
                                                 {%- endif -%}
                                             </a>
@@ -183,7 +187,11 @@
                                                     <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_1 | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ banner_1 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_1.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                 {%- else -%}
                                                     <div class="placeholder" style="--height_placeholder: {% if show_banner_3 == blank %}180px{% else %}165px{% endif %};">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                         {% render 'get-placeholder', svg_name: 'blog-apparel-1', class: 'placeholder-svg' %}
+=======
+                                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                     </div>
                                                 {%- endif -%}
                                             </a>
@@ -196,7 +204,11 @@
                                                     <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_2 | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ banner_2 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_2.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                 {%- else -%}
                                                     <div class="placeholder" style="--height_placeholder: {% if show_banner_3 == blank %}180px{% else %}165px{% endif %};">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                         {% render 'get-placeholder', svg_name: 'blog-apparel-2', class: 'placeholder-svg' %}
+=======
+                                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                     </div>
                                                 {%- endif -%}
                                             </a>
@@ -213,7 +225,11 @@
                                                     {% unless settings.enable_lazyload %}src="{{ banner_3 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_3.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                 {%- else -%}
                                                     <div class="placeholder" style="--height_placeholder: 337px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                         {% render 'get-placeholder', svg_name: 'blog-apparel-3', class: 'placeholder-svg' %}
+=======
+                                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                     </div>
                                                 {%- endif -%}
                                             </a>
@@ -261,7 +277,11 @@
                                                                 <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_1 | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ banner_1 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_1.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                             {%- else -%}
                                                                 <div class="placeholder" style="--height_placeholder: 125px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                                     {% render 'get-placeholder', svg_name: 'collection-apparel-1', class: 'placeholder-svg' %}
+=======
+                                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                                 </div>
                                                             {%- endif -%}
                                                         </a>
@@ -273,7 +293,11 @@
                                                                 <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_2 | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ banner_2 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_2.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                             {%- else -%}
                                                                 <div class="placeholder" style="--height_placeholder: 125px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                                     {% render 'get-placeholder', svg_name: 'collection-apparel-2', class: 'placeholder-svg' %}
+=======
+                                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                                 </div>
                                                             {%- endif -%}
                                                         </a>
@@ -285,7 +309,11 @@
                                                                 <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_3 | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ banner_3 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_3.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                             {%- else -%}
                                                                 <div class="placeholder" style="--height_placeholder: 125px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                                     {% render 'get-placeholder', svg_name: 'collection-apparel-3', class: 'placeholder-svg' %}
+=======
+                                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                                 </div>
                                                             {%- endif -%}
                                                         </a>
@@ -297,7 +325,11 @@
                                                                 <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_4 | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ banner_4 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_4.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                             {%- else -%}
                                                                 <div class="placeholder" style="--height_placeholder: 125px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                                     {% render 'get-placeholder', svg_name: 'collection-apparel-4', class: 'placeholder-svg' %}
+=======
+                                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                                 </div>
                                                             {%- endif -%}
                                                         </a>
@@ -309,7 +341,11 @@
                                                                 <img srcset="{{ banner_5 | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ banner_5 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_5.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                             {%- else -%}
                                                                 <div class="placeholder" style="--height_placeholder: 125px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                                     {% render 'get-placeholder', svg_name: 'collection-apparel-1', class: 'placeholder-svg' %}
+=======
+                                                                    <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                                 </div>
                                                             {%- endif -%}
                                                         </a>
@@ -355,7 +391,11 @@
                                                             <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_1 | img_url: 'master' }}"{% unless settings.enable_lazyload %} src="{{ banner_1 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_1.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                         {%- else -%}
                                                             <div class="placeholder" style="--height_placeholder: 125px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                                 {% render 'get-placeholder', svg_name: 'collection-apparel-1', class: 'placeholder-svg' %}
+=======
+                                                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                             </div>
                                                         {%- endif -%}
                                                     </a>
@@ -367,7 +407,11 @@
                                                             <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_2 | img_url: 'master' }}"{% unless settings.enable_lazyload %} src="{{ banner_2 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_2.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                         {%- else -%}
                                                             <div class="placeholder" style="--height_placeholder: 125px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                                 {% render 'get-placeholder', svg_name: 'collection-apparel-2', class: 'placeholder-svg' %}
+=======
+                                                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                             </div>
                                                         {%- endif -%}
                                                     </a>
@@ -379,7 +423,11 @@
                                                             <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_3 | img_url: 'master' }}"{% unless settings.enable_lazyload %} src="{{ banner_3 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_3.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                         {%- else -%}
                                                             <div class="placeholder" style="--height_placeholder: 125px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                                 {% render 'get-placeholder', svg_name: 'collection-apparel-3', class: 'placeholder-svg' %}
+=======
+                                                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                             </div>
                                                         {%- endif -%}
                                                     </a>
@@ -391,7 +439,11 @@
                                                             <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_4 | img_url: 'master' }}"{% unless settings.enable_lazyload %} src="{{ banner_4 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_4.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                         {%- else -%}
                                                             <div class="placeholder" style="--height_placeholder: 125px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                                 {% render 'get-placeholder', svg_name: 'collection-apparel-4', class: 'placeholder-svg' %}
+=======
+                                                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                             </div>
                                                         {%- endif -%}
                                                     </a>
@@ -403,7 +455,11 @@
                                                             <img srcset="{{ banner_5 | img_url: 'master' }}"{% unless settings.enable_lazyload %} src="{{ banner_5 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_5.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                         {%- else -%}
                                                             <div class="placeholder" style="--height_placeholder: 125px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                                 {% render 'get-placeholder', svg_name: 'collection-apparel-1', class: 'placeholder-svg' %}
+=======
+                                                                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                             </div>
                                                         {%- endif -%}
                                                     </a>
@@ -540,7 +596,11 @@
                                                     {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                 {%- else -%}
                                                     <div class="placeholder" style="--height_placeholder: 255px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                         {% render 'get-placeholder', svg_name: 'hero-apparel-1', class: 'placeholder-svg' %}
+=======
+                                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                     </div>
                                                 {%- endif -%}
                                             </a>
@@ -555,7 +615,11 @@
                                                     <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_2 | img_url: 'master' }}"{% unless settings.enable_lazyload %} src="{{ banner_2 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_2.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                 {%- else -%}
                                                     <div class="placeholder" style="--height_placeholder: 255px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                         {% render 'get-placeholder', svg_name: 'hero-apparel-2', class: 'placeholder-svg' %}
+=======
+                                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                     </div>
                                                 {%- endif -%}
                                             </a>
@@ -684,7 +748,11 @@
                                                     <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_1 | img_url: 'master' }}"{% unless settings.enable_lazyload %} src="{{ banner_1 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_1.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                 {%- else -%}
                                                     <div class="placeholder" style="--height_placeholder: 337px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                         {% render 'get-placeholder', svg_name: 'hero-apparel-3', class: 'placeholder-svg' %}
+=======
+                                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                     </div>
                                                 {%- endif -%}
                                             </a>
@@ -733,7 +801,11 @@
                                                     <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ banner_1 | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ banner_1 | img_url: 'master' }}"{% endunless %} loading="lazy" alt="{{ banner_1.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% endif %}> {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                 {%- else -%}
                                                     <div class="placeholder" style="--height_placeholder: 337px;">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-megamenu.liquid
                                                         {% render 'get-placeholder', svg_name: 'hero-apparel-3', class: 'placeholder-svg' %}
+=======
+                                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-megamenu.liquid
                                                     </div>
                                                 {%- endif -%}
                                             </a>

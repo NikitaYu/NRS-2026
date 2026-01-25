@@ -1,4 +1,4 @@
-{%- if section.blocks.size > 0 -%}
+﻿{%- if section.blocks.size > 0 -%}
     {%-liquid
         assign autoplay = section.settings.autoplay
         assign autoplaySpeed = section.settings.slideshow_speed
@@ -133,7 +133,11 @@
                                     </div>
                                 {%- else -%}
                                     <div class="placeholder{% if block.settings.image_slide_mb != blank %} slide-pc{% endif %}" style="--height_placeholder:{% if section.settings.enable_banner %} 510px{% else %} clamp(570px, calc(720 / 1920 * 100vw), 720px){% endif %};">
+<<<<<<< HEAD:NRS-2026-1.4/sections/slide-show.liquid
                                         <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/slide-show.liquid
                                     </div>
                                 {%- endif -%}
 
@@ -502,7 +506,11 @@
                                     {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
                                     {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
                                     <div class="placeholder" style="--height_placeholder: 250px;">
+<<<<<<< HEAD:NRS-2026-1.4/sections/slide-show.liquid
                                         <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+                                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:sections/slide-show.liquid
                                     </div>
                                 </a>
                             {%- endif -%}
@@ -2824,3 +2832,4 @@
         }]
     }
 {% endschema %}
+

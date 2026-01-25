@@ -1,5 +1,9 @@
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-product-card.liquid
 
 {%- liquid
+=======
+﻿{%- liquid
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-product-card.liquid
     assign media_size = settings.product_block_image_ratio
     if media_size == 'portrait'
         assign portrait_aspect_ratio = settings.portrait_height
@@ -60,7 +64,11 @@
                     {%- else -%}
                         {%- capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture -%}
                         {%- assign placeholder_image = 'product-apparel-' | append: current -%}
+<<<<<<< HEAD:NRS-2026-1.4/snippets/halo-product-card.liquid
                         {% render 'get-placeholder', svg_name: placeholder_image, class: 'placeholder-svg' %}
+=======
+                        <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/halo-product-card.liquid
                     {%- endif -%}
                 </a>
                 {%- if settings.show_action -%}
@@ -158,3 +166,4 @@
         </div>
     </div>
 </div>
+

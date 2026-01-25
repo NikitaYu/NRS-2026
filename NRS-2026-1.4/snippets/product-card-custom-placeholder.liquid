@@ -1,9 +1,13 @@
-<div class="product-item product-item-custom">
+﻿<div class="product-item product-item-custom">
     <div class="card">
         <div class="card-product card--text-only card--soft">
             <div class="card-media card-media--square">
                 {%- assign placeholder_image = 'product-apparel-' | append: index -%}
+<<<<<<< HEAD:NRS-2026-1.4/snippets/product-card-custom-placeholder.liquid
                 {% render 'get-placeholder', svg_name: placeholder_image, class: 'placeholder-svg' %}
+=======
+                <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/product-card-custom-placeholder.liquid
             </div>
         </div>
         <div class="card-information">

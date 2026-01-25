@@ -1,4 +1,4 @@
-{% comment %}
+﻿{% comment %}
   Renders a collection card
 
   Accepts:
@@ -27,7 +27,11 @@
       {%- endif -%}
       {%- if card_collection == blank -%}
         <div class="card__media">
+<<<<<<< HEAD:NRS-2026-1.4/snippets/card-collection.liquid
           <!-- T-shirt placeholder removed — blank space per preference -->
+=======
+          <img src="{{ 'placeholder.svg' | asset_url }}" class="placeholder-svg" alt="Product Placeholder" loading="lazy" />
+>>>>>>> bacb49c7b9640dc69d2341ba87eae6d946b1a215:snippets/card-collection.liquid
         </div>
         <div class="card__content">
           <div class="card__information text-{{collection_align}}">

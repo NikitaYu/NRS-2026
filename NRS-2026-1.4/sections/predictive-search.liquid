@@ -1,4 +1,4 @@
-{%- if predictive_search.performed -%}
+﻿{%- if predictive_search.performed -%}
     {% assign first_column_results_size = predictive_search.resources.queries.size | plus: predictive_search.resources.collections.size| plus: predictive_search.resources.pages.size | plus: predictive_search.resources.articles.size %}
     
     <div id="predictive-search-results" class="quickSearchResults quickSearchResultsBlock custom-scrollbar" >
