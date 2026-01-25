@@ -3,7 +3,7 @@
 // jQuery dependency assumed from theme
 
 jQuery(function($){
-  'usestrict';
+  'use strict';
 
   // Initial hide for individual tab elements (to prevent flash before reset/init)
   $('#tab-content-indv .letters').hide();
@@ -25,9 +25,7 @@ jQuery(function($){
     $tabContent.find('.add-btn').attr('disabled', true);
     $tabContent.find('.sold-out-btn').hide();
     
-    // === MODIFICATION ===
     $tabContent.find('.form-image-title-placeholder').html('');
-    // === END MODIFICATION ===
 
     if (tab === 'indv') {
       $tabContent.find('.letters input').val('');
@@ -48,8 +46,6 @@ jQuery(function($){
     var data = masterCollectionsData[handle];
     if (!data) return;
 
-    // === MODIFICATION ===
-    // Variables are defined here
     var imageHtml = data.image ? '<img src="' + data.image + '" alt="' + (data.title || '') + '" class="collection-image-master">' : '';
     var titleHtml = '<h3 class="collection-title-master">' + (data.title || '') + '</h3>';
     
@@ -68,8 +64,6 @@ jQuery(function($){
 
     var has_details = detailsHtml.length > 0;
     var has_specs = specsHtml.length > 0;
-    // === END MODIFICATION ===
-
 
     var html = '<div class="tabs-container-master">';
     html += '<div class="tabs-nav-master">';
@@ -80,12 +74,7 @@ jQuery(function($){
 
     html += '<div class="tab-content-master">';
     html += '<div id="tab-description-master" class="tab-pane-master active">';
-    
-    // === MODIFICATION ===
-    // Image and Title removed from this line
     html += '<div class="tab-content-mobile">' + mainDesc + '</div>';
-    // === END MODIFICATION ===
-
     html += '</div>';
     
     if (has_details) {
@@ -104,11 +93,8 @@ jQuery(function($){
     var targetSelector = '.description-column-master.description-column-' + currentActiveTab;
     $(targetSelector).html(html);
 
-    // === MODIFICATION ===
-    // New lines to inject image/title into the form column
     var formTargetSelector = '#tab-content-' + currentActiveTab + ' .form-image-title-placeholder';
     $(formTargetSelector).html(imageHtml + titleHtml);
-    // === END MODIFICATION ===
 
     var parentHandle = data.parent_handle || '';
     $(targetSelector + ' a[href*="NRS-Know-Your-Inventory-Form.pdf"]').addClass('desc-styled-link-master');
@@ -121,15 +107,18 @@ jQuery(function($){
     var $heightSelect = $('#tab-content-' + tab + ' .letter-height');
     $heightSelect.html('<option value="">Select Height</option>');
     if (!data || !data.height_obj) return;
+    
+    // Sort heights numerically
     var heights = Object.keys(data.height_obj).sort(function(a, b) {
       return parseFloat(a.replace(/[^\d.-]/g, '')) - parseFloat(b.replace(/[^\d.-]/g, ''));
     });
+    
     heights.forEach(function(h) {
       $heightSelect.append('<option value="' + h + '">' + h + '</option>');
     });
   }
 
-  // Individual Form Updates
+  // --- Individual Form Updates (UNCHANGED) ---
   function updateCharactersIndv() {
     var height = $('#tab-content-indv .letter-height').val();
     var color = $('#tab-content-indv .letter-color').val();
@@ -163,71 +152,80 @@ jQuery(function($){
     $('#tab-content-indv .price').text('$' + total.toFixed(2));
   }
 
-  // Set Form Updates
-  function updateColorDropdownSet() {
-    var height = $('#tab-content-set .letter-height').val();
-    var $colorSelect = $('#tab-content-set .letter-color');
-    var $setSelect = $('#tab-content-set .letter-set-type');
-    
-    $setSelect.html('<option value="">Select Set Type</option>').attr('disabled', true);
-    $('#tab-content-set .price').text('$0.00').removeData('variant-id');
-    $('#tab-content-set .add-btn').attr('disabled', true);
-    $('#tab-content-set .error-set, .error-color, .error-height').hide();
-    
-    $colorSelect.html('<option value="">Select Color</option>');
-    if (height && currentCollectionHandleSet) {
-      var colors = masterCollectionsData[currentCollectionHandleSet].height_obj[height] || [];
-      colors.sort().forEach(function(c) {
-        $colorSelect.append('<option value="' + c + '">' + c + '</option>');
-      });
-      $colorSelect.attr('disabled', false);
-    } else {
-      $colorSelect.attr('disabled', true);
-    }
-  }
+  // --- Set Form Updates (Refactored: Height -> Set -> Color) ---
 
+  // 1. Triggered by HEIGHT change. Populates SET TYPE.
   function updateSetDropdownSet() {
     var height = $('#tab-content-set .letter-height').val();
-    var color = $('#tab-content-set .letter-color').val();
     var $setSelect = $('#tab-content-set .letter-set-type');
+    var $colorSelect = $('#tab-content-set .letter-color');
+
+    // Reset downstream inputs
+    $setSelect.html('<option value="">Select Set Type</option>').attr('disabled', true);
+    $colorSelect.html('<option value="">Select Color</option>').attr('disabled', true);
     
-    $setSelect.html('<option value="">Select Set Type</option>');
+    // Reset Price/Button
     $('#tab-content-set .price').text('$0.00').removeData('variant-id');
     $('#tab-content-set .add-btn').attr('disabled', true);
-    
-    if (height && color && currentCollectionHandleSet) {
-      var key = height + "||" + color;
-      var sets = masterCollectionsData[currentCollectionHandleSet].color_set_obj[key] || [];
-      sets.sort(function(a, b) { return a.title.localeCompare(b.title); });
+    $('#tab-content-set .sold-out-btn').hide();
+    $('#tab-content-set .error-set, .error-color, .error-height').hide();
+
+    if (height && currentCollectionHandleSet) {
+      // Direct lookup from Liquid pre-calculated map
+      // Data is pre-filtered for availability in Liquid
+      var sets = masterCollectionsData[currentCollectionHandleSet].height_set_obj[height] || [];
+      sets.sort(); 
       
-      sets.forEach(function(setItem) {
-        var availableClass = setItem.available ? '' : 'sold-out';
-        var optionText = setItem.title + (setItem.available ? '' : ' (Sold Out)');
-        $setSelect.append('<option value="' + setItem.id + '" class="' + availableClass + '" data-price="' + setItem.price.toFixed(2) + '">' + optionText + '</option>');
+      sets.forEach(function(s) {
+        $setSelect.append('<option value="' + s + '">' + s + '</option>');
       });
       $setSelect.attr('disabled', false);
-    } else {
-      $setSelect.attr('disabled', true);
     }
   }
 
+  // 2. Triggered by SET TYPE change. Populates COLOR.
+  function updateColorDropdownSet() {
+    var height = $('#tab-content-set .letter-height').val();
+    var setType = $('#tab-content-set .letter-set-type').val();
+    var $colorSelect = $('#tab-content-set .letter-color');
+
+    $colorSelect.html('<option value="">Select Color</option>').attr('disabled', true);
+    $('#tab-content-set .price').text('$0.00').removeData('variant-id');
+    $('#tab-content-set .add-btn').attr('disabled', true);
+    $('#tab-content-set .sold-out-btn').hide();
+
+    if (height && setType && currentCollectionHandleSet) {
+      var key = height + "||" + setType;
+      // Retrieve variants from Liquid map (already filtered)
+      var variants = (masterCollectionsData[currentCollectionHandleSet].set_color_obj || {})[key] || [];
+      
+      // Sort by Color Name
+      variants.sort(function(a, b) { return a.color.localeCompare(b.color); });
+      
+      variants.forEach(function(item) {
+        // Since data is pre-filtered, we assume all items here are available.
+        // We attach the variant ID and Price directly to the option.
+        $colorSelect.append('<option value="' + item.id + '" data-price="' + item.price.toFixed(2) + '">' + item.color + '</option>');
+      });
+      $colorSelect.attr('disabled', false);
+    }
+  }
+
+  // 3. Triggered by COLOR change. Updates PRICE.
   function updatePriceAndButtonSet() {
     var $priceEl = $('#tab-content-set .price');
     var $addButton = $('#tab-content-set .add-btn');
     var $soldOutButton = $('#tab-content-set .sold-out-btn');
 
-    var selectedOption = $('#tab-content-set .letter-set-type option:selected');
+    var selectedOption = $('#tab-content-set .letter-color option:selected');
+    
     if (selectedOption.length && selectedOption.val()) {
       var price = parseFloat(selectedOption.data('price')) || 0;
       $priceEl.text('$' + price.toFixed(2)).data('variant-id', selectedOption.val());
 
-      if (selectedOption.hasClass('sold-out')) {
-        $addButton.hide().attr('disabled', true);
-        $soldOutButton.show();
-      } else {
-        $addButton.show().removeAttr('disabled');
-        $soldOutButton.hide();
-      }
+      // Always show add button since sold-out options are hidden
+      $addButton.show().removeAttr('disabled');
+      $soldOutButton.hide();
     } else {
       $priceEl.text('$0.00').removeData('variant-id');
       $addButton.attr('disabled', true);
@@ -254,19 +252,14 @@ jQuery(function($){
     resetFormUI(tab);
     populateDescription(inventoryH);
     populateHeightDropdown(inventoryH, tab);
-    updateAvailabilityButtons(data);
-  }
-
-  function updateAvailabilityButtons(data) {
-    var $addButton = $('#tab-content-' + currentActiveTab + ' .add-btn');
-    var $soldOutButton = $('#tab-content-' + currentActiveTab + ' .sold-out-btn');
-
+    
+    // Availability handled by dropdown logic mostly, but check broad product availability
     if (data.products_available) {
-      $addButton.show();
-      $soldOutButton.hide();
+        $('#tab-content-' + currentActiveTab + ' .add-btn').show();
+        $('#tab-content-' + currentActiveTab + ' .sold-out-btn').hide();
     } else {
-      $addButton.hide();
-      $soldOutButton.show();
+        $('#tab-content-' + currentActiveTab + ' .add-btn').hide();
+        $('#tab-content-' + currentActiveTab + ' .sold-out-btn').show();
     }
   }
 
@@ -313,7 +306,7 @@ jQuery(function($){
     }
   });
 
-  // Individual Form Events
+  // --- Individual Form Events ---
   $('#tab-content-indv').on('change', '.letter-height', function() {
     var h = $(this).val();
     var $colorSelect = $('#tab-content-indv .letter-color');
@@ -331,7 +324,7 @@ jQuery(function($){
     updateCharactersIndv();
     updatePriceIndv();
 
-    // NEW: Hide grid and price/button when height changes (color gets reset)
+    // Hide grid and price/button when height changes
     $('#tab-content-indv .letters').hide();
     $('#tab-content-indv .price-and-button-wrapper').hide();
   });
@@ -340,7 +333,6 @@ jQuery(function($){
     updateCharactersIndv(); 
     updatePriceIndv(); 
 
-    // NEW: Show grid and price/button only when a color is selected
     var colorVal = $(this).val();
     if (colorVal) {
       $('#tab-content-indv .letters').show();
@@ -388,17 +380,18 @@ jQuery(function($){
       .fail(function() { alert('Error adding items to cart. Please try again.'); });
   });
 
-  // Set Form Events
+  // --- Set Form Events (Reordered) ---
   $('#tab-content-set').on('change', '.letter-height', function() { 
+    updateSetDropdownSet(); 
+  });
+  
+  // CHANGED: Set Type now triggers Color update
+  $('#tab-content-set').on('change', '.letter-set-type', function() { 
     updateColorDropdownSet(); 
   });
   
+  // CHANGED: Color now triggers Price update
   $('#tab-content-set').on('change', '.letter-color', function() {
-    updateSetDropdownSet(); 
-    updatePriceAndButtonSet(); 
-  });
-  
-  $('#tab-content-set').on('change', '.letter-set-type', function() { 
     updatePriceAndButtonSet(); 
   });
 
@@ -408,21 +401,14 @@ jQuery(function($){
     $('#tab-content-set .error-set, .error-color, .error-height').hide();
 
     var height = $('#tab-content-set .letter-height').val();
+    var setType = $('#tab-content-set .letter-set-type').val();
     var color = $('#tab-content-set .letter-color').val();
     var variantId = $('#tab-content-set .price').data('variant-id');
     
-    if (!height) { 
-      $('#tab-content-set .error-height').show(); 
-      return; 
-    }
-    if (!color) { 
-      $('#tab-content-set .error-color').show(); 
-      return; 
-    }
-    if (!variantId) { 
-      $('#tab-content-set .error-set').show(); 
-      return; 
-    }
+    if (!height) { $('#tab-content-set .error-height').show(); return; }
+    if (!setType) { $('#tab-content-set .error-set').show(); return; } 
+    if (!color) { $('#tab-content-set .error-color').show(); return; }
+    if (!variantId) { alert('Please select all options.'); return; } 
     
     var items = [{ id: variantId, quantity: 1 }];
     
@@ -443,42 +429,30 @@ jQuery(function($){
     $(activeColumn).find('#' + tab).addClass('active');
   });
 
-  // Initialization (matching source lines 752-766, without URL params per Q1)
+  // Initialization
   var isCollectionMode = $('.page-order-page-master').hasClass('collection-mode');
 
   if (isCollectionMode) {
-    // Collection page initialization - reuse master functions (Q3: Option B)
-    // Find which collection has data and select it
+    // Collection page initialization
     var collectionHandle = null;
     for (var handle in masterCollectionsData) {
       if (masterCollectionsData.hasOwnProperty(handle)) {
         collectionHandle = handle;
-        break; // Only one collection on collection pages
+        break; 
       }
     }
 
-    if (collectionHandle && masterCollectionsData[collectionHandle]._dataReady) {
-      var parentH = collectionHandle.replace(/-indv$/, '').replace(/-set$/, '');
-      var startTab = collectionHandle.includes('-set') ? 'set' : 'indv';
-
-      // Trigger correct tab
-      $('.top-level-tabs .tab-link-master[data-tab-name="'+startTab+'"]').trigger('click');
-
-      // Select the collection using master function
-      selectCollectionMaster(parentH, collectionHandle);
-    } else if (collectionHandle) {
-      // Data not ready yet, wait and.
-      setTimeout(function() {
-        if (masterCollectionsData[collectionHandle]._dataReady) {
+    if (collectionHandle) {
+        // Simple delay to ensure DOM is ready
+        setTimeout(function() {
           var parentH = collectionHandle.replace(/-indv$/, '').replace(/-set$/, '');
           var startTab = collectionHandle.includes('-set') ? 'set' : 'indv';
           $('.top-level-tabs .tab-link-master[data-tab-name="'+startTab+'"]').trigger('click');
           selectCollectionMaster(parentH, collectionHandle);
-        }
-      }, 100);
+        }, 100);
     }
   } else {
-    // Master section initialization - trigger individual tab and select first collection
+    // Master section initialization
     var firstItem = $('.collection-selector-grid-indv').find('.collection-selector-item-master').first();
     var startHandle = null;
 

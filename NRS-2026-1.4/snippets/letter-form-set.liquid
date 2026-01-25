@@ -31,33 +31,34 @@
       </div>
     </div>
 
-    {%- comment %} Step 2: Color Selection {% endcomment -%}
+    {%- comment %} Step 2: Set Type Selection (Moved Up) {% endcomment -%}
     <div class="step">
       <div class="step__header">
         <span class="step__number">2</span>
-        <p class="step__label">Choose Your Color</p>
-      </div>
-      {%- comment %} Direct reuse of .height-guide__right (no .height-guide wrapper) to match exact font/line-height/spacing without any border or left column {% endcomment -%}
-      <div class="height-guide__right color-note">
-        <span>Additional processing time required for <strong style="color:#f00;">RED</strong></span>
+        <p class="step__label">Choose Your Set</p>
       </div>
       <div class="step__form-input">
-        <select name="letter-color" class="letter-color" disabled>
-          <option value="">Select Color</option>
+        <select name="letter-set-type" class="letter-set-type" disabled>
+          <option value="">Select Set Type</option>
         </select>
       </div>
     </div>
 
-    {%- comment %} Step 3: Set Type Selection {% endcomment -%}
+    {%- comment %} Step 3: Color Selection (Moved Down) {% endcomment -%}
     <div class="step">
       <div class="step__header">
         <span class="step__number">3</span>
-        <p class="step__label">Choose Your Set</p>
+        <p class="step__label">Choose Your Color</p>
       </div>
+      
+      <div class="height-guide__right color-note">
+        <span>Additional processing time required for <strong style="color:#f00;">RED</strong></span>
+      </div>
+      
       <div class="step__form-input">
-        <p>Select a height and color above to see available sets.</p>
-        <select name="letter-set-type" class="letter-set-type" disabled>
-          <option value="">Select Set Type</option>
+        <p>Select a height and set above to see available colors.</p>
+        <select name="letter-color" class="letter-color" disabled>
+          <option value="">Select Color</option>
         </select>
       </div>
     </div>

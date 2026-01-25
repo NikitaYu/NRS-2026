@@ -53,7 +53,7 @@
 
   {%- comment %} 
     3. TOP LEVEL TABS 
-    Rendered but hidden in single modes. 
+    Rendered but hidden in single modes.
     Crucial: These must exist so the JS can be "clicked" programmatically.
   {% endcomment -%}
   <div class="tabs-nav-form-master top-level-tabs">
@@ -125,7 +125,10 @@
         variant_obj: {},
         price_obj: {},
         height_color_obj: {},
-        color_set_obj: {}
+        color_set_obj: {},
+        // GMN-AG Update: New Maps for Set Logic
+        height_set_obj: {},
+        set_color_obj: {}
       };
     </script>
 
@@ -149,30 +152,48 @@
               if (!variants_obj.hasOwnProperty(k)) continue;
               var variant = variants_obj[k];
               var height = variant.option1 || "";
+              
               if (isIndv) {
+                // --- INDIVIDUAL LOGIC (UNCHANGED) ---
                 var color = variant.option2 || "";
                 var letterStr = {{ letter_str | json }};
                 var height_color = height + "||" + color;
                 if (!data.height_obj[height]) { data.height_obj[height] = []; }
                 if (data.height_obj[height].indexOf(color) === -1) { data.height_obj[height].push(color); }
+   
                 if (!data.height_color_obj[height_color]) { data.height_color_obj[height_color] = []; }
                 if (data.height_color_obj[height_color].indexOf(letterStr) === -1) { data.height_color_obj[height_color].push(letterStr); }
                 var full_key = height_color + "||" + letterStr;
                 data.variant_obj[full_key] = variant.id;
                 data.price_obj[full_key] = (variant.price / 100);
+
               } else {
-                var setType = variant.option2 || "";
-                var color = variant.option3 || "";
-                var height_color = height + "||" + color;
-                if (!data.height_obj[height]) { data.height_obj[height] = []; }
-                if (data.height_obj[height].indexOf(color) === -1) { data.height_obj[height].push(color); }
-                if (!data.color_set_obj[height_color]) { data.color_set_obj[height_color] = []; }
-                data.color_set_obj[height_color].push({
-                  title: setType,
-                  id: variant.id,
-                  price: (variant.price / 100),
-                  available: variant.available
-                });
+                // --- SET LOGIC (UPDATED: FILTER UNAVAILABLE) ---
+                // Only process if the variant is actually available
+                if (variant.available) {
+                  var setType = variant.option2 || "";
+                  var color = variant.option3 || "";
+                  
+                  // 1. Populate Height (Existing)
+                  if (!data.height_obj[height]) { data.height_obj[height] = []; }
+                  
+                  // 2. Populate Height -> Set Types (New Flow)
+                  if (!data.height_set_obj[height]) { data.height_set_obj[height] = []; }
+                  if (data.height_set_obj[height].indexOf(setType) === -1) { 
+                    data.height_set_obj[height].push(setType); 
+                  }
+
+                  // 3. Populate Height + Set -> Colors (New Flow - Final Step)
+                  var height_set_key = height + "||" + setType;
+                  if (!data.set_color_obj[height_set_key]) { data.set_color_obj[height_set_key] = []; }
+                  
+                  data.set_color_obj[height_set_key].push({
+                    color: color,
+                    id: variant.id,
+                    price: (variant.price / 100),
+                    available: variant.available
+                  });
+                }
               }
             }
           })();
@@ -244,7 +265,7 @@
           var $setTab = window.jQuery(container).find('.tab-link-master[data-tab-name="set"]');
           var $setGrid = window.jQuery(container).find('.collection-selector-grid-set');
           var $firstSetItem = $setGrid.find('.collection-selector-item-master').first();
-          
+           
           // Conditions: Items exist and click handlers are likely bound (jQuery exists)
           if ($setTab.length && $firstSetItem.length) {
             
