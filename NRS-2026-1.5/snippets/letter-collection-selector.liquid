@@ -1,0 +1,54 @@
+﻿{% comment %} Reusable snippet for letter collection selector grid {% endcomment %}
+{%- liquid
+  assign parent_handles = all_parent_handles
+  assign current_tab = current_tab | default: 'indv'
+  assign inventory_suffix = ''
+  if current_tab == 'set'
+    assign inventory_suffix = '-set'
+  else
+    assign inventory_suffix = '-indv'
+  endif
+-%}
+
+<div class="collection-selector-wrapper-master">
+  <h2 class="selector-main-title-master">Select a style/collection:</h2>
+  <div class="selector-divider-master"></div>
+  <div class="collection-selector-grid-master collection-selector-grid-{{ current_tab }}">
+    {%- for parent_handle in parent_handles -%}
+      {%- assign inventory_handle = parent_handle | append: inventory_suffix -%}
+      {%- assign inventory_collection = collections[inventory_handle] -%}
+      {%- assign parent_collection = collections[parent_handle] -%}
+      {%- assign display_collection = parent_collection | default: inventory_collection -%}
+      
+      {%- if inventory_collection != blank -%}
+        <div class="collection-selector-item-master" 
+             data-parent-handle="{{ parent_handle }}" 
+             data-inventory-handle="{{ inventory_handle }}">
+          {%- if display_collection.image -%}
+            <img src="{{ display_collection.image.src | image_url: width: 300, height: 300 }}" 
+                 alt="{{ display_collection.title | escape }}" 
+                 width="300" 
+                 height="300">
+            <div>{{ display_collection.title }}</div>
+          {%- else -%}
+            <div style="padding:8px;">{{ display_collection.title }}</div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- comment %} GMN-AG: 5th Box Shortcut to Sets {% endcomment -%}
+    {%- if current_tab == 'indv' -%}
+      <div class="collection-selector-item-master" 
+           style="cursor: pointer;" 
+           onclick="document.querySelector('.tab-link-master[data-tab-name=\'set\']').click();">
+          <img src="{{ 'menu_letter2.jpg' | file_img_url: '600x' }}" 
+               alt="Letter Sets Shortcut" 
+               width="300" 
+               height="300">
+          <div>If you use letters like this - CLICK HERE</div>
+      </div>
+    {%- endif -%}
+  </div>
+  <div class="selector-divider-master"></div>
+</div>

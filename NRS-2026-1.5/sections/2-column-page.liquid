@@ -1,0 +1,115 @@
+﻿{% comment %}
+  Simple 2-Column Page Section
+  - Select a Shopify page from the customizer
+  - Displays the page title and content in a responsive 2-column layout
+  - On mobile, columns stack vertically for readability
+  - Uses CSS columns for text flow (works great for text-heavy pages; images stay in flow)
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "2-Column Page Content",
+  "class": "section-2-column-page",
+  "settings": [
+    {
+      "type": "page",
+      "id": "page",
+      "label": "Select Page",
+      "info": "Choose the page to display in 2 columns"
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column Gap (px)",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max Width (px)",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "default": 1200
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show Page Title",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "2-Column Page Content"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+  .section-2-column-page {
+    padding: 60px 20px;
+    background-color: {{ section.settings.bg_color | default: '#ffffff' }};
+  }
+
+  .two-column-page-wrapper {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .two-column-page-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  .two-column-content {
+    columns: 2;
+    column-gap: {{ section.settings.column_gap }}px;
+    orphans: 3;
+    widows: 3;
+  }
+
+  .two-column-content > * {
+    break-inside: avoid;
+    margin-bottom: 20px;
+  }
+
+  .two-column-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+  }
+
+  @media (max-width: 768px) {
+    .two-column-content {
+      columns: 1;
+    }
+  }
+{% endstyle %}
+
+<div class="section-2-column-page">
+  <div class="two-column-page-wrapper">
+    {%- if section.settings.page != blank -%}
+      {%- assign selected_page = pages[section.settings.page] -%}
+
+      {%- if section.settings.show_title -%}
+        <h2 class="two-column-page-title">
+          {{ selected_page.title }}
+        </h2>
+      {%- endif -%}
+
+      <div class="two-column-content">
+        {{ selected_page.content }}
+      </div>
+    {%- else -%}
+      <p style="text-align: center; color: #666;">Select a page in the customizer to display content here.</p>
+    {%- endif -%}
+  </div>
+</div>

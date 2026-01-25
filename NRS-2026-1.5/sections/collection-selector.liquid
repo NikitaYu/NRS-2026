@@ -1,0 +1,28 @@
+﻿{% comment %}
+  Section to select the source collection for the letter ordering page.
+  The selected collection handle is used to fetch the -indv collection.
+{% endcomment %}
+
+{% assign selected_collection_handle = section.settings.source_collection | append: "-indv" %}
+{% assign selected_collection = collections[selected_collection_handle] %}
+
+<div class="collection-selector">
+  {% if selected_collection %}
+    <p>Selected collection: {{ selected_collection.title }}</p>
+  {% else %}
+    <p>No collection selected.</p>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Collection Selector",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "source_collection",
+      "label": "Source Collection"
+    }
+  ]
+}
+{% endschema %}
