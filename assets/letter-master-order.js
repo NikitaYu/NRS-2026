@@ -267,41 +267,6 @@ jQuery(function ($) {
     populateDescription(inventoryH);
     populateHeightDropdown(inventoryH, tab);
     updateAvailabilityButtons(data);
-    updateRedNoteVisibility(inventoryH, tab);
-  }
-
-  function updateRedNoteVisibility(handle, tab) {
-    if (!handle) return;
-    var data = masterCollectionsData[handle];
-    var $redNote = $('#tab-content-' + tab + ' .color-note');
-    var hasRed = false;
-
-    if (data) {
-      // Check Individual data keys ("H||C")
-      if (data.height_color_obj) {
-        for (var key in data.height_color_obj) {
-          if (key.toUpperCase().indexOf('RED') !== -1) {
-            hasRed = true;
-            break;
-          }
-        }
-      }
-      // Check Set data keys ("H||C")
-      if (!hasRed && data.color_set_obj) {
-        for (var key in data.color_set_obj) {
-          if (key.toUpperCase().indexOf('RED') !== -1) {
-            hasRed = true;
-            break;
-          }
-        }
-      }
-    }
-
-    if (hasRed) {
-      $redNote.show();
-    } else {
-      $redNote.hide();
-    }
   }
 
   function updateAvailabilityButtons(data) {
@@ -357,7 +322,6 @@ jQuery(function ($) {
       // Repopulate description and form for current selection
       populateDescription(currentHandle);
       populateHeightDropdown(currentHandle, newTabName);
-      updateRedNoteVisibility(currentHandle, newTabName);
     }
   });
 
