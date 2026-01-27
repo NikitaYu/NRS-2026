@@ -49,11 +49,12 @@ class PredictiveSearch extends SearchForm {
 
   onChange() {
     const newSearchTerm = this.getQuery();
-    if (!this.searchTerm || !newSearchTerm.startsWith(this.searchTerm)) {
-      // Remove the results when they are no longer relevant for the new search term
-      // so they don't show up when the dropdown opens again
+    
+    // GMN FIX: Commented out to prevent results from disappearing while typing
+    /* if (!this.searchTerm || !newSearchTerm.startsWith(this.searchTerm)) {
       this.querySelector('#predictive-search-results-groups-wrapper')?.remove();
     }
+    */
 
     this.searchTerm = newSearchTerm;
 
@@ -96,7 +97,10 @@ class PredictiveSearch extends SearchForm {
 
   onFocusOut() {
     setTimeout(() => {
-      if (!this.contains(document.activeElement)) this.close();
+      // GMN FIX: Added check to ensure we don't close if the input itself is still active
+      if (!this.contains(document.activeElement) && document.activeElement !== this.input) {
+        this.close();
+      }
     });
   }
   
