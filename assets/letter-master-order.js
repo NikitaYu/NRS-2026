@@ -267,6 +267,46 @@ jQuery(function ($) {
     populateDescription(inventoryH);
     populateHeightDropdown(inventoryH, tab);
     updateAvailabilityButtons(data);
+    updateRedNoteVisibility(inventoryH, tab);
+  }
+
+  // Show/hide RED processing message based on color availability
+  function updateRedNoteVisibility(handle, tab) {
+    if (!handle) return;
+    var data = masterCollectionsData[handle];
+    var $redNote = $('#tab-content-' + tab + ' .color-note');
+    var hasRed = false;
+
+    if (data) {
+      // Check Individual colors (keys are "H||C")
+      if (data.height_color_obj) {
+        for (var key in data.height_color_obj) {
+          if (key.toUpperCase().indexOf('RED') !== -1) {
+            hasRed = true;
+            break;
+          }
+        }
+      }
+      // Check Set colors (keys are "H||SetType", values have color property)
+      if (!hasRed && data.set_color_obj) {
+        for (var key in data.set_color_obj) {
+          var variants = data.set_color_obj[key];
+          for (var i = 0; i < variants.length; i++) {
+            if (variants[i].color && variants[i].color.toUpperCase().indexOf('RED') !== -1) {
+              hasRed = true;
+              break;
+            }
+          }
+          if (hasRed) break;
+        }
+      }
+    }
+
+    if (hasRed) {
+      $redNote.show();
+    } else {
+      $redNote.hide();
+    }
   }
 
   function updateAvailabilityButtons(data) {
@@ -322,6 +362,7 @@ jQuery(function ($) {
       // Repopulate description and form for current selection
       populateDescription(currentHandle);
       populateHeightDropdown(currentHandle, newTabName);
+      updateRedNoteVisibility(currentHandle, newTabName);
     }
   });
 
