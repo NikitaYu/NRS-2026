@@ -1,0 +1,194 @@
+/*// =============================================================================
+// Ella Custom CSS - Customize The Style For Layout
+// =============================================================================
+
+// =============================================================================
+//
+// IMPORTANT DISCLAIMER
+// Shopify is notifying shop owners about the need to convert scss files to css files.
+// Please use only CSS to style the layout.
+//
+// =============================================================================*/
+
+
+/* General Page and Layout Styles */
+.page-order-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* HIDE STEP 3 BY DEFAULT */
+#step-3-content {
+  display: none;
+}
+
+.collection-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.col-6 {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .grid-12 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.description-column {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Form Styles */
+.letters-form {
+  font-family: Arial, sans-serif;
+}
+
+.step {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.step__left-col {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.step__left-col--number {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-right: 10px;
+}
+
+.step__left-col--label {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.letter-height {
+  display: flex;
+  margin-top: 10px;
+}
+
+.letter-height__left img {
+  max-width: 100px;
+  margin-right: 20px;
+}
+
+.letter-height__right h3 {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
+.letter-height__right p {
+  font-size: 14px;
+  color: #666;
+}
+
+.step__right-col {
+  flex: 1;
+}
+
+.step__right-col select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Character Grid Styles */
+.letters {
+  margin-top: 20px;
+}
+
+.letter-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .letter-row {
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  }
+}
+
+.letter {
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.letter__sku {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.letter label {
+  display: block;
+  font-size: 12px;
+  color: #333;
+}
+
+.letter input {
+  width: 40px;
+  padding: 3px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Price and Buttons */
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #000;
+}
+
+#add,
+#sold_out {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#add {
+  background: #000;
+  color: #fff;
+}
+
+#add:hover {
+  background: #333;
+}
+
+#sold_out {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}

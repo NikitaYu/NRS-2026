@@ -1,0 +1,105 @@
+{% comment %}
+  Individual Letters Order
+{% endcomment %}
+
+{%- assign indv_inventory_handles = "gemini-pronto-adm-standard-letters-indv,gemini-pronto-modern-letters-indv,gemini-pronto-condensed-letters-indv,gemini-pronto-ad-halftone-letters-indv" | split: "," %}
+
+{%- assign all_parent_handles = "gemini-pronto-adm-standard-letters,gemini-pronto-modern-letters,gemini-pronto-condensed-letters,gemini-pronto-ad-halftone-letters" | split: "," %}
+
+<link rel="stylesheet" href="{{ 'letter-master-order.css' | asset_url }}">
+
+<div class="page-order-page-master single-mode">
+  <div class="tabs-nav-form-master top-level-tabs">
+    <div class="tab-link-master active" data-tab-name="indv">INDIVIDUAL LETTERS</div>
+    <div class="tab-link-master" data-tab-name="set">LETTER SETS</div>
+  </div>
+
+  <script>var masterCollectionsData = {};</script>
+
+  {%- for handle in indv_inventory_handles -%}
+    {%- assign source_collection = collections[handle] -%}
+    {%- if source_collection == blank %}{% continue %}{% endif -%}
+
+    <script>
+      (function() {
+        var data = {
+          title: {{ source_collection.title | json }},
+          image: {{ source_collection.image | image_url: width: 800 | json }},
+          description: {{ source_collection.description | strip_html | json }},
+          full_description: {{ source_collection.description | json }},
+          main_description: {{ source_collection.description | split: '<div id="content-details">' | first | default: "" | json }},
+          details: {{ source_collection.description | split: '<div id="content-details">' | last | split: '<div id="content-specs">' | first | json }},
+          specs: {{ source_collection.description | split: '<div id="content-specs">' | last | json }},
+          has_details: {% if source_collection.description contains '<div id="content-details">' %}true{% else %}false{% endif %},
+          has_specs: {% if source_collection.description contains '<div id="content-specs">' %}true{% else %}false{% endif %},
+          height_obj: {},
+          height_color_obj: {},
+          variant_obj: {},
+          price_obj: {},
+          _dataReady: false
+        };
+
+        window.masterCollectionsData[{{ handle | json }}] = data;
+
+        {%- for product in source_collection.products -%}
+          {%- for variant in product.variants -%}
+            (function() {
+              var height = {{ variant.option1 | json }} || "";
+              var letter = {{ variant.option2 | json }} || "";
+              var color = {{ variant.option3 | json }} || "";
+              var height_color = height + "||" + color;
+              var full_key = height_color + "||" + letter;
+
+              if (letter && letter !== "") {
+                if (!data.height_obj[height]) data.height_obj[height] = [];
+                if (data.height_obj[height].indexOf(color) === -1) data.height_obj[height].push(color);
+
+                if (!data.height_color_obj[height_color]) data.height_color_obj[height_color] = [];
+                if (data.height_color_obj[height_color].indexOf(letter) === -1) data.height_color_obj[height_color].push(letter);
+
+                data.variant_obj[full_key] = {{ variant.id }};
+                data.price_obj[full_key] = ({{ variant.price }} / 100);
+              }
+            })();
+          {%- endfor -%}
+        {%- endfor -%}
+
+        data._dataReady = true;
+      })();
+    </script>
+  {%- endfor -%}
+
+  <div id="tab-content-indv" class="tab-content-master active">
+    <div class="master-tab-inner-content">
+      {%- render 'letter-collection-selector', current_tab: 'indv', all_parent_handles: all_parent_handles, master_mode: false -%}
+
+      <div class="grid-12-master">
+        {%- render 'letter-form-indv', collection_handle: '', order_type: 'indv' -%}
+        {%- render 'letter-description', collection_handle: '', order_type: 'indv' -%}
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-content-set" class="tab-content-master"></div>
+</div>
+
+<script src="{{ 'letter-master-order.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Individual Letters Order",
+  "tag": "section",
+  "class": "section-letter-order-individual",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Dedicated section for ordering individual marquee letters."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Letter Order - Indv"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,491 @@
+{% comment %}
+  NRS Top Nav - Composite Layout System (Production)
+  - Features: Flex-Grid Hybrid, Sibling Blocks.
+  - Updates: Split Padding Controls (Vert/Horiz), Sharp Corners on Nav.
+{% endcomment %}
+
+{{ 'component-megamenu.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  /* --- Section Base Styles --- */
+  .nrs-nav-wrapper {
+    background-color: {{ section.settings.bg_color }};
+    border-bottom: 1px solid {{ section.settings.border_color }};
+    position: relative;
+    z-index: 1000;
+  }
+  
+  .nrs-nav-list {
+    display: flex;
+    justify-content: {{ section.settings.menu_alignment }};
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+  }
+
+  .nrs-nav-item {
+    padding: {{ section.settings.nav_item_spacing }}px 0;
+    position: static;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  /* --- Link Styling --- */
+  .nrs-nav-link {
+    text-decoration: none;
+    color: {{ section.settings.link_color }};
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    /* Split Padding Control */
+    padding: {{ section.settings.link_pad_v }}px {{ section.settings.link_pad_h }}px;
+    border-radius: 0; /* FIX: Sharp Corners */
+    transition: all 0.2s ease;
+  }
+  
+  .nrs-nav-link:hover,
+  .nrs-nav-item:focus-within .nrs-nav-link { 
+    color: {{ section.settings.link_hover_color }}; 
+    background-color: {{ section.settings.nav_hover_bg }};
+  }
+
+  .nrs-arrow { font-size: 10px; transition: transform 0.2s ease; }
+  .nrs-nav-item:hover .nrs-arrow, .nrs-nav-item:focus-within .nrs-arrow { transform: rotate(180deg); }
+
+  /* --- Mega Menu Container --- */
+  .nrs-mega-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    background: #fff;
+    border-top: 1px solid {{ section.settings.border_color }};
+    z-index: 1100;
+    overflow-y: auto; 
+    max-height: 90vh;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    left: 0; 
+    right: 0; 
+    margin: 0 auto;
+    height: auto;
+    min-height: 0;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+  }
+  .nrs-mega-dropdown::-webkit-scrollbar { width: 6px; }
+  .nrs-mega-dropdown::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 3px; }
+
+  /* Interaction States */
+  @media (min-width: 1025px) {
+    .nrs-nav-item:hover .nrs-mega-dropdown { display: block; animation: fadeIn 0.2s ease-out; }
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .nrs-nav-item:focus-within .nrs-mega-dropdown { display: block; }
+  }
+  @media (max-width: 767px) { .nrs-nav-wrapper { display: none; } }
+  
+ /* @keyframes fadeIn { from { opacity: 0.7; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } } */
+
+  @keyframes fadeIn { 
+  from { opacity: 0.7; transform: scale(0.95) translateY(-10px); } 
+  to { opacity: 1; transform: scale(1) translateY(0); } 
+}
+
+  /* --- Composite Layout System --- */
+  .nrs-zone-stack { display: flex; flex-direction: column; width: 100%; }
+  
+  /* Middle Zone: Flexbox Row */
+  .nrs-zone-middle {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; 
+    padding: 0; 
+    gap: 30px;
+    overflow: hidden; 
+  }
+
+  /* Grid Area (Flex Grow) */
+  .nrs-grid-container {
+    flex-grow: 1;
+    display: grid;
+  }
+
+  /* --- Card Styling --- */
+  .nrs-card {
+    display: flex; flex-direction: column; text-decoration: none; color: inherit; height: 100%; position: relative; transition: transform 0.2s ease;
+  }
+  
+  .nrs-card-img-wrapper {
+    overflow: hidden; 
+    border-radius: 4px; 
+    margin-bottom: 15px; 
+    width: 100%; 
+    background-color: transparent; 
+    flex-shrink: 0; 
+  }
+  .nrs-card img { width: 100%; display: block; transition: scale 0.3s ease; }
+  
+  /* Hover Effects */
+  .nrs-mode-interactive .nrs-card:hover { transform: translateY(-3px); }
+  .nrs-mode-interactive .nrs-card:hover img { scale: 1.05; }
+
+  .nrs-card-title { margin: 0 0 8px 0; line-height: 1.2; font-weight: 600; flex-shrink: 0; }
+  .nrs-card-desc { font-size: 0.9em; opacity: 0.8; margin-bottom: 15px; line-height: 1.5; flex-shrink: 0; }
+
+  .nrs-card-btn {
+    display: inline-block; padding: 10px 20px; text-decoration: none; text-align: center;
+    margin-top: auto; width: fit-content; border: 1px solid transparent; font-size: 14px; font-weight: 500; flex-shrink: 0;
+  }
+
+  /* Global Link Overlay */
+  .nrs-global-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; cursor: pointer;
+  }
+  .nrs-mode-global .nrs-card-btn { display: none !important; }
+
+{% endstyle %}
+
+<div class="nrs-nav-wrapper">
+  <div class="page-width">
+    <ul class="nrs-nav-list">
+      {%- for link in section.settings.menu.links -%}
+        
+        {%- assign link_handle = link.title | handleize -%}
+        {%- assign config_block = nil -%}
+        {%- assign banner_left = nil -%}
+        {%- assign banner_right = nil -%}
+        
+        {%- for block in section.blocks -%}
+          {%- assign trigger = block.settings.trigger_id | handleize -%}
+          {%- if trigger == link_handle -%}
+            {%- if block.type == 'mega_menu_config' and block.settings.enable_menu -%}
+              {%- assign config_block = block -%}
+            {%- elsif block.type == 'mega_menu_banner_vert' -%}
+              {%- if block.settings.position == 'left' and banner_left == nil -%}
+                {%- assign banner_left = block -%}
+              {%- elsif block.settings.position == 'right' and banner_right == nil -%}
+                {%- assign banner_right = block -%}
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        <li class="nrs-nav-item" tabindex="0" {% if config_block %}{{ config_block.shopify_attributes }}{% endif %}>
+          <a href="{{ link.url }}" class="nrs-nav-link">
+            {{ link.title }}
+            {% if config_block %}<span class="nrs-arrow">▼</span>{% endif %}
+          </a>
+
+          {%- if config_block -%}
+            
+            {%- assign mode_class = 'nrs-mode-interactive' -%}
+            {%- if config_block.settings.link_scope == 'global' -%}
+              {%- assign mode_class = 'nrs-mode-global' -%}
+            {%- endif -%}
+
+            {% comment %} Container Width {% endcomment %}
+            {%- assign container_style = "" -%}
+            {%- if config_block.settings.width_type == 'fixed' -%}
+               {%- assign container_style = "width: auto; max-width: " | append: config_block.settings.width_value | append: "px;" -%}
+            {%- elsif config_block.settings.width_type == 'percentage' -%}
+               {%- assign container_style = "width: auto; max-width: " | append: config_block.settings.width_value | append: "%;" -%}
+            {%- elsif config_block.settings.width_type == 'boxed' -%}
+               {%- assign container_style = "width: auto; max-width: 1200px;" -%}
+            {%- else -%}
+               {%- assign container_style = "width: 100%;" -%}
+            {%- endif -%}
+
+            {% comment %} Middle Zone Height {% endcomment %}
+            {%- assign middle_style = "gap: " | append: config_block.settings.grid_gap | append: "px;" -%}
+            
+            {%- if config_block.settings.middle_height_mode == 'fixed' -%}
+              {%- assign unit = config_block.settings.middle_height_unit | default: 'px' -%}
+              {%- assign middle_style = middle_style | append: " height: " | append: config_block.settings.middle_height_value | append: unit | append: ";" -%}
+              {%- assign row_height_css = "auto" -%}
+            {%- else -%}
+              {%- assign middle_style = middle_style | append: " min-height: " | append: config_block.settings.grid_min_height | append: "px;" -%}
+              {%- assign row_height_css = "min-content" -%}
+            {%- endif -%}
+
+            <div class="nrs-mega-dropdown {{ mode_class }}" style="{{ container_style }}">
+              {%- if config_block.settings.link_scope == 'global' and config_block.settings.global_url != blank -%}
+                <a href="{{ config_block.settings.global_url }}" class="nrs-global-overlay"></a>
+              {%- endif -%}
+
+              <div class="page-width" style="width: 100%; padding: 0;">
+                <div class="nrs-zone-stack">
+                  
+                  {% comment %} ZONE 1: TOP BANNERS {% endcomment %}
+                  {%- for block in section.blocks -%}
+                    {%- assign b_trig = block.settings.trigger_id | handleize -%}
+                    {%- if block.type == 'mega_menu_banner_horiz' and b_trig == link_handle and block.settings.position == 'top' -%}
+                      {% render 'nrs-banner-render', block: block, is_vertical: false, link_scope: config_block.settings.link_scope %}
+                    {%- endif -%}
+                  {%- endfor -%}
+
+                  {% comment %} ZONE 2: MIDDLE {% endcomment %}
+                  <div class="nrs-zone-middle" style="{{ middle_style }}">
+                    
+                    {%- if banner_left -%}
+                      {% render 'nrs-banner-render', block: banner_left, is_vertical: true, link_scope: config_block.settings.link_scope %}
+                    {%- endif -%}
+
+                    <div class="nrs-grid-container" style="
+                      grid-template-columns: repeat({{ config_block.settings.columns }}, 1fr);
+                      gap: {{ config_block.settings.grid_gap }}px;
+                      padding: 0 0 0 {{ config_block.settings.grid_gap }}px; 
+                      grid-auto-rows: {{ row_height_css }};
+                    ">
+                      {%- assign rows_num = config_block.settings.rows | plus: 0 -%}
+                      {%- assign max_cards = config_block.settings.columns | times: rows_num -%}
+                      {%- assign card_count = 0 -%}
+
+                      {%- for block in section.blocks -%}
+                        {%- if block.type == 'mega_menu_card' -%}
+                          {%- assign card_trigger = block.settings.trigger_id | handleize -%}
+                          {%- if card_trigger == link_handle -%}
+                            {%- assign card_count = card_count | plus: 1 -%}
+                            {%- if card_count <= max_cards -%}
+                              
+                              <div class="nrs-card" style="
+                                text-align: {{ config_block.settings.text_align }}; 
+                                color: {{ config_block.settings.text_color }};
+                                /* Split Padding Logic for Cards */
+                                padding: {{ config_block.settings.card_pad_v }}px {{ config_block.settings.card_pad_h }}px;
+                              ">
+                                {% if config_block.settings.link_scope == 'individual' and config_block.settings.link_interaction == 'card' and block.settings.link_url != blank %}
+                                  <a href="{{ block.settings.link_url }}" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:2;"></a>
+                                {% endif %}
+
+                                {% if block.settings.image != blank %}
+                                  {%- if block.settings.aspect_ratio == 'original' -%}
+                                    <div class="nrs-card-img-wrapper" style="width: 100%; background: none;">
+                                      {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', style: 'width:100%; height:auto; display:block;' }}
+                                    </div>
+                                  {%- else -%}
+                                    <div class="nrs-card-img-wrapper" style="aspect-ratio: {{ block.settings.aspect_ratio }};">
+                                      {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', style: 'width:100%; height:100%; object-fit: cover; object-position: ' | append: block.settings.img_position }}
+                                    </div>
+                                  {%- endif -%}
+                                {% endif %}
+
+                                <div class="nrs-card-content">
+                                  {% if block.settings.title != blank %}
+                                    <h3 class="nrs-card-title" style="font-size: {{ block.settings.title_size }}px;">{{ block.settings.title }}</h3>
+                                  {% endif %}
+                                  {% if block.settings.description != blank %}
+                                    <div class="nrs-card-desc">{{ block.settings.description }}</div>
+                                  {% endif %}
+                                  
+                                  {% if config_block.settings.link_scope == 'individual' and config_block.settings.link_interaction == 'button' and block.settings.btn_text != blank %}
+                                    <a href="{{ block.settings.link_url }}" class="nrs-card-btn" style="
+                                      background: {{ config_block.settings.btn_bg }}; color: {{ config_block.settings.btn_text_color }}; position: relative; z-index: 3;">
+                                      {{ block.settings.btn_text }}
+                                    </a>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            {%- endif -%}
+                          {%- endif -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </div>
+
+                    {%- if banner_right -%}
+                      {% render 'nrs-banner-render', block: banner_right, is_vertical: true, link_scope: config_block.settings.link_scope %}
+                    {%- endif -%}
+
+                  </div>
+
+                  {% comment %} ZONE 3: BOTTOM BANNERS {% endcomment %}
+                  {%- for block in section.blocks -%}
+                    {%- assign b_trig = block.settings.trigger_id | handleize -%}
+                    {%- if block.type == 'mega_menu_banner_horiz' and b_trig == link_handle and block.settings.position == 'bottom' -%}
+                      {% render 'nrs-banner-render', block: block, is_vertical: false, link_scope: config_block.settings.link_scope %}
+                    {%- endif -%}
+                  {%- endfor -%}
+
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "NRS Composite Mega Menu",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Main Menu", "default": "main-menu" },
+    { "type": "header", "content": "Section Styling" },
+    { "type": "color", "id": "bg_color", "label": "Bar Background", "default": "#ffffff" },
+    { "type": "color", "id": "border_color", "label": "Border Color", "default": "#e5e5e5" },
+    { "type": "range", "id": "nav_item_spacing", "label": "Nav Item Spacing (Vertical)", "min": 0, "max": 40, "step": 1, "default": 20 },
+    { "type": "header", "content": "Link Styling" },
+    { "type": "color", "id": "link_color", "label": "Link Color", "default": "#000000" },
+    { "type": "color", "id": "link_hover_color", "label": "Hover Text Color", "default": "#555555" },
+    { "type": "color", "id": "nav_hover_bg", "label": "Hover Background Color", "default": "transparent" },
+    { "type": "range", "id": "link_pad_v", "label": "Link Padding (Vertical)", "min": 0, "max": 40, "step": 1, "default": 8 },
+    { "type": "range", "id": "link_pad_h", "label": "Link Padding (Horizontal)", "min": 0, "max": 40, "step": 1, "default": 16 },
+    { "type": "select", "id": "menu_alignment", "label": "Alignment", "options": [
+      {"value": "flex-start", "label": "Left"}, {"value": "center", "label": "Center"}, {"value": "flex-end", "label": "Right"}
+    ], "default": "center" }
+  ],
+  "blocks": [
+    {
+      "type": "mega_menu_config",
+      "name": "⚙️ Menu Config",
+      "settings": [
+        { "type": "checkbox", "id": "enable_menu", "label": "Enable Mega Menu", "default": true },
+        { "type": "text", "id": "trigger_id", "label": "Menu Link Name", "default": "Shop" },
+        
+        { "type": "header", "content": "Link Scope" },
+        { "type": "select", "id": "link_scope", "label": "Click Behavior", "options": [
+          {"value": "individual", "label": "Individual Cards have Links"},
+          {"value": "global", "label": "Entire Dropdown is One Link"}
+        ], "default": "individual" },
+        { "type": "url", "id": "global_url", "label": "Global Link URL" },
+
+        { "type": "header", "content": "Grid Layout" },
+        { "type": "range", "id": "columns", "min": 1, "max": 6, "step": 1, "label": "Grid Columns", "default": 4 },
+        { "type": "select", "id": "rows", "label": "Rows Limit", "options": [{"value":"1","label":"1 Row"},{"value":"2","label":"2 Rows"}], "default": "1" },
+        
+        { "type": "header", "content": "Middle Zone Height" },
+        { "type": "select", "id": "middle_height_mode", "label": "Height Mode", "options": [{"value":"auto","label":"Auto (Shrink to Fit)"},{"value":"fixed","label":"Fixed"}], "default": "auto" },
+        { "type": "number", "id": "middle_height_value", "label": "Height Value", "default": 500 },
+        { "type": "select", "id": "middle_height_unit", "label": "Unit", "options": [{"value":"px","label":"Pixels"},{"value":"vh","label":"% Viewport"}], "default": "px" },
+
+        { "type": "header", "content": "Spacing & Padding" },
+        { "type": "range", "id": "grid_gap", "min": 0, "max": 60, "step": 5, "unit": "px", "label": "Grid Gap", "default": 20 },
+        { "type": "range", "id": "card_pad_v", "min": 0, "max": 60, "step": 5, "unit": "px", "label": "Card Padding (Vertical)", "default": 0 },
+        { "type": "range", "id": "card_pad_h", "min": 0, "max": 60, "step": 5, "unit": "px", "label": "Card Padding (Horizontal)", "default": 0 },
+        { "type": "range", "id": "grid_min_height", "min": 0, "max": 800, "step": 50, "unit": "px", "label": "Min Height (Auto Mode)", "default": 0 },
+
+        { "type": "header", "content": "Width Control" },
+        { "type": "select", "id": "width_type", "label": "Container Width", "options": [
+          {"value": "full", "label": "Full Screen"},
+          {"value": "boxed", "label": "Boxed (Theme)"},
+          {"value": "fixed", "label": "Fixed PX"},
+          {"value": "percentage", "label": "Percentage %"}
+        ], "default": "boxed" },
+        { "type": "number", "id": "width_value", "label": "Custom Width Value", "default": 1200 },
+
+        { "type": "header", "content": "Global Styling" },
+        { "type": "color", "id": "text_color", "label": "Text Color", "default": "#000" },
+        { "type": "select", "id": "text_align", "label": "Text Alignment", "options": [{"value":"left","label":"Left"},{"value":"center","label":"Center"}], "default": "left" },
+        { "type": "select", "id": "link_interaction", "label": "Card Link Style", "options": [{"value":"card","label":"Entire Card"},{"value":"button","label":"Button Only"}], "default": "card" },
+        { "type": "color", "id": "btn_bg", "label": "Button BG", "default": "#000" },
+        { "type": "color", "id": "btn_text_color", "label": "Button Text", "default": "#fff" }
+      ]
+    },
+    {
+      "type": "mega_menu_card",
+      "name": "🖼️ Card",
+      "settings": [
+        { "type": "text", "id": "trigger_id", "label": "Attach to Menu", "default": "Shop" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "select", "id": "aspect_ratio", "label": "Aspect Ratio", "options": [
+          {"value":"original","label":"Original (No Crop)"},
+          {"value":"1 / 1","label":"Square"},
+          {"value":"4 / 5","label":"Portrait"},
+          {"value":"16 / 9","label":"Landscape"}
+        ], "default": "1 / 1" },
+        { "type": "select", "id": "img_position", "label": "Crop Position", "options": [{"value":"top","label":"Top"},{"value":"center","label":"Center"},{"value":"bottom","label":"Bottom"}], "default": "center" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "range", "id": "title_size", "min": 12, "max": 30, "step": 1, "label": "Title Size", "default": 18 },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "url", "id": "link_url", "label": "Link URL" },
+        { "type": "text", "id": "btn_text", "label": "Button Label", "default": "Shop Now" }
+      ]
+    },
+    {
+      "type": "mega_menu_banner_vert",
+      "name": "▮ Vertical Banner",
+      "settings": [
+        { "type": "text", "id": "trigger_id", "label": "Attach to Menu", "default": "Shop" },
+        { "type": "select", "id": "position", "label": "Position", "options": [{"value":"left","label":"Left Side"},{"value":"right","label":"Right Side"}], "default": "left" },
+        { "type": "header", "content": "Size" },
+        { "type": "select", "id": "width_unit", "label": "Width Unit", "options": [{"value":"px","label":"Pixels"},{"value":"%","label":"Percentage"}], "default": "px" },
+        { "type": "number", "id": "width_val", "label": "Width Value", "default": 300 },
+        { "type": "header", "content": "Background Image" },
+        { "type": "image_picker", "id": "image", "label": "BG Image" },
+        { "type": "select", "id": "img_position", "label": "BG Crop Position", "options": [
+          {"value":"top","label":"Top"},
+          {"value":"center","label":"Center"},
+          {"value":"bottom","label":"Bottom"}
+        ], "default": "center" },
+        { "type": "color", "id": "bg_color", "label": "Fallback BG Color", "default": "#000000" },
+        
+        { "type": "header", "content": "Foreground Image" },
+        { "type": "image_picker", "id": "fg_image", "label": "Foreground Image" },
+        { "type": "range", "id": "fg_width", "min": 20, "max": 400, "step": 10, "label": "Image Width (px)", "default": 100 },
+        { "type": "select", "id": "fg_align", "label": "Image Alignment", "options": [{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}], "default": "center" },
+        { "type": "select", "id": "fg_aspect", "label": "Image Aspect/Crop", "options": [
+          {"value":"original","label":"Original (No Crop)"},
+          {"value":"1 / 1","label":"Square"},
+          {"value":"4 / 5","label":"Portrait"},
+          {"value":"16 / 9","label":"Landscape"}
+        ], "default": "original" },
+        { "type": "select", "id": "fg_crop", "label": "Crop Focus", "options": [{"value":"top","label":"Top"},{"value":"center","label":"Center"},{"value":"bottom","label":"Bottom"}], "default": "center" },
+
+        { "type": "header", "content": "Content Styling" },
+        { "type": "select", "id": "content_align", "label": "Text Alignment", "options": [
+          {"value":"left","label":"Left"},
+          {"value":"center","label":"Center"},
+          {"value":"right","label":"Right"}
+        ], "default": "left" },
+        { "type": "range", "id": "cont_pad_v", "min": 0, "max": 100, "step": 5, "label": "Padding (Vertical)", "default": 40 },
+        { "type": "range", "id": "cont_pad_h", "min": 0, "max": 100, "step": 5, "label": "Padding (Horizontal)", "default": 40 },
+        { "type": "text", "id": "title", "label": "Title", "default": "Feature" },
+        { "type": "range", "id": "title_size", "min": 16, "max": 60, "step": 1, "label": "Title Size", "default": 24 },
+        { "type": "color", "id": "title_color", "label": "Title Color", "default": "#ffffff" },
+        { "type": "textarea", "id": "desc", "label": "Description" },
+        { "type": "range", "id": "desc_size", "min": 12, "max": 24, "step": 1, "label": "Desc Size", "default": 16 },
+        { "type": "color", "id": "desc_color", "label": "Desc Color", "default": "#ffffff" },
+        { "type": "text", "id": "btn_text", "label": "Button Label" },
+        { "type": "color", "id": "btn_bg", "label": "Button BG", "default": "#fff" },
+        { "type": "color", "id": "btn_text_color", "label": "Button Text", "default": "#000" },
+        { "type": "url", "id": "link_url", "label": "Link" }
+      ]
+    },
+    {
+      "type": "mega_menu_banner_horiz",
+      "name": "▬ Horizontal Banner",
+      "settings": [
+        { "type": "text", "id": "trigger_id", "label": "Attach to Menu", "default": "Shop" },
+        { "type": "select", "id": "position", "label": "Position", "options": [{"value":"top","label":"Top"},{"value":"bottom","label":"Bottom"}], "default": "bottom" },
+        { "type": "header", "content": "Height Control" },
+        { "type": "select", "id": "height_mode", "label": "Height Mode", "options": [{"value":"auto","label":"Auto"},{"value":"fixed","label":"Fixed"}], "default": "auto" },
+        { "type": "number", "id": "height_value", "label": "Height Value", "default": 250 },
+        { "type": "select", "id": "height_unit", "label": "Unit", "options": [{"value":"px","label":"Pixels"},{"value":"vh","label":"% Viewport"}], "default": "px" },
+        { "type": "header", "content": "Style & Alignment" },
+        { "type": "select", "id": "content_align", "label": "Content Alignment", "options": [{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}], "default": "left" },
+        { "type": "range", "id": "cont_pad_v", "min": 0, "max": 100, "step": 5, "label": "Padding (Vertical)", "default": 40 },
+        { "type": "range", "id": "cont_pad_h", "min": 0, "max": 100, "step": 5, "label": "Padding (Horizontal)", "default": 40 },
+        { "type": "header", "content": "Content" },
+        { "type": "image_picker", "id": "image", "label": "Background Image" },
+        { "type": "color", "id": "bg_color", "label": "BG Color", "default": "#333" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "range", "id": "title_size", "min": 16, "max": 60, "step": 1, "label": "Title Size", "default": 24 },
+        { "type": "color", "id": "title_color", "label": "Title Color", "default": "#ffffff" },
+        { "type": "textarea", "id": "desc", "label": "Description" },
+        { "type": "range", "id": "desc_size", "min": 12, "max": 24, "step": 1, "label": "Desc Size", "default": 16 },
+        { "type": "color", "id": "desc_color", "label": "Desc Color", "default": "#ffffff" },
+        { "type": "text", "id": "btn_text", "label": "Button Label" },
+        { "type": "color", "id": "btn_bg", "label": "Button BG", "default": "#fff" },
+        { "type": "color", "id": "btn_text_color", "label": "Button Text", "default": "#000" },
+        { "type": "url", "id": "link_url", "label": "Link URL" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "NRS Composite Mega Menu" }]
+}
+{% endschema %}

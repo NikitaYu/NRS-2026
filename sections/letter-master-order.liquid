@@ -1,0 +1,235 @@
+{% comment %} Letter Master Order Section - Homepage Version {% endcomment %}
+{% comment %} Phase 1: Optimized structure with reusable snippets and comments {% endcomment %}
+
+{%- comment %} 1.1: Retain hardcoded collections for stability {% endcomment -%}
+{% assign indv_collection_handles = "gemini-pronto-adm-standard-letters-indv,gemini-pronto-modern-letters-indv,gemini-pronto-condensed-letters-indv,gemini-pronto-ad-halftone-letters-indv" | split: "," %}
+{% assign set_collection_handles = "flexible-bold-block-letters-set,flexible-narrow-condensed-letters-set,gemini-pronto-adm-standard-letters-set,gemini-pronto-modern-letters-set,gemini-pronto-condensed-letters-set,gemini-pronto-ad-halftone-letters-set" | split: "," %}
+
+{% assign master_collection_handles = indv_collection_handles | concat: set_collection_handles %}
+{% assign all_parent_handles = "gemini-pronto-adm-standard-letters,gemini-pronto-modern-letters,gemini-pronto-condensed-letters,gemini-pronto-ad-halftone-letters,flexible-bold-block-letters,flexible-narrow-condensed-letters" | split: "," %}
+
+{%- comment %} Load shared CSS {% endcomment -%}
+<link rel="stylesheet" href="{{ 'letter-master-order.css' | asset_url }}">
+
+{% comment %} === ADDED: Define CSS variables for background images === {% endcomment %}
+{%- liquid
+  assign bg_image_1_url = 'master-hero-bg1.png' | file_url
+  assign bg_image_2_url = 'master-hero-bg2.png' | file_url
+-%}
+<style>
+  :root {
+    --hero-bg-image-1: url('{{ bg_image_1_url }}');
+    --hero-bg-image-2: url('{{ bg_image_2_url }}');
+  }
+</style>
+{% comment %} === END ADDED === {% endcomment %}
+
+<div class="page-order-page-master" id="home-sign-letters">
+
+  {%- comment %} Top-level tabs: INDIVIDUAL LETTERS vs LETTER SETS {% endcomment -%}
+  <div class="tabs-nav-form-master top-level-tabs">
+
+    <div class="master-hero-text-container"> <!-- Changed class -->
+      <h1 class="master-hero-line-1">Marquee Sign Letters</h1> <!-- Changed class -->
+      <p class="master-hero-line-2">No Minimum Order | Same Day Shipping | Best Price Guaranteed</p> <!-- Changed class -->
+      <p class="master-hero-line-4">Available in Full Sets or Individuals Letters</p> <!-- Changed class -->
+    </div>
+
+    <div class="top-level-tabs-wrapper">
+
+      <div class="tab-link-master active" data-tab-name="indv">
+        <img src="{{ 'abc_123.png' | file_url }}"
+             alt="Individual Letters Icon"
+             class="tab-icon-master"
+             width="150"
+             height="150">
+        <span class="click-here-prompt">CLICK HERE FOR</span>
+        <span class="tab-title-main">INDIVIDUAL LETTERS</span>
+      </div>
+
+      <div class="tab-link-master" data-tab-name="set">
+         <img src="{{ 'set1-tmb.png' | file_url }}"
+              alt="Letter Sets Icon"
+              class="tab-icon-master"
+              width="150"
+              height="150">
+        <span class="click-here-prompt">CLICK HERE FOR</span>
+         <span class="tab-title-main">LETTER SETS</span>
+      </div>
+
+    </div> <!-- Close top-level-tabs-wrapper -->
+
+  </div>
+
+  {%- comment %} Global JS data structure for collections {% endcomment -%}
+  <script>var masterCollectionsData = {};</script>
+
+  {%- comment %} 1.4: Build collection data with early validation and consolidated logic {% endcomment -%}
+  {%- for handle in master_collection_handles -%}
+    {%- comment %} Early validation: Skip if collection doesn't exist {% endcomment -%}
+    {%- assign source_collection = collections[handle] -%}
+    {%- if source_collection == blank %}{% continue %}{% endif -%}
+
+    {%- assign parent_handle = handle | remove: "-indv" | remove: "-set" -%}
+    {%- assign parent_collection = collections[parent_handle] -%}
+
+    {%- comment %} Description always comes from the source collection itself {% endcomment -%}
+    {%- assign desc_source = source_collection.description -%}
+
+    {%- comment %} Get main description (content before either tab div) {% endcomment -%}
+    {%- assign main_desc = desc_source | split: '<div id="content-details">' | first | split: '<div id="content-specs">' | first | default: '' -%}
+    {%- comment %} Pass the full description to JS for robust DOM parsing {% endcomment -%}
+    {%- assign full_desc_for_js = desc_source -%}
+
+    {%- comment %} Image and title logic {% endcomment -%}
+    {%- assign image_src = '' -%}
+    {%- if parent_collection != blank and parent_collection.image -%}
+      {%- assign image_src = parent_collection.image.src | image_url: width: 600, height: 600 -%}
+    {%- elsif source_collection.image -%}
+      {%- assign image_src = source_collection.image.src | image_url: width: 600, height: 600 -%}
+    {%- endif -%}
+    {%- assign display_title = parent_collection.title | default: source_collection.title -%}
+
+    {%- comment %} Availability check {% endcomment -%}
+    {%- assign products_available = false -%}
+    {%- assign first_product = source_collection.products.first -%}
+    {%- if first_product != blank -%}
+      {%- assign first_variant = first_product.variants.first -%}
+      {%- if first_variant != blank and first_variant.available -%}
+        {%- assign products_available = true -%}
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- comment %} Add to global data {% endcomment -%}
+    <script>
+      masterCollectionsData[{{ handle | json }}] = {
+        handle: {{ handle | json }},
+        parent_handle: {{ parent_handle | json }},
+        title: {{ display_title | json }},
+        image: {{ image_src | json }},
+        main_description: {{ main_desc | json }},
+        full_description: {{ full_desc_for_js | json }},
+        products_available: {{ products_available | json }},
+        height_obj: {},
+        variant_obj: {},
+        price_obj: {},
+        height_color_obj: {},
+        color_set_obj: {}
+      };
+    </script>
+
+    {%- comment %} Build variant data with pagination for performance {% endcomment -%}
+    {%- paginate source_collection.products by 200 -%}
+      {%- for product_item in source_collection.products -%}
+        {%- assign product_variants = product_item.variants -%}
+
+        {%- if handle contains "-indv" -%}
+          {%- assign letter_name = product_item.title | split: " - " | last -%}
+          {%- assign letter_clean = letter_name | handleize -%}
+          {%- assign letter_str = "letter-" | append: letter_clean -%}
+        {%- endif -%}
+
+        <script>
+          (function(){
+            var variants_obj = {{ product_variants | json }};
+            var data = masterCollectionsData[{{ handle | json }}];
+            var isIndv = {{ handle | json }}.includes("-indv");
+
+            for (var k in variants_obj) {
+              if (!variants_obj.hasOwnProperty(k)) continue;
+              var variant = variants_obj[k];
+              var height = variant.option1 || "";
+              if (isIndv) {
+                var color = variant.option2 || "";
+                var letterStr = {{ letter_str | json }};
+                var height_color = height + "||" + color;
+                if (!data.height_obj[height]) { data.height_obj[height] = []; }
+                if (data.height_obj[height].indexOf(color) === -1) { data.height_obj[height].push(color); }
+
+                if (!data.height_color_obj[height_color]) { data.height_color_obj[height_color] = []; }
+                if (data.height_color_obj[height_color].indexOf(letterStr) === -1) { data.height_color_obj[height_color].push(letterStr); }
+                var full_key = height_color + "||" + letterStr;
+                data.variant_obj[full_key] = variant.id;
+                data.price_obj[full_key] = (variant.price / 100);
+              } else {
+                var setType = variant.option2 || "";
+                var color = variant.option3 || "";
+                var height_color = height + "||" + color;
+                if (!data.height_obj[height]) { data.height_obj[height] = []; }
+                if (data.height_obj[height].indexOf(color) === -1) { data.height_obj[height].push(color); }
+                if (!data.color_set_obj[height_color]) { data.color_set_obj[height_color] = []; }
+                data.color_set_obj[height_color].push({
+                  title: setType,
+                  id: variant.id,
+                  price: (variant.price / 100),
+                  available: variant.available
+                });
+              }
+            }
+          })();
+        </script>
+      {%- endfor -%}
+    {%- endpaginate -%}
+  {%- endfor -%}
+
+  {%- comment %} Tab Content: Individual Letters {% endcomment -%}
+  <div id="tab-content-indv" class="tab-content-master active">
+    <div class="master-tab-inner-content">
+      {%- comment %} Include collection selector for indv {% endcomment -%}
+      {%- render 'letter-collection-selector', current_tab: 'indv', all_parent_handles: all_parent_handles, master_mode: true -%}
+
+      {%- comment %} Main layout grid {% endcomment -%}
+      <div class="grid-12-master">
+        {%- comment %} Individual form {% endcomment -%}
+        {%- render 'letter-form-indv', collection_handle: '', order_type: 'indv' -%}
+
+        {%- comment %} Description (initial placeholder, populated by JS) {% endcomment -%}
+        {%- render 'letter-description', collection_handle: '', order_type: 'indv' -%}
+      </div>
+    </div>
+  </div>
+
+  {%- comment %} Tab Content: Letter Sets {% endcomment -%}
+  <div id="tab-content-set" class="tab-content-master">
+    <div class="master-tab-inner-content">
+      {%- comment %} Include collection selector for set {% endcomment -%}
+      {%- render 'letter-collection-selector', current_tab: 'set', all_parent_handles: all_parent_handles -%}
+
+      {%- comment %} Main layout grid {% endcomment -%}
+      <div class="grid-12-master">
+        {%- comment %} Set form {% endcomment -%}
+        {%- render 'letter-form-set', collection_handle: '', order_type: 'set' -%}
+
+        {%- comment %} Description (initial placeholder, populated by JS) {% endcomment -%}
+        {%- render 'letter-description', collection_handle: '', order_type: 'set' -%}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{%- comment %} Phase 1.3: Load external JavaScript with defer for better performance {% endcomment -%}
+<script src="{{ 'letter-master-order.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Master Letter Order",
+  "tag": "section",
+  "class": "section-master-letter-order",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "paragraph",
+      "content": "This section displays the Master Letter Order interface."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Master Letter Order"
+    }
+  ]
+}
+{% endschema %}

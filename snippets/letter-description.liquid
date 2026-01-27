@@ -1,0 +1,11 @@
+{% comment %} Reusable snippet for letter description column with tabs {% endcomment %}
+{%- liquid
+  assign order_type = order_type | default: 'indv'
+-%}
+
+<div class="col-6-master description-column-master description-column-{{ order_type }}">
+  {%- comment %} Content will be populated by JavaScript {% endcomment -%}
+  <p>Select a letter style to view description and details.</p>
+</div>
+
+{% comment %} Tab switching handled in main JS {% endcomment %}
