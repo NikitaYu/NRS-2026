@@ -186,7 +186,12 @@ jQuery(function ($) {
       // Direct lookup from Liquid pre-calculated map
       // Data is pre-filtered for availability in Liquid
       var sets = masterCollectionsData[currentCollectionHandleSet].height_set_obj[height] || [];
-      sets.sort();
+      // Sort sets by count (descending)
+      sets.sort(function (a, b) {
+        var numA = parseInt(a.replace(/[^\d]/g, '')) || 0;
+        var numB = parseInt(b.replace(/[^\d]/g, '')) || 0;
+        return numB - numA;
+      });
 
       sets.forEach(function (s) {
         $setSelect.append('<option value="' + s + '">' + s + '</option>');
