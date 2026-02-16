@@ -138,207 +138,10 @@
         "padding_bottom": 15
       }
     },
-    "9c03747e-b054-4db8-8194-5a35c71f82ca": {
-      "type": "header-navigation-plain",
-      "blocks": {
-        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-0": {
-          "type": "logo",
-          "settings": {
-            "logo_position": "sticky_menu",
-            "logo": "shopify://shop_images/NRS_logo_2025_no_text.png",
-            "logo_transparent": "shopify://shop_images/NRS_logo_2025_no_text.png",
-            "logo_width": 95,
-            "logo_width_fixed": 55,
-            "logo_text": "",
-            "logo_font_size": 20,
-            "logo_font_weight": "400",
-            "logo_text_transform": "uppercase",
-            "logo_color": "#ffffff"
-          }
-        },
-        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-1": {
-          "type": "main_menu",
-          "settings": {
-            "menu": "",
-            "menu_top_spacing": 15,
-            "menu_bottom_spacing": 12,
-            "grid_gap_menu_item": 20,
-            "alignment": "center",
-            "bg_mega_menu": "#ffffff",
-            "bg_mega_menu_gradient": "",
-            "lv_1_color": "#ffffff",
-            "lv_1_color_hover": "#ffffff",
-            "lv_2_color": "#232323",
-            "lv_2_color_hover": "#232323",
-            "lv_3_color": "#3c3c3c",
-            "lv_3_color_hover": "#3c3c3c",
-            "sale_item_1": "",
-            "sale_item_2": "",
-            "sale_item_3": "",
-            "sale_item_color": "#ff002c",
-            "label_position": "none",
-            "show_label_blink": true,
-            "new_label_1": "poles & more",
-            "new_label_2": "",
-            "new_label_3": "",
-            "new_label_color": "#ffffff",
-            "new_label_bg": "#06bfe2",
-            "new_label_bg_gradient": "",
-            "sale_label_1": "letters",
-            "sale_label_2": "",
-            "sale_label_3": "",
-            "sale_label_color": "#ffffff",
-            "sale_label_bg": "#0cc457",
-            "sale_label_bg_gradient": "",
-            "hot_label_1": "",
-            "hot_label_2": "",
-            "hot_label_3": "",
-            "hot_label_color": "#ffffff",
-            "hot_label_bg": "#ffbb49",
-            "hot_label_bg_gradient": ""
-          }
-        },
-        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-2": {
-          "type": "header_icons",
-          "settings": {
-            "show_language_currency": false,
-            "show_search": false,
-            "show_customer": false,
-            "show_wishlist": false,
-            "show_wishlist_number": false,
-            "show_cart": false,
-            "text_font_size": 14,
-            "show_language_currency_sticky": false,
-            "show_search_sticky": true,
-            "show_customer_sticky": false,
-            "show_wishlist_sticky": false,
-            "show_cart_sticky": true,
-            "cart_icon": "1",
-            "header_icons_color": "#ffffff",
-            "header_icons_color_hover": "#ffffff",
-            "header_icons_border_color": "rgba(0,0,0,0)",
-            "header_icons_border_sticky_color": "#232323",
-            "cart_count_bubble_color": "#323232",
-            "cart_count_bubble_bg": "#ffffff",
-            "cart_count_bubble_bg_gradient": "",
-            "wishlist_color_item": "#ffffff",
-            "wishlist_bg_item": "#232323"
-          }
-        },
-        "megamenu_style_3_rc7dnV": {
-          "type": "megamenu_style_3",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
-            "mega_tyle": "style1",
-            "item": "MARQUEE LETTERING",
-            "column": 6,
-            "show_banner_1": true,
-            "banner_1": "shopify://shop_images/menu_letter1.jpg",
-            "banner_url_1": "shopify://collections/gemini-pronto-sign-letters",
-            "show_banner_2": true,
-            "banner_2": "shopify://shop_images/menu_letter2.jpg",
-            "banner_url_2": "shopify://collections/flexible-sign-letters",
-            "show_banner_3": true,
-            "banner_3": "shopify://shop_images/menu_letter3.jpg",
-            "banner_url_3": "",
-            "show_banner_4": false,
-            "banner_url_4": "",
-            "show_banner_5": true,
-            "banner_5": "shopify://shop_images/free-shipping.png",
-            "banner_url_5": "#"
-          }
-        },
-        "megamenu_style_5_CmtzPt": {
-          "type": "megamenu_style_5",
-          "disabled": true,
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
-            "mega_tyle": "style4",
-            "item": "GIANT PRICE POINTS",
-            "column": 2,
-            "menu_text_left": "",
-            "menu_text_left_sale": "",
-            "show_banner_1": true,
-            "banner_1": "shopify://shop_images/free-shipping.png",
-            "banner_url_1": "",
-            "product_limit": 4,
-            "show_product": true,
-            "product_title": "Featured Products",
-            "product_collection": "custom-word-panels",
-            "bg_mega_menu_bottom": "#f8f8f8"
-          }
-        },
-        "megamenu_style_4_4XXzmd": {
-          "type": "megamenu_style_4",
-          "disabled": true,
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
-            "item": "TRACKS",
-            "column": 2,
-            "menu_text_left": "",
-            "menu_text_left_sale": "",
-            "show_banner_1": true,
-            "banner_url_1": "",
-            "show_banner_2": true,
-            "banner_url_2": "",
-            "show_az_brand": false,
-            "az_brand_title": "All Brands A-Z",
-            "az_brand_link_text": "See All Brands",
-            "az_brand_url": "",
-            "bg_mega_menu_bottom": "#f8f8f8",
-            "az_brand_link_text_color": "#000000"
-          }
-        },
-        "megamenu_style_2_B3nEch": {
-          "type": "megamenu_style_2",
-          "disabled": true,
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
-            "item": "POLES",
-            "column": 2,
-            "show_banner_1": true,
-            "banner_url_1": "",
-            "show_banner_2": false,
-            "banner_url_2": "",
-            "show_banner_3": false,
-            "banner_url_3": ""
-          }
-        }
-      },
-      "block_order": [
-        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-0",
-        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-1",
-        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-2",
-        "megamenu_style_3_rc7dnV",
-        "megamenu_style_5_CmtzPt",
-        "megamenu_style_4_4XXzmd",
-        "megamenu_style_2_B3nEch"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".logo__main {margin: 5px 20px;}"
-      ],
-      "settings": {
-        "container": "1570",
-        "padding_full_width": 20,
-        "header_navigation_bg": "#2a3c98",
-        "header_navigation_bg_gradient": "linear-gradient(180deg, rgba(13, 26, 81, 1), rgba(53, 81, 153, 1) 31%, rgba(20, 135, 214, 1) 100%)",
-        "sticky_header_type": "always",
-        "sticky_header_width": "full",
-        "enable_transparent": false,
-        "transparent_color": "#ffffff",
-        "transparent_color_hover": "#ffffff",
-        "border_color": "rgba(0,0,0,0)"
-      }
-    },
     "header-mobile": {
       "type": "header-mobile",
       "blocks": {
-        "7de2266e-0cd4-4fda-9f09-06f75a17f944": {
+        "menu_McpinG": {
           "type": "menu",
           "settings": {
             "color": "#232323",
@@ -368,6 +171,7 @@
         },
         "20dae707-64c0-4ea3-a05e-561cae9836d8": {
           "type": "customer",
+          "disabled": true,
           "settings": {
             "icon": "1",
             "color": "#232323"
@@ -380,12 +184,12 @@
             "show_cart_count_bubble": true,
             "color": "#232323",
             "color_bubble": "#ffffff",
-            "bg_bubble": "#232323"
+            "bg_bubble": "#0063d9"
           }
         }
       },
       "block_order": [
-        "7de2266e-0cd4-4fda-9f09-06f75a17f944",
+        "menu_McpinG",
         "163e2cb5-14f2-4af6-9ac3-77193c082f53",
         "550fbd21-75fb-4051-9dee-77d91b5239f0",
         "20dae707-64c0-4ea3-a05e-561cae9836d8",
@@ -396,7 +200,7 @@
         "gradient": "",
         "sticky_header_type": "on_scroll",
         "enable_transparent": false,
-        "transparent_color": "#ffffff",
+        "transparent_color": "#232323",
         "transparent_border_color": "",
         "padding_top": 20,
         "padding_bottom": 20
@@ -1180,7 +984,6 @@
   "order": [
     "announcement-bar",
     "header-classic",
-    "9c03747e-b054-4db8-8194-5a35c71f82ca",
     "header-mobile",
     "nrs_top_nav_tY7bAb"
   ]

@@ -249,7 +249,9 @@
         ".copyright__content {letter-spacing: 2px; font-weight: 100;}",
         ".footer-block__link_list {}",
         ".footer-block__list-social {text-align: center;}",
-        ".image_logo {width: 150px; margin: auto;}"
+        ".image_logo {width: 150px; margin: auto;}",
+        "@media (max-width: 767px) {.footer-block__item {margin: 50px 0 0 30px !important; }}",
+        "@media (max-width: 767px) {.footer-block__mobile .footer-block__list {display: block !important; padding: 0 0 0 40px; }}"
       ],
       "settings": {
         "container": "1570",

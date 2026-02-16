@@ -51,7 +51,8 @@
         ".tab-content {border: none;}",
         ".list-product-tabs {background-color: #0063d9 !important; border: 0;}",
         ".tab-links {text-transform: uppercase !important; font-family: \"Abel\", sans-serif; letter-spacing: 1px; border-bottom-color: white;}",
-        ".product-tabs-content {width: 1570px; margin: auto; padding: 40px;}"
+        ".product-tabs-content {width: 100%; margin: auto; padding: 20px; /* smaller for mobile */}",
+        "@media (min-width: 1024px) {.product-tabs-content {width: 1570px; padding: 40px; }}"
       ],
       "settings": {
         "container": "fullwidth",

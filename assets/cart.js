@@ -158,6 +158,3 @@ class Accordion extends HTMLElement {
         $(this.content).slideUp()
     }
 }
-
-customElements.define('accordion-block', Accordion);
-

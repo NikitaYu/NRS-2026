@@ -3,7 +3,7 @@
 // jQuery dependency assumed from theme
 
 jQuery(function ($) {
-  'usestrict';
+  'use strict';
 
   // Initial hide for individual tab elements (to prevent flash before reset/init)
   $('#tab-content-indv .letters').hide();
@@ -37,6 +37,9 @@ jQuery(function ($) {
       // NEW: Hide grid and price/button on reset/collection change
       $tabContent.find('.letters').hide();
       $tabContent.find('.price-and-button-wrapper').hide();
+
+      // NEW: Explicitly disable Add to Cart on reset
+      $tabContent.find('.add-btn').attr('disabled', true);
     } else if (tab === 'set') {
       $tabContent.find('.letter-set-type').html('<option value="">Select Set Type</option>').attr('disabled', true);
       $tabContent.find('.error-set, .error-color, .error-height').hide();
@@ -148,6 +151,7 @@ jQuery(function ($) {
     var total = 0;
     if (!height || !color || !currentCollectionHandleIndv) {
       $('#tab-content-indv .price').text('$0.00');
+      $('#tab-content-indv .add-btn').attr('disabled', true); // Safety: disable if no valid selection
       return;
     }
     var baseKey = height + "||" + color + "||";
@@ -161,6 +165,11 @@ jQuery(function ($) {
       }
     });
     $('#tab-content-indv .price').text('$' + total.toFixed(2));
+
+    // NEW: Enable button if there's a positive total
+    if (total > 0) {
+      $('#tab-content-indv .add-btn').removeAttr('disabled');
+    }
   }
 
   // Set Form Updates
@@ -228,23 +237,21 @@ jQuery(function ($) {
     }
   }
 
+  // FIXED: Now reads from Color dropdown and simplified button logic
   function updatePriceAndButtonSet() {
     var $priceEl = $('#tab-content-set .price');
     var $addButton = $('#tab-content-set .add-btn');
     var $soldOutButton = $('#tab-content-set .sold-out-btn');
 
-    var selectedOption = $('#tab-content-set .letter-set-type option:selected');
+    var selectedOption = $('#tab-content-set .letter-color option:selected');
+
     if (selectedOption.length && selectedOption.val()) {
       var price = parseFloat(selectedOption.data('price')) || 0;
       $priceEl.text('$' + price.toFixed(2)).data('variant-id', selectedOption.val());
 
-      if (selectedOption.hasClass('sold-out')) {
-        $addButton.hide().attr('disabled', true);
-        $soldOutButton.show();
-      } else {
-        $addButton.show().removeAttr('disabled');
-        $soldOutButton.hide();
-      }
+      // All options are available (pre-filtered), so always enable button
+      $addButton.show().removeAttr('disabled');
+      $soldOutButton.hide();
     } else {
       $priceEl.text('$0.00').removeData('variant-id');
       $addButton.attr('disabled', true);
@@ -392,6 +399,9 @@ jQuery(function ($) {
     // NEW: Hide grid and price/button when height changes (color gets reset)
     $('#tab-content-indv .letters').hide();
     $('#tab-content-indv .price-and-button-wrapper').hide();
+
+    // NEW: Disable button on height change
+    $('#tab-content-indv .add-btn').attr('disabled', true);
   });
 
   $('#tab-content-indv').on('change', '.letter-color', function () {
@@ -403,9 +413,15 @@ jQuery(function ($) {
     if (colorVal) {
       $('#tab-content-indv .letters').show();
       $('#tab-content-indv .price-and-button-wrapper').show();
+
+      // NEW: Enable Add to Cart when color selected (form now usable)
+      $('#tab-content-indv .add-btn').removeAttr('disabled');
     } else {
       $('#tab-content-indv .letters').hide();
       $('#tab-content-indv .price-and-button-wrapper').hide();
+
+      // NEW: Disable if no color
+      $('#tab-content-indv .add-btn').attr('disabled', true);
     }
   });
 
@@ -527,7 +543,7 @@ jQuery(function ($) {
       // Select the collection using master function
       selectCollectionMaster(parentH, collectionHandle);
     } else if (collectionHandle) {
-      // Data not ready yet, wait and.
+      // Data not ready yet, wait and retry once
       setTimeout(function () {
         if (masterCollectionsData[collectionHandle]._dataReady) {
           var parentH = collectionHandle.replace(/-indv$/, '').replace(/-set$/, '');
