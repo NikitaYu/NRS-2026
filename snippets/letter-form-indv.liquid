@@ -37,7 +37,6 @@
         <span class="step__number">2</span>
         <p class="step__label">Choose Your Color</p>
       </div>
-      {%- comment %} Direct reuse of .height-guide__right (no .height-guide wrapper) to match exact font/line-height/spacing without any border or left column {% endcomment -%}
       <div class="height-guide__right color-note" style="display:none;">
         <span>Additional processing time required for <strong style="color:#f00;">RED</strong></span>
       </div>
@@ -109,6 +108,8 @@
         <div class="letter"><div class="letter__sku">@</div><label for="letter-at-symbol">@</label><input type="text" name="letter-at-symbol" value="" class="letter-input"></div>
         <div class="letter"><div class="letter__sku">STAR</div><label for="letter-star" class="small-letter">STAR</label><input type="text" name="letter-star" value="" class="letter-input"></div>
         <div class="letter"><div class="letter__sku">=</div><label for="letter-equals-symbol">=</label><input type="text" name="letter-equals-symbol" value="" class="letter-input"></div>
+        {%- comment %} GMN: Added Plus Sign below {% endcomment -%}
+        <div class="letter"><div class="letter__sku">+</div><label for="letter-plus-sign">+</label><input type="text" name="letter-plus-sign" value="" class="letter-input"></div>
       </div>
     </div>
 
