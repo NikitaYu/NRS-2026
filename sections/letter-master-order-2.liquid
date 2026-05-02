@@ -215,44 +215,6 @@
   </div>
   {%- endif -%}
 
-  {%- if mode == 'set_only' -%}
-  <script>
-    (function() {
-      var containerId = '{{ unique_id }}';
-      var container = document.getElementById(containerId);
-      if (container) {
-        var indvLink = container.querySelector('.tab-link-master[data-tab-name="indv"]');
-        var setLink = container.querySelector('.tab-link-master[data-tab-name="set"]');
-        if (indvLink) indvLink.classList.remove('active');
-        if (setLink) setLink.classList.add('active');
-        var indvContent = container.querySelector('#tab-content-indv');
-        var setContent = container.querySelector('#tab-content-set');
-        if (indvContent) indvContent.classList.remove('active');
-        if (setContent) setContent.classList.add('active');
-      }
-      var attempts = 0;
-      var maxAttempts = 20;
-      var setPoll = setInterval(function(){
-        attempts++;
-        if (window.jQuery && container) {
-          var $setTab = window.jQuery(container).find('.tab-link-master[data-tab-name="set"]');
-          var $setGrid = window.jQuery(container).find('.collection-selector-grid-set');
-          var $firstSetItem = $setGrid.find('.collection-selector-item-master').first();
-          if ($setTab.length && $firstSetItem.length) {
-            $setTab.trigger('click');
-            $firstSetItem.trigger('click');
-            var $descCol = window.jQuery(container).find('.description-column-set');
-            if ($descCol.length && !$descCol.text().includes("Select a letter style")) {
-              clearInterval(setPoll);
-              return;
-            }
-          }
-        }
-        if (attempts >= maxAttempts) { clearInterval(setPoll); }
-      }, 200);
-    })();
-  </script>
-  {%- endif -%}
 
 </div>
 <script src="{{ 'letter-master-order.js' | asset_url }}" defer></script>
