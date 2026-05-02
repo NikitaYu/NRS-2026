@@ -519,54 +519,57 @@ jQuery(function ($) {
     $(activeColumn).find('#' + tab).addClass('active');
   });
 
-  // Initialization (matching source lines 752-766, without URL params per Q1)
-  var isCollectionMode = $('.page-order-page-master').hasClass('collection-mode');
+  // Initialization logic
+  var $mainContainer = $('.page-order-page-master');
+  var isFullMode = $mainContainer.hasClass('section-mode-full');
+  var isSetMode = $mainContainer.hasClass('section-mode-set_only');
 
-  if (isCollectionMode) {
-    // Collection page initialization - reuse master functions (Q3: Option B)
-    // Find which collection has data and select it
-    var collectionHandle = null;
+  var urlParams = new URLSearchParams(window.location.search);
+  var paramCollection = urlParams.get('collection');
+  
+  // Support legacy links where handle is in the URL path: /collections/handle
+  if (!paramCollection) {
+    var match = window.location.pathname.match(/\/collections\/([^\/]+)/);
+    if (match) {
+      paramCollection = match[1];
+    }
+  }
+
+  // Determine target tab based on mode configuration
+  var targetTab = isSetMode ? 'set' : 'indv';
+  var startHandle = null;
+
+  if (!isFullMode && paramCollection) {
+    // Attempt to match URL parameter or path to existing collections
     for (var handle in masterCollectionsData) {
-      if (masterCollectionsData.hasOwnProperty(handle)) {
-        collectionHandle = handle;
-        break; // Only one collection on collection pages
+      if (!masterCollectionsData.hasOwnProperty(handle)) continue;
+      
+      var data = masterCollectionsData[handle];
+      var handleMatches = (data.handle === paramCollection) || (data.parent_handle === paramCollection);
+      
+      if (handleMatches) {
+        startHandle = handle;
+        break;
       }
     }
+  }
 
-    if (collectionHandle && masterCollectionsData[collectionHandle]._dataReady) {
-      var parentH = collectionHandle.replace(/-indv$/, '').replace(/-set$/, '');
-      var startTab = collectionHandle.includes('-set') ? 'set' : 'indv';
-
-      // Trigger correct tab
-      $('.top-level-tabs .tab-link-master[data-tab-name="' + startTab + '"]').trigger('click');
-
-      // Select the collection using master function
-      selectCollectionMaster(parentH, collectionHandle);
-    } else if (collectionHandle) {
-      // Data not ready yet, wait and retry once
-      setTimeout(function () {
-        if (masterCollectionsData[collectionHandle]._dataReady) {
-          var parentH = collectionHandle.replace(/-indv$/, '').replace(/-set$/, '');
-          var startTab = collectionHandle.includes('-set') ? 'set' : 'indv';
-          $('.top-level-tabs .tab-link-master[data-tab-name="' + startTab + '"]').trigger('click');
-          selectCollectionMaster(parentH, collectionHandle);
-        }
-      }, 100);
+  // Fallback to first item if no URL match or if in full mode
+  if (!startHandle) {
+    var $firstItem = $('.collection-selector-grid-' + targetTab).find('.collection-selector-item-master').first();
+    if ($firstItem.length) {
+      startHandle = $firstItem.data('inventory-handle');
     }
-  } else {
-    // Master section initialization - trigger individual tab and select first collection
-    var firstItem = $('.collection-selector-grid-indv').find('.collection-selector-item-master').first();
-    var startHandle = null;
+  }
 
-    if (firstItem.length) {
-      startHandle = firstItem.data('inventory-handle');
-    }
-
-    if (startHandle) {
-      var parentH = startHandle.replace(/-indv$/, '').replace(/-set$/, '');
-      $('.top-level-tabs .tab-link-master[data-tab-name="indv"]').trigger('click');
-      selectCollectionMaster(parentH, startHandle);
-    }
+  if (startHandle) {
+    var parentH = masterCollectionsData[startHandle] ? masterCollectionsData[startHandle].parent_handle : startHandle.replace(/-indv$/, '').replace(/-set$/, '');
+    
+    // Switch to appropriate tab
+    $('.top-level-tabs .tab-link-master[data-tab-name="' + targetTab + '"]').trigger('click');
+    
+    // Select the collection using master function
+    selectCollectionMaster(parentH, startHandle);
   }
 
 });
