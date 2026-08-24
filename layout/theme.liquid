@@ -37,7 +37,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
         {%- endif -%}
         <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-        <title>{{ page_title }} {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%} {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%} {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}</title>
+        {%- liquid
+            case request.page_type
+                when 'index'
+                    assign nrs_default_title = shop.name
+                when 'page'
+                    assign nrs_default_title = page.title
+                when 'product'
+                    assign nrs_default_title = product.title
+                when 'collection'
+                    assign nrs_default_title = collection.title
+                when 'blog'
+                    assign nrs_default_title = blog.title
+                when 'article'
+                    assign nrs_default_title = article.title
+                else
+                    assign nrs_default_title = page_title
+            endcase
+            assign nrs_has_custom_seo_title = false
+            if page_title != nrs_default_title
+                assign nrs_has_custom_seo_title = true
+            endif
+        -%}
+        <title>{{ page_title }}{%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}{%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}{%- unless nrs_has_custom_seo_title %}{%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{%- endunless -%}{%- endunless -%}</title>
 
 <script defer src='https://data.processwebsitedata.com/cscripts/6sBBdI7F7d-0f0d5eb5.js'></script>
 
