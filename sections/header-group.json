@@ -95,7 +95,7 @@
         "5939cbc0-a9fd-48e0-adcd-1d945e05dc99": {
           "type": "text",
           "settings": {
-            "free_shipping_text": "<p>Having trouble getting through? Try 888.489.5222</p><p>ARE YOU A SIGN COMPANY? CALL US DIRECT! WE'RE AN AUTHORIZED GEMINI LETTER DEALER<br/><br/></p>",
+            "free_shipping_text": "<p>ARE YOU A SIGN COMPANY? CALL US DIRECT! WE'RE AN AUTHORIZED GEMINI LETTER DEALER</p><p></p><p>Having Trouble Getting Through? Try 888.489.5222<br/><br/></p>",
             "text_color": "#ffffff",
             "spacing": 18
           }

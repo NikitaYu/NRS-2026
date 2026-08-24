@@ -38,6 +38,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {%- endif -%}
         <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
         <title>{{ page_title }} {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%} {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%} {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}</title>
+
+<script defer src='https://data.processwebsitedata.com/cscripts/6sBBdI7F7d-0f0d5eb5.js'></script>
+
             {% if shop.permanent_domain == 'zk06n0-df.myshopify.com' or shop.domain == 'regencyinteractive-development.com' %}
             <meta name="robots" content="noindex">
             {% endif %}

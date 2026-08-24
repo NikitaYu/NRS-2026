@@ -7334,3 +7334,9 @@ summary::-webkit-details-marker {
         transition: none !important;
     }
 }
+
+/* START Custom CSS to hide coupon code section in cart 08-19-2026 - Just comment out to display it again ~ray */
+.cart-total-coupon {
+display:none !important;
+}
+/* END Custom CSS to hide coupon code section in cart 08-19-2026 - Just comment out to display it again ~ray */
