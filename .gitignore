@@ -1,0 +1,16 @@
+# Isolated worktrees
+.worktrees/
+worktrees/
+
+# Shopify CLI local cache
+.shopify/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Node (if added later)
+node_modules/
