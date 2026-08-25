@@ -1,0 +1,49 @@
+{%- comment -%}
+  Sitewide mobile tweaks: collection/page titles, product-card gutters, smaller ATC buttons.
+{%- endcomment -%}
+<style>
+@media (max-width: 767px) {
+  .productGrid {
+    margin-left: -8px !important;
+    margin-right: -8px !important;
+  }
+  .productGrid .product {
+    width: 50% !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    box-sizing: border-box !important;
+    margin-bottom: 18px;
+  }
+
+  h1.articleLookbook-title,
+  h1.main-page-title,
+  h1.page-header,
+  h1.nrs-howto-videos__title,
+  h1.hero-line-1,
+  .template-collection h1,
+  .template-page h1 {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+  }
+
+  .productGrid .card-action .button,
+  .productListing .card-action .button {
+    font-size: 11px !important;
+    padding: 6px 8px !important;
+    min-height: 32px !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.02em;
+  }
+  .productGrid .card-action,
+  .productListing .card-action {
+    margin-top: 6px;
+  }
+  .productGrid .card-wishlist,
+  .productGrid .wishlist,
+  .productGrid .quickview-button,
+  .productGrid .card-quickview {
+    transform: scale(0.88);
+    transform-origin: left top;
+  }
+}
+</style>
