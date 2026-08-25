@@ -253,7 +253,6 @@
       "custom_css": [
         "@media (min-width: 1025px) {.page-sidebar + .page-content {width: calc(100% - 310px);}}",
         "@media (max-width: 1024px) {.page-sidebar + .page-content {width: 100% !important; padding-left: 0; padding-right: 0; float: none;}}",
-        "@media (max-width: 767px) {.productGrid {margin-left: -8px !important; margin-right: -8px !important;} .productGrid .product {width: 50% !important; padding-left: 8px !important; padding-right: 8px !important; box-sizing: border-box !important;}}",
         "@media (min-width: 1025px) {.page-sidebar .halo-sidebar-wrapper {padding-top: 10px; padding-left: 15px; border: 1px solid; padding-right: 15px; width: 280px; }}"
       ],
       "settings": {
