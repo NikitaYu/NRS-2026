@@ -27,10 +27,17 @@ Page SEO copy from John Saldi 2026-08-18/19. Full brief:
 
 Needs A/B/C/D (verbatim titles vs grammar/style fixes vs new descriptions vs homepage suffix).
 
+## How To Videos (in progress, not live)
+
+- Extras on `/pages/how-to-videos` **kept**. Duplicate pole embed removed in the theme overlay.
+- CMS page HTML was **not** rewritten (hidden while new section is on). Rollback: publish unpublished theme `152899879063`.
+- Brief: `docs/backups/howto-videos-2026-08-25/ROLLBACK.md`
+- Not live until Nikita says ship.
+
 ## Next
 
-- Mid-session: **another task for this same store** (Nikita to name). Stay in this worktree / feature branch.
-- After that (or when asked): execute parked SEO copy with confirmation.
+- Preview unpublished how-to/video theme, then ship only after YES.
+- Parked SEO copy still waits for A/B/C/D.
 
 ## Do not
 

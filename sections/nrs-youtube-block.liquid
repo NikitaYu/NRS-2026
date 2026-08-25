@@ -1,0 +1,71 @@
+{%- liquid
+  assign show = true
+  if section.settings.collection_handle != blank
+    if collection.handle != section.settings.collection_handle
+      assign show = false
+    endif
+  endif
+  if section.settings.page_handle != blank
+    if page.handle != section.settings.page_handle
+      assign show = false
+    endif
+  endif
+-%}
+{%- if show and section.settings.youtube_id != blank -%}
+  {%- if section.settings.hide_legacy_poles_video -%}
+    <style>
+      .video_header,
+      a.popup_btn#open_video_popup { display: none !important; }
+    </style>
+  {%- endif -%}
+  <div class="nrs-youtube-block section-block-{{ section.id }}" style="max-width:1170px;margin:0 auto;padding:40px 20px 20px;">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="nrs-youtube-block__heading" style="text-align:center;margin:0 0 12px;">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+    {% render 'nrs-youtube-embed', id: section.settings.youtube_id, start: section.settings.start_seconds, heading: section.settings.heading %}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "NRS YouTube block",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "youtube_id",
+      "label": "YouTube video ID"
+    },
+    {
+      "type": "number",
+      "id": "start_seconds",
+      "label": "Start at (seconds)",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "collection_handle",
+      "label": "Only on collection handle (optional)"
+    },
+    {
+      "type": "text",
+      "id": "page_handle",
+      "label": "Only on page handle (optional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_legacy_poles_video",
+      "label": "Hide legacy poles Short Helpful Videos block",
+      "default": false
+    }
+  ],
+  "presets": [
+    { "name": "NRS YouTube block" }
+  ]
+}
+{% endschema %}

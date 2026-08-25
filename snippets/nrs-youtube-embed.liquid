@@ -1,0 +1,19 @@
+{%- comment -%}
+  Usage: {% render 'nrs-youtube-embed', id: 'xxxxxxxxxxx', start: 470 %}
+{%- endcomment -%}
+{%- if id != blank -%}
+  {%- assign nrs_yt_src = 'https://www.youtube.com/embed/' | append: id -%}
+  {%- if start != blank and start != 0 and start != '0' -%}
+    {%- assign nrs_yt_src = nrs_yt_src | append: '?start=' | append: start -%}
+  {%- endif -%}
+  <div class="nrs-youtube-embed" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:800px;margin:16px auto 28px;">
+    <iframe
+      src="{{ nrs_yt_src }}"
+      title="{{ heading | default: 'YouTube video' | escape }}"
+      style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
+{%- endif -%}

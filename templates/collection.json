@@ -361,11 +361,35 @@
         "border_width_card": 5,
         "border_color_card": "#f0f1f4"
       }
+    },
+    "nrs_youtube_poles": {
+      "type": "nrs-youtube-block",
+      "settings": {
+        "heading": "How to Use a Sign Letter Changer Pole",
+        "youtube_id": "z4rVuFI5c6Y",
+        "start_seconds": 0,
+        "collection_handle": "letter-changer-poles",
+        "page_handle": "",
+        "hide_legacy_poles_video": true
+      }
+    },
+    "nrs_youtube_tracking": {
+      "type": "nrs-youtube-block",
+      "settings": {
+        "heading": "Replacing Your Sign Tracking",
+        "youtube_id": "6KDMBUf1CRE",
+        "start_seconds": 0,
+        "collection_handle": "readerboard-tracking-and-rivets",
+        "page_handle": "",
+        "hide_legacy_poles_video": false
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
+    "nrs_youtube_poles",
+    "nrs_youtube_tracking",
     "product-recently-viewed"
   ]
 }

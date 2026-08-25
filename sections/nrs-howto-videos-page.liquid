@@ -1,0 +1,75 @@
+{%- if page.handle == 'how-to-videos' -%}
+  <style>
+    /* Keep CMS page body as rollback; hide it while this theme is live. */
+    #MainContent .main-page-title,
+    #MainContent .page-header,
+    #MainContent .shopify-section .container > .rte {
+      display: none !important;
+    }
+  </style>
+  <div class="nrs-howto-videos page-width" style="max-width:900px;margin:0 auto;padding:24px 20px 40px;">
+    <h1 class="nrs-howto-videos__title" style="text-align:center;">How To Videos</h1>
+    <p style="color:#cf0202;font-weight:700;text-align:center;">
+      The videos/information provided are for general educational purposes only. Results may vary and are not guaranteed. Any actions taken based on the information provided in these videos are at your own sole risk and responsibility.
+    </p>
+    <p style="text-align:center;">Don't miss a single video. Subscribe to our channel today.</p>
+    <p style="text-align:center;margin-bottom:28px;">
+      <a href="https://www.youtube.com/user/NationalReaderboard" target="_blank" rel="noopener">National Readerboard on YouTube</a>
+    </p>
+    <p>Installing letters, caring for your readerboard, and using a letter pole are a snap if you know how to do it right. We've put together a series of instructional videos to show you how to do all of these and more, quickly, easily, and safely.</p>
+
+    <h2>How to Use a Sign Letter Changer Pole</h2>
+    <p>Installing Marquee Sign Letters is quick and easy...if you use a letter changer pole.</p>
+    {% render 'nrs-youtube-embed', id: 'z4rVuFI5c6Y', heading: 'How to Use a Sign Letter Changer Pole' %}
+
+    <h2>Are Your Sign Letters Worn Out?</h2>
+    {% render 'nrs-youtube-embed', id: 'chyfAzSJuFk', heading: 'Are Your Sign Letters Worn Out?' %}
+
+    <h2>The Value of Sign Punctuation</h2>
+    <p>Yes, punctuation is important, even on your store sign.</p>
+    {% render 'nrs-youtube-embed', id: 'SMN78-084Ek', heading: 'The Value of Sign Punctuation' %}
+
+    <h2>Which Letters Match Which Tracking System?</h2>
+    <p>There are many different types of sign letter, each is used with a different type of tracking. Here is a quick guide to help you understand the differences.</p>
+    {% render 'nrs-youtube-embed', id: 'gF6HOlm9K6o', heading: 'Which Letters Match Which Tracking System?' %}
+
+    <h2>Replacing Sign Tracking</h2>
+    <p>Letters falling off your sign? It may be time to replace your sign tracking. Replacing tracking is inexpensive and easy, find out how in this short video.</p>
+    {% render 'nrs-youtube-embed', id: '6KDMBUf1CRE', heading: 'Replacing Sign Tracking' %}
+
+    <h2>How to Build Your Own Readerboard Sign Face</h2>
+    <p>Learn how to build your very own readerboard changeable letter sign.</p>
+    {% render 'nrs-youtube-embed', id: 'CCD-6m1pY7U', start: 470, heading: 'How to Build Your Own Readerboard Sign Face' %}
+
+    <h2>How to Generate Free Advertising w/ Your Readerboard</h2>
+    {% render 'nrs-youtube-embed', id: 'S1UYNflNq5s', heading: 'How to Generate Free Advertising w/ Your Readerboard' %}
+
+    <hr>
+    <p><strong>More videos</strong></p>
+
+    <h2>Double Span Over Panels and Pricepoints</h2>
+    <p>Double the size of your regular letters, Double Span-Overs and Giant Pricepoints get your message seen.</p>
+    {% render 'nrs-youtube-embed', id: 'qwa7ifX7c40', heading: 'Double Span Over Panels and Pricepoints' %}
+
+    <h2>Replace Your Broken Sign Letters</h2>
+    <p>Are your sign letters cracked, faded, or even broken? Don't use them.</p>
+    {% render 'nrs-youtube-embed', id: 'BJihgsl2Dz0', heading: 'Replace Your Broken Sign Letters' %}
+
+    <h2>Another Punctuation Video, shorter...</h2>
+    {% render 'nrs-youtube-embed', id: 'cZqb4CL1e3A', heading: 'Another Punctuation Video, shorter...' %}
+
+    <h2>That Sucks...or Does it? The Importance Of Letter Changing Suction Cups</h2>
+    {% render 'nrs-youtube-embed', id: '-pMetahoII4', heading: 'That Sucks...or Does it? The Importance Of Letter Changing Suction Cups' %}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "NRS How To Videos page",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    { "name": "NRS How To Videos page" }
+  ]
+}
+{% endschema %}

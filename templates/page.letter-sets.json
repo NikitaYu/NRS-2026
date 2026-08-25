@@ -29,11 +29,23 @@
       "settings": {
         "display_mode": "set_only"
       }
+    },
+    "nrs_youtube_worn_letters": {
+      "type": "nrs-youtube-block",
+      "settings": {
+        "heading": "Are Your Letters Worn and Faded?",
+        "youtube_id": "chyfAzSJuFk",
+        "start_seconds": 0,
+        "collection_handle": "",
+        "page_handle": "",
+        "hide_legacy_poles_video": false
+      }
     }
   },
   "order": [
     "main",
     "custom_liquid_xqK4T6",
-    "letter_master_order_2_pdPgeD"
+    "letter_master_order_2_pdPgeD",
+    "nrs_youtube_worn_letters"
   ]
 }

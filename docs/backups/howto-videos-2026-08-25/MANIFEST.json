@@ -1,0 +1,65 @@
+{
+  "how-to-videos": {
+    "url": "https://www.nationalreaderboard.com/pages/how-to-videos",
+    "chars": 258640,
+    "section_ids": [
+      "shopify-section-template--20119019913367__custom_service_block_ACE8jt"
+    ],
+    "youtube_ids": [
+      "gF6HOlm9K6o",
+      "6KDMBUf1CRE",
+      "z4rVuFI5c6Y",
+      "qwa7ifX7c40",
+      "CCD-6m1pY7U",
+      "BJihgsl2Dz0",
+      "SMN78-084Ek",
+      "cZqb4CL1e3A",
+      "-pMetahoII4",
+      "chyfAzSJuFk"
+    ]
+  },
+  "letter-changer-poles": {
+    "url": "https://www.nationalreaderboard.com/collections/letter-changer-poles",
+    "chars": 303200,
+    "section_ids": [
+      "shopify-section-template--20119019782295__product-grid"
+    ],
+    "youtube_ids": [
+      "UKGko05kvwk"
+    ]
+  },
+  "tracking": {
+    "url": "https://www.nationalreaderboard.com/collections/readerboard-tracking-and-rivets",
+    "chars": 315125,
+    "section_ids": [
+      "shopify-section-template--20119019782295__product-grid"
+    ],
+    "youtube_ids": []
+  },
+  "repair": {
+    "url": "https://www.nationalreaderboard.com/pages/readerboard-repair-and-replacements",
+    "chars": 266842,
+    "section_ids": [
+      "shopify-section-template--20119020437655__custom_service_block_8LYCPm"
+    ],
+    "youtube_ids": [
+      "CCD-6m1pY7U"
+    ]
+  },
+  "letter-sets": {
+    "url": "https://www.nationalreaderboard.com/pages/letter-sets",
+    "chars": 588957,
+    "section_ids": [
+      "shopify-section-template--20119020208279__letter_master_order_2_pdPgeD"
+    ],
+    "youtube_ids": []
+  },
+  "marquee-letters": {
+    "url": "https://www.nationalreaderboard.com/pages/marquee-letters",
+    "chars": 2372352,
+    "section_ids": [
+      "shopify-section-template--20119020241047__letter_master_order_2_QNeEH9"
+    ],
+    "youtube_ids": []
+  }
+}

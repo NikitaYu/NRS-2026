@@ -241,11 +241,23 @@
         "mg_bottom_tablet": 50,
         "mg_bottom_mobile": 50
       }
+    },
+    "nrs_youtube_build_face": {
+      "type": "nrs-youtube-block",
+      "settings": {
+        "heading": "How to Build Your Own Readerboard Sign Face",
+        "youtube_id": "CCD-6m1pY7U",
+        "start_seconds": 470,
+        "collection_handle": "",
+        "page_handle": "",
+        "hide_legacy_poles_video": false
+      }
     }
   },
   "order": [
     "custom_liquid_bMcgfX",
     "main",
+    "nrs_youtube_build_face",
     "custom_service_block_8LYCPm"
   ]
 }
