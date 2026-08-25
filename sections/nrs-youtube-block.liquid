@@ -18,7 +18,7 @@
       a.popup_btn#open_video_popup { display: none !important; }
     </style>
   {%- endif -%}
-  <div class="nrs-youtube-block section-block-{{ section.id }}" style="max-width:1170px;margin:0 auto;padding:40px 20px 20px;">
+  <div class="nrs-youtube-block section-block-{{ section.id }}" style="display:block;width:100%;max-width:1170px;margin:0 auto;padding:40px 16px 20px;box-sizing:border-box;clear:both;">
     {%- if section.settings.heading != blank -%}
       <h2 class="nrs-youtube-block__heading" style="text-align:center;margin:0 0 12px;">{{ section.settings.heading | escape }}</h2>
     {%- endif -%}
