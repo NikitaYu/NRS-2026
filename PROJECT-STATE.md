@@ -9,7 +9,7 @@ Older snapshot: `PROJECT-STATE_2026-05-02_2054.md` (Letter Master URL pre-select
 ## Store / theme
 
 - Store: `national-readerboard-supply-company.myshopify.com` (public `www.nationalreaderboard.com`)
-- **Live:** NRS-2026-1.5.6 - section upgrade · id `150079963287` (title-tag fix only; **no How To Videos job**)
+- **Live:** NRS-2026-1.5.6 - section upgrade · id `150079963287` (title-tag + How To Videos / interior embeds shipped 2026-08-26)
 - **Rollback copy before How To Videos:** NRS-2026-1.5.6 - before how-to videos 2026-08-25 · id `152899879063`
 - **Older title-tag backup:** NRS-2026-1.5.6 - before title tag fix · id `152888705175`
 - **Preview (unpublished/dev):** Development (6bbb15-LAPTOP-D7350MDG) · id `152889819287`
@@ -20,14 +20,13 @@ Older snapshot: `PROJECT-STATE_2026-05-02_2054.md` (Letter Master URL pre-select
 - How To Videos menu tab already existed → `/pages/how-to-videos`.
 - Isolated worktree is the working copy. **Do not** commit dirty leftovers on the `main` checkout.
 
-## How To Videos — preview only (not shipped)
+## How To Videos — **live** (shipped 2026-08-26)
 
-John’s interior embeds + how-to page overlay (extras kept). CMS page HTML was **not** overwritten.
+John’s interior embeds + how-to page overlay (extras kept). CMS page HTML was **not** overwritten (theme overlay).
 
-Preview: `?preview_theme_id=152889819287`  
-Rollback notes: `docs/backups/howto-videos-2026-08-25/ROLLBACK.md`
+Rollback: publish unpublished theme `152899879063` (copy of live taken before this job). Notes: `docs/backups/howto-videos-2026-08-25/ROLLBACK.md`
 
-Mobile preview fixes applied: collection column full width, 16px product gutters, 28px H1s, smaller ATC buttons (`snippets/nrs-mobile-ui.liquid`).
+Mobile: collection column full width, 16px product gutters, 28px H1s, smaller ATC buttons (`snippets/nrs-mobile-ui.liquid`).
 
 ## Parked
 
@@ -36,9 +35,8 @@ Needs A/B/C/D confirmation. Not started.
 
 ## Next
 
-1. Nikita says **ship** → push preview files onto live theme `150079963287` only after YES.
-2. Or more preview tweaks.
-3. SEO copy still waits for A/B/C/D.
+1. Watch live; hotfix or rollback `152899879063` if something breaks.
+2. SEO copy still waits for A/B/C/D.
 
 ## Do not
 
