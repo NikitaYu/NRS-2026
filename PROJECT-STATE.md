@@ -1,6 +1,6 @@
 # PROJECT-STATE — NRS-2026
 
-**Last Updated:** 2026-08-25 03:52 +04:00  
+**Last Updated:** 2026-08-26 04:25 +04:00  
 **Machine:** Omen · **Agent:** GRK/BLD  
 **Active place:** `Shopify-Projects/NRS-2026/.worktrees/feature-nrs-theme-2026-08-24` · remote `NikitaYu/NRS-2026` · branch `feature/nrs-theme-2026-08-24`
 
@@ -9,38 +9,39 @@ Older snapshot: `PROJECT-STATE_2026-05-02_2054.md` (Letter Master URL pre-select
 ## Store / theme
 
 - Store: `national-readerboard-supply-company.myshopify.com` (public `www.nationalreaderboard.com`)
-- **Live:** NRS-2026-1.5.6 - section upgrade · id `150079963287`
-- **Backup (pre title-tag):** NRS-2026-1.5.6 - before title tag fix · id `152888705175`
-- Dev preview from the title job: `152889819287` (may still exist; not live)
+- **Live:** NRS-2026-1.5.6 - section upgrade · id `150079963287` (title-tag fix only; **no How To Videos job**)
+- **Rollback copy before How To Videos:** NRS-2026-1.5.6 - before how-to videos 2026-08-25 · id `152899879063`
+- **Older title-tag backup:** NRS-2026-1.5.6 - before title tag fix · id `152888705175`
+- **Preview (unpublished/dev):** Development (6bbb15-LAPTOP-D7350MDG) · id `152889819287`
 
-## What works now
+## What is live
 
-- Live HTML `<title>` no longer appends shop name when a **custom SEO title** is set (`layout/theme.liquid` only). Shipped 2026-08-24.
-- Verified live: home + letter-sets + numbers-panels + contact + repair have custom titles **without** ` – National Readerboard Supply`. Policies and collection default titles still suffix (expected).
+- HTML `<title>` skips shop-name suffix when a custom SEO title is set (`layout/theme.liquid`). Shipped 2026-08-24.
+- How To Videos menu tab already existed → `/pages/how-to-videos`.
 - Isolated worktree is the working copy. **Do not** commit dirty leftovers on the `main` checkout.
 
-## Parked (do not execute until Nikita confirms)
+## How To Videos — preview only (not shipped)
 
-Page SEO copy from John Saldi 2026-08-18/19. Full brief:
+John’s interior embeds + how-to page overlay (extras kept). CMS page HTML was **not** overwritten.
 
-`docs/Pending_SEO-page-copy_John-Aug18-19_GRK-BLD_Omen_2026-08-25.md`
+Preview: `?preview_theme_id=152889819287`  
+Rollback notes: `docs/backups/howto-videos-2026-08-25/ROLLBACK.md`
 
-Needs A/B/C/D (verbatim titles vs grammar/style fixes vs new descriptions vs homepage suffix).
+Mobile preview fixes applied: collection column full width, 16px product gutters, 28px H1s, smaller ATC buttons (`snippets/nrs-mobile-ui.liquid`).
 
-## How To Videos (in progress, not live)
+## Parked
 
-- Extras on `/pages/how-to-videos` **kept**. Duplicate pole embed removed in the theme overlay.
-- CMS page HTML was **not** rewritten (hidden while new section is on). Rollback: publish unpublished theme `152899879063`.
-- Brief: `docs/backups/howto-videos-2026-08-25/ROLLBACK.md`
-- Not live until Nikita says ship.
+John Saldi Aug 18–19 **page SEO copy** — `docs/Pending_SEO-page-copy_John-Aug18-19_GRK-BLD_Omen_2026-08-25.md`  
+Needs A/B/C/D confirmation. Not started.
 
 ## Next
 
-- Preview unpublished how-to/video theme, then ship only after YES.
-- Parked SEO copy still waits for A/B/C/D.
+1. Nikita says **ship** → push preview files onto live theme `150079963287` only after YES.
+2. Or more preview tweaks.
+3. SEO copy still waits for A/B/C/D.
 
 ## Do not
 
-- Auto-commit `Shopify-Projects/NRS-2026` on `main` (pre-existing card/placeholder dirt).
+- Auto-commit `Shopify-Projects/NRS-2026` on `main`.
 - Edit production through Shopify’s browser theme editor.
 - Recycle Agent-Bridge / port 8765 from a child turn.
